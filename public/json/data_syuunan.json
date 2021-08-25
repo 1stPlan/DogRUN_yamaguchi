@@ -1,0 +1,19 @@
+
+{
+	"data": [
+		{
+			"name": "鹿野ＳＡ上り(中国自動車道)ドッグラン",
+			"address": "山口県周南市大字鹿野中字原1664-1",
+			"tag": "syuunan",
+			"price":"無料",
+			"time":"",
+			"off" : "",
+			"tel":"0834-68-3833",
+			"lat":"34.220599",
+			"lng" : "131.795159",
+			"url" : "https://www.w-holdings.co.jp/sapa/2165.html",
+			"img" : "kanoSA",
+			"services": [""]
+		}
+	]
+}

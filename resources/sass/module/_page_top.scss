@@ -1,0 +1,29 @@
+
+/* ---------------------------
+    upArrow
+--------------------------- */
+
+#upArrow {
+  text-align: right;
+  padding-right: 50px;
+  margin-bottom: 50px;
+  margin-top: 80px;
+  
+  img {
+    max-width: 80px;
+    min-width: 40px;
+    width: 11%;
+  }
+}
+@media screen and (max-width: 800px) {
+  #upArrow {
+    padding-right: 30px;
+  }
+}
+  
+@media screen and (max-width: 530px) {
+  #upArrow {
+    margin-top: 50px;
+
+  }
+}

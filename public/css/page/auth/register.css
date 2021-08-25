@@ -1,0 +1,144 @@
+/* -------------------------------------
+	mixin
+--------------------------------------*/
+
+.register {
+  height: 100vh;
+  width: 100%;
+  margin-top: -8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register.register--add_information {
+  margin-top: 0;
+}
+
+.register__inner {
+  width: 100%;
+  padding: 0 7.5%;
+  margin: auto;
+  box-sizing: border-box;
+  max-width: calc(119rem + 15%);
+  border: 0;
+}
+
+@media screen and (max-width: 960px) {
+  .register__inner {
+    padding: 0 5%;
+  }
+}
+
+.register__logo {
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+
+.register__logo::before {
+  content: "";
+  display: block;
+  padding-top: 15%;
+}
+
+.register__logo > img {
+  position: absolute;
+  width: 25%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  -o-object-fit: contain;
+  object-fit: contain;
+  transition: 0.5s all;
+}
+
+.register__cont {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 5%;
+  background-color: #fff;
+  box-shadow: 0px 0px 15px -5px #777777;
+  border-radius: 2rem;
+  font-size: clamp(0.86rem, 1.2vw, 1.2rem);
+  line-height: 1.3;
+  line-height: 1.75;
+}
+
+@media screen and (max-width: 530px) {
+  .register__cont {
+    font-size: min(2.33vw, 1rem);
+  }
+}
+
+.register__form {
+  margin-top: min(3vw, 3rem);
+}
+
+.register__txt {
+  margin-top: min(4vw, 4rem);
+  font-size: clamp(1rem, 1.4vw, 1.4rem);
+  line-height: 1.3;
+  font-weight: bold;
+  line-height: 1.75;
+}
+
+@media screen and (max-width: 530px) {
+  .register__txt {
+    font-size: min(2.79vw, 1.2rem);
+  }
+}
+
+.register__form-group {
+  margin-top: 2rem;
+  font-size: clamp(1rem, 1.4vw, 1.4rem);
+  line-height: 1.3;
+}
+
+@media screen and (max-width: 530px) {
+  .register__form-group {
+    font-size: min(2.79vw, 1.2rem);
+  }
+}
+
+.register__form-group textarea {
+  min-height: 10em;
+}
+
+.register__btn {
+  margin: min(5vw, 5rem) auto 0;
+  font-size: clamp(1.2rem, 1.6vw, 1.6rem);
+  line-height: 1.3;
+  padding: 1rem 0;
+  background: #4bb582;
+  color: #fff;
+  display: block;
+  border-radius: 9999px;
+  width: min(50%, 20rem);
+}
+
+@media screen and (max-width: 530px) {
+  .register__btn {
+    font-size: min(3.26vw, 1.4rem);
+  }
+}
+
+.register__btn:hover {
+  color: #fff;
+}
+
+@media screen and (max-width: 530px) {
+  .register {
+    height: calc(100vh - 8rem);
+    margin-top: 0;
+  }
+
+  .register__btn {
+    margin: min(10.67vw, 4rem) auto 0;
+  }
+}
+

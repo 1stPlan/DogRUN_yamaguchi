@@ -1,0 +1,28 @@
+.table_box .check_table {
+  display: block;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.blue_background {
+  background-color: #00CED1;
+}
+
+.btn-secondary.active {
+  background-color: #5d9cec!important;
+  color: #fff!important;
+}
+
+.admin_card .table thead tr th:nth-child(4) {
+  width: 88px;
+}
+.admin_card .table thead tr th:nth-child(6) {
+  width: 80px;
+}
+.admin_card .table thead tr th:nth-child(7) {
+  width: 88px;
+}
+.admin_card .table thead tr th:nth-child(8) {
+  width: 88px;
+}

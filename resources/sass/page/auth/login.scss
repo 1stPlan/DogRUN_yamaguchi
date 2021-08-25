@@ -1,0 +1,120 @@
+/* -------------------------------------
+	mixin
+--------------------------------------*/
+
+@import "../../mixin/responsive";
+@import "../../mixin/inner";
+@import "../../mixin/home-title";
+@import "../../mixin/font-size";
+
+/* -------------------------------------
+	function
+--------------------------------------*/
+@import "../../functions/calculation";
+
+.login {
+    height: 100vh;
+    margin-top: -8rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__inner {
+        @include inner;
+        border: 0;
+    }
+
+    &__logo {
+        position: relative;
+        overflow: hidden;
+        display: block;
+
+        &::before {
+            content: "";
+            display: block;
+            padding-top: 15%;
+        }
+        > img {
+            position: absolute;
+            width: 25%;
+            height: 100%;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            -o-object-fit: contain;
+            object-fit: contain;
+            transition: 0.5s all;
+
+        }
+    }
+
+    &__cont {
+        max-width: 600px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 5%;
+        background-color: #fff;
+        box-shadow: 0px 0px 15px -5px #777777;
+        border-radius: 2rem;
+    }
+
+    &__form {
+        border-bottom: 1px solid #d7d7d7;
+        padding-bottom: min(5vw, 5rem);
+        margin-top: min(3vw, 3rem);
+    }
+
+    &__btn {
+        @include font-size("14");
+        margin: min(2vw, 2rem) auto 0;
+        padding: 1rem 0;
+        background: #4bb582;
+        color: #fff;
+        border-radius: 9999px;
+        &:hover {
+            color: #fff;
+        }
+    }
+
+    &__txt {
+        margin-top: min(2vw, 2rem);
+        a {
+            color: #3490dc;
+        }
+    }
+
+    &__register-txt {
+        margin-top: min(4vw, 4rem);
+        text-align: center;
+        @include font-size("16");
+        font-weight: bold;
+    }
+}
+
+@media screen and (max-width: 530px) {
+    .login {
+        height: calc(100vh - 8rem);
+        margin-top: 0;
+
+        &__form {
+            padding-bottom: min(6.98vw, 3rem);
+            margin-top: min(4.65vw, 2rem);
+        }
+    
+        &__btn {
+            margin: min(3.49vw, 1.5rem) auto 0;
+            padding: min(2.33vw, 1rem) 0;
+        }
+    
+        &__txt {
+            margin-top: min(3.49vw, 1.5rem);
+        }
+    
+        &__register-txt {
+            margin-top: min(4.65vw, 2rem);
+        }
+    }
+}

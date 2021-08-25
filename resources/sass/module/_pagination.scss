@@ -1,0 +1,48 @@
+
+/* -------------------------------------
+	pagination
+--------------------------------------*/ 
+.pagination{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+    @include font-size("12");
+    li{
+        margin: 0.5rem;
+        border: 2px solid #333;
+      }
+
+    a{
+    display: block;
+    text-decoration: none;
+    color: #333;
+    padding: 0.5rem min(2vw, 2rem);
+
+    &:hover{
+        background-color: #333;
+        color: aliceblue;
+      }
+    }
+  }
+  
+  .navi-active{
+    background-color: #333;
+
+    a{
+        color: aliceblue;
+      }
+  }
+
+  .pagination-container{
+    margin-top: calculation(10,5);
+    padding-bottom: calculation(4,2);
+  }
+
+  @media screen and (max-width: 530px) {
+    .pagination-container a{
+      // font-size: 10px;
+      padding: 0.5rem min(3.49vw, 1.5rem);
+    }
+
+  }

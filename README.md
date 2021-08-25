@@ -1,29 +1,37 @@
-# README #
+## 導入手順
 
-This README would normally document whatever steps are necessary to get your application up and running.
+### 前準備
+#### 1.composer インストール
+[composer 公式サイト](https://getcomposer.org/)  
+上記サイトのDownloadを参照
 
-### What is this repository for? ###
+### ローカル開発環境
+#### 1.リポジトリ取得(developブランチ)
+    $ git clone -b develop
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+以下、corporateディレクトリの中で行う
+#### 2.依存モジュール取得
+    $ composer install
+※上記実行後はcorporate/vendorが生成されていることを確認。
 
-### How do I get set up? ###
+#### 3.環境ファイル設定
+    $ cp .env.example .env
+※上記実行後は.envが生成されていることを確認。
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+    $ php artisan key:generate
+.env内、APP_KEYが設定されていることを確認。
+その他、環境に合わせて.envファイルを変更。(DBの設定など)  
 
-### Contribution guidelines ###
+#### 4.DBマイグレーション
+    $ php artisan migrate
 
-* Writing tests
-* Code review
-* Other guidelines
+### リポジトリ規約
+#### テスト環境用
+developはテスト環境確認用の最新版。  
+基本的にbranch元はここ。
+プルリクエストの際はdevelopへ。
+ユニットテスト導入後は、developへのマージタスクを作成する予定。
 
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+#### 本番環境
+masterは本番リリースいつでも可能な状態にしておく。  
+基本的に管理者以外プルリクエスト禁止。

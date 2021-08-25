@@ -1,0 +1,210 @@
+@charset "UTF-8";
+/* -------------------------------------
+	mixin
+--------------------------------------*/
+
+@import "../mixin/responsive";
+@import "../mixin/inner";
+@import "../mixin/font-size";
+
+/*---------------------------- 
+    contact
+---------------------------- */
+
+.contact {
+    /* Iphoneで矢印表示 */
+    select {
+        -moz-appearance: menulist;
+        -webkit-appearance: menulist;
+    }
+
+    select::-ms-expand {
+        display: block;
+    }
+
+    &__page_header {
+        position: relative;
+        width: 100%;
+        background-size: cover;
+        height: min(28.12vw, 30rem);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-repeat: no-repeat;
+        flex-direction: column;
+        background-image: url(./../images/contact_header.jpg);
+    }
+    &__page_title {
+        @include font-size("48");
+        color: #fff;
+        text-shadow: 0 3px 4px rgba(34, 32, 32, 0.9);
+        display: flex;
+        align-items: center;
+    }
+
+    &__inner {
+        @include inner;
+        margin-top: min(5vw, 5rem);
+    }
+
+    &__desc {
+        border-bottom: 0.1rem solid black;
+        @include font-size("18");
+        padding-bottom: min(2vw, 2rem);
+        line-height: 1.75;
+    }
+
+    &__cont {
+        input,
+        textarea {
+            display: block;
+            margin: 0;
+            padding: 0;
+            background: none;
+            border: none;
+            border-radius: 0;
+            outline: none;
+            width: 100%;
+            @include font-size("16");
+        }
+
+        select {
+            margin: 0;
+            padding: 0;
+            background: none;
+            border: none;
+            border-radius: 0;
+            outline: none;
+            width: 95%;
+            @include font-size("16");
+        }
+    }
+
+    &__color-red {
+        color: red;
+        @include font-size("12");
+    }
+
+    &__item {
+        margin-top: min(4vw, 4rem);
+        @include font-size("16");
+        font-weight: 500;
+    }
+    &__item-flex {
+        display: flex;
+        gap: min(2vw, 2rem);
+        width: 75%;
+    }
+    &__item-wrap {
+        flex: 1;
+    }
+
+    &__item-block {
+        background: #f4f4f4;
+        padding: min(2vw, 2rem);
+        margin: min(1.5vw, 1.5rem) 0;
+    }
+
+    &__error {
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    &__text_about {
+        border: 1px solid black;
+        padding: min(4vw, 4rem);
+        margin-top: min(5vw, 5rem);
+
+        h5 {
+            padding-bottom: min(3vw, 3rem);
+            @include font-size("18");
+        }
+
+        p {
+            @include font-size("16");
+            line-height: 1.6;
+        }
+    }
+
+    &__button {
+        margin: min(5vw, 5rem) auto;
+        width: min(40vw, 40rem);
+        position: relative;
+        border: 1px solid black;
+        border-radius: 9999px;
+
+        input,
+        a {
+            color: black;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+            font-weight: bold;
+            @include font-size("16");
+            letter-spacing: 1px;
+            display: block;
+            padding: min(2.3vw, 2.3rem) 0 min(2vw, 2rem);
+            font-family: source-sans-pro, sans-serif;
+            text-align: center;
+        }
+    }
+    &__button--2 {
+        margin-top: max(-3vw, -3rem);
+    }
+}
+
+@include responsive("sp") {
+    .contact {
+        &__page_header {
+            height: min(34.88vw, 15rem);
+        }
+
+        &__inner {
+            width: 100%;
+            margin-top: min(6.98vw, 3rem);
+        }
+        &__desc {
+            padding-bottom: min(4.65vw, 2rem);
+        }
+
+        &__item {
+            margin-top: min(6.98vw, 3rem);
+        }
+
+        &__item-flex {
+            gap: min(2vw, 2rem);
+            width: 100%;
+        }
+        &__item-block {
+            padding: min(3.49vw, 1.5rem);
+            margin: min(2.33vw, 1rem) 0;
+        }
+    
+        &__error {
+            margin-bottom: min(2.33vw, 1rem);
+        }
+    
+        &__text_about {
+            padding: min(4.65vw, 2rem);
+            margin-top: min(6.98vw, 3rem);
+    
+            h5 {
+                padding-bottom: min(4.65vw, 2rem);
+            }
+        }
+        &__button {
+            width: 75%;
+            margin: min(9.3vw, 4rem) auto;
+            input,
+            a {
+                padding: min(2.33vw, 1rem) 0 min(2.33vw, 1rem);
+
+            }
+    
+        }
+        &__button--2 {
+            margin-top: max(-4.6vw, -2rem);
+        }
+        
+    }
+}

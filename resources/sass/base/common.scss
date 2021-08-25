@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+*:before,
+*:after {
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+html {
+    width: 100%;
+    font-size: 62.5%;
+}
+
+body {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    font-family: "Noto Sans JP", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+a {
+    text-decoration: none;
+    color: #2d3133;
+}
+a:hover {
+    text-decoration: none;
+    color: #2d3133;
+}
+
+input:-webkit-autofill {
+    /* 色はinput要素の背景色（ここでは##f4f4f4）にそろえる */
+    box-shadow: 0 0 0px 999px #f4f4f4 inset;
+}
+
+main {
+    padding-top: 8rem;
+}
+
+/* -レスポンシブ----- */
+
+@include responsive("sp") {
+    main {
+        padding-top: 6rem;
+    }
+}

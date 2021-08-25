@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+/* -------------------------------------
+	mixin
+--------------------------------------*/
+
+@import "../../mixin/responsive";
+@import "../../mixin/inner";
+@import "../../mixin/home-title";
+@import "../../mixin/font-size";
+
+.type {
+    height: min(100vh - 15rem);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__inner {
+        @include inner;
+        border: 0;
+    }
+    &__ttl {
+        text-align: center;
+        @include font-size("32");
+        span {
+            @include font-size("20");
+        }
+    }
+
+    &__cont {
+        max-width: 600px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 5%;
+        background-color: #fff;
+        box-shadow: 0px 0px 15px -5px #777777;
+        border-radius: 2rem;
+        @include font-size("14");
+        line-height: 1.75;
+    }
+
+    //  type
+    &__cont-flex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem
+    }
+    &__cont-ttl {
+        @include font-size("32");
+    }
+    &__cont-ttl-img {
+        width: min(10%, 5rem);
+        padding-top: 0.5rem;
+    }
+    &__cont-btn-box {
+        margin: min(5vw, 5rem) auto 0;
+        width: min(50%, 20rem);
+    }
+    &__cont-btn {
+        padding: 1rem 0;
+        background: #4bb582;
+        border-radius: 9999px;
+        color: #fff;
+        display: block;
+        @include font-size("16");
+
+        &:hover {
+            color: #fff;
+        }
+    }
+
+}
+
+@include responsive("sp") {
+    .type {
+        height: min(100vh - 13rem);
+        &__cont {
+            padding:15% 5%;
+        }
+
+        &__cont-btn-box {
+            margin: min(6.98vw, 3rem) auto 0;
+        }
+
+        &__cont-btn {
+            padding: min(2.33vw, 1rem) 0;
+        }
+    }
+}

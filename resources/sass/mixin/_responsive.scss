@@ -1,0 +1,13 @@
+// responsive
+@mixin responsive($type: "sp") {
+    @if $type == "tb" {
+        @media screen and (max-width: 960px) {
+            @content;
+        }
+    }
+    @if $type == "sp" {
+        @media screen and (max-width: 530px) {
+            @content;
+        }
+    }
+}

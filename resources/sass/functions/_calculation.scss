@@ -1,0 +1,9 @@
+//クランプ計算
+$basePcSize: 750;
+
+@function calculation($max, $min) {
+    $max: $max * 10;
+    $min: $min * 10;
+    $PC: $max / $basePcSize * 100vw;
+    @return clamp($min + px, $PC, $max + px);
+}
