@@ -11,17 +11,19 @@ class Post extends Model
     use SoftDeletes;
 
     protected $table = 'posts';
+
     protected $primaryKey = 'id';
+
     protected $guarded = [];
+
     protected $fillable = [
         'tittle',
         'body',
         'place_id',
         'name',
         'ip_address',
-        'user_id'
+        'user_id',
     ];
-
 
     /**
      * hasManyTo
@@ -56,12 +58,10 @@ class Post extends Model
     }
 
     /**
-     * @param Builder $query
-     * @param $placeId
      * @return \Illuminate\Database\Query\Builder
      */
     public function scopePlaceId(Builder $query, $placeId)
     {
-        return $query->where($this->table . '.place_id', $placeId);
+        return $query->where($this->table.'.place_id', $placeId);
     }
 }

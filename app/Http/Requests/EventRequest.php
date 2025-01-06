@@ -32,12 +32,13 @@ class EventRequest extends FormRequest
 
         ];
     }
+
     public function messages()
     {
         return [
             'title.required' => 'タイトルの入力は必須です。',
             'start_datetime.required' => 'スタート時間の入力は必須です。',
-            'body.required' => '内容の入力は必須です。'
+            'body.required' => '内容の入力は必須です。',
         ];
     }
 }

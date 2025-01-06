@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,22 +19,21 @@ use Illuminate\Support\Facades\Auth;
 // TOPページ
 Route::get('/', 'TopController@index')->name('top');
 
-//会員登録
+// 会員登録
 Route::post('/register', 'Auth\RegisterController@register')->name('register');
 Route::get('/confirm', 'Auth\RegisterController@confirm')->name('confirm');
 Route::get('/complete', 'Auth\RegisterController@complete')->name('complete');
 
-//パスワード関係
+// パスワード関係
 Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
 Route::get('/password/reset2', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::get('/password/reset/complete', 'Auth\ResetPasswordController@reset_complete')->name('password.reset_complete');
 
-
 // ログイン認証関連
 Auth::routes([
     'register' => true,
-    'reset'    => true,
-    'verify'   => true
+    'reset' => true,
+    'verify' => true,
 ]);
 
 // ログイン認証後
@@ -78,12 +77,10 @@ Route::namespace('User')->prefix('user')->name('user.')->group(function () {
         });
     });
 
-
     // 質問ページ
     Route::get('/type', 'TypeController@index')->name('type');
     Route::get('/type/select/{setid}/{nextid}', 'TypeController@select')->name('select.type');
     Route::get('/type/select_complete', 'TypeController@select_complete')->name('select_complete.type');
-
 
     //  place
     Route::namespace('Place')->group(function () {
@@ -97,7 +94,7 @@ Route::namespace('User')->prefix('user')->name('user.')->group(function () {
         Route::delete('/posts/destroy/{post}/', 'PostController@destroy')->name('post.destroy');
     });
 
-    //food
+    // food
     Route::namespace('Food')->group(function () {
         Route::get('/food', 'FoodController@index')->name('food');
     });
@@ -129,8 +126,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
     // ログイン認証関連
     Auth::routes([
         'register' => true,
-        'reset'    => false,
-        'verify'   => false
+        'reset' => false,
+        'verify' => false,
     ]);
 
     // ログイン認証後
@@ -162,7 +159,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
         // event
         Route::resource('events', 'Event\indexController', ['only' => ['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']]);
-        
+
         // Route::patch('events/{event}', 'Event\indexController@update')->name('events.update');
         // Route::post('/events/{event}/store', 'Event\indexController@store')->name('events.store');
 
@@ -177,12 +174,11 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('event/post/{event_id}', 'Event\EventPostController@index')->name('post.index')->where('event_id', '[0-9]+');
         Route::delete('event/post/comments/{comment}', 'Event\EventPostController@comment_destroy')->name('comment.destroy')->where('comment', '[0-9]+');
 
-
         // contact
         Route::resource('contact', 'ContactController', ['only' => 'index']);
         Route::get('contact/{contact}', 'ContactController@show')->name('contact.show');
 
-        Route::fallback(function () { //存在しないURLは自動的にTOPにリダイレクトさせる。
+        Route::fallback(function () { // 存在しないURLは自動的にTOPにリダイレクトさせる。
             return redirect()->route('admin.users.index');
         });
     });

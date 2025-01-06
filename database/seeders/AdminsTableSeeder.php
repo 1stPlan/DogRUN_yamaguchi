@@ -14,19 +14,18 @@ class AdminsTableSeeder extends Seeder
      *
      * @return void
      */
-
-    private $table = "admins";
+    private $table = 'admins';
 
     public function run()
     {
-        DB::statement('TRUNCATE TABLE ' . $this->table . ';');
-        DB::statement('ALTER TABLE ' . $this->table . ' AUTO_INCREMENT = 1;');
-        
+        DB::statement('TRUNCATE TABLE '.$this->table.';');
+        DB::statement('ALTER TABLE '.$this->table.' AUTO_INCREMENT = 1;');
+
         DB::table('admins')->insert([
-            'name'              => 'admin',
-            'email'             => 'admin@example.com',
-            'password'          => Hash::make('12345678'),
-            'remember_token'    => Str::random(10),
+            'name' => 'admin',
+            'email' => 'admin@example.com',
+            'password' => Hash::make('12345678'),
+            'remember_token' => Str::random(10),
         ]);
     }
 }

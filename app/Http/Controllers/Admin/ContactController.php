@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\ContactForm;
+use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
@@ -15,8 +15,9 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts =ContactForm::latest()->get();
-        return view('admin.contact.index')->with(['contacts'=> $contacts]);
+        $contacts = ContactForm::latest()->get();
+
+        return view('admin.contact.index')->with(['contacts' => $contacts]);
     }
 
     /**
@@ -32,7 +33,6 @@ class ContactController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -49,7 +49,8 @@ class ContactController extends Controller
     public function show($contact)
     {
         $contact = ContactForm::find($contact);
-        return view('admin.contact.show')->with(['contact'=> $contact]);
+
+        return view('admin.contact.show')->with(['contact' => $contact]);
 
     }
 
@@ -67,7 +68,6 @@ class ContactController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

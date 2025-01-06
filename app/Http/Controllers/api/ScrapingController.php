@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class ScrapingController extends Controller
 {
@@ -12,6 +11,7 @@ class ScrapingController extends Controller
         $service = app()->make('DogFoodService');
         $amazon = $service->amazon_scrape();
         $encode_array = json_encode($amazon, JSON_UNESCAPED_UNICODE);
+
         return $encode_array;
     }
 
@@ -20,6 +20,7 @@ class ScrapingController extends Controller
         $service = app()->make('DogFoodService');
         $yahoo = $service->yahoo_scrape();
         $encode_array = json_encode($yahoo, JSON_UNESCAPED_UNICODE);
+
         return $encode_array;
     }
 }

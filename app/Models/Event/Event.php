@@ -2,12 +2,10 @@
 
 namespace App\Models\Event;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
-use App\Models\Event\EventView;
-
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Event extends Model
 {
@@ -30,7 +28,7 @@ class Event extends Model
         'img_url',
         'view_count',
         'ticket_price',
-        "venue",
+        'venue',
         'body',
         'remarks',
     ];
@@ -58,14 +56,12 @@ class Event extends Model
      * リレーション先も削除する方法
      * https://qiita.com/hinako_n/items/b24dfc4bbf6eb32ef4a8
      */
-
     public static function booted(): void
     {
         static::deleted(function ($events) {
             $events->eventParticipants()->delete();
         });
     }
-
 
     /**
      * @return int
@@ -86,88 +82,75 @@ class Event extends Model
     // }
 
     /**
-     * @param Builder $query
-     * @param $id
      * @return \Illuminate\Database\Query\Builder
      */
     public function scopeId(Builder $query, $id)
     {
-        return $query->where($this->table . '.id', $id);
+        return $query->where($this->table.'.id', $id);
     }
 
-
     /**
-     * @param Builder $query
      * @return \Illuminate\Database\Query\Builder
      */
     public function scopeNotFinished(Builder $query)
     {
         $now = Carbon::now();
-        return $query->where($this->table . '.close_datetime', '>', $now->format('Y-m-d H:i:s'));
+
+        return $query->where($this->table.'.close_datetime', '>', $now->format('Y-m-d H:i:s'));
     }
 
     /**
-     * @param Builder $query
      * @return \Illuminate\Database\Query\Builder
      */
     public function scopeFinished(Builder $query)
     {
         $now = Carbon::now();
-        return $query->where($this->table . '.close_datetime', '<=', $now->format('Y-m-d H:i:s'));
+
+        return $query->where($this->table.'.close_datetime', '<=', $now->format('Y-m-d H:i:s'));
     }
 
     /**
-     * @param Builder $query
-     * @param $fromDateTime
-     * @param $toDateTime
      * @return \Illuminate\Database\Query\Builder
      */
     public function scopeStartedBetween(Builder $query, Carbon $fromDateTime, Carbon $toDateTime)
     {
-        return $query->whereBetween($this->table . '.start_datetime', [$fromDateTime->format('Y-m-d H:i:s'), $toDateTime->format('Y-m-d H:i:s')]);
+        return $query->whereBetween($this->table.'.start_datetime', [$fromDateTime->format('Y-m-d H:i:s'), $toDateTime->format('Y-m-d H:i:s')]);
     }
 
     /**
-     * @param Builder $query
-     * @param $fromDateTime
-     * @param $toDateTime
      * @return \Illuminate\Database\Query\Builder
      */
     public function scopeFinishedBetween(Builder $query, Carbon $fromDateTime, Carbon $toDateTime)
     {
-        return $query->whereBetween($this->table . '.close_datetime', [$fromDateTime->format('Y-m-d H:i:s'), $toDateTime->format('Y-m-d H:i:s')]);
+        return $query->whereBetween($this->table.'.close_datetime', [$fromDateTime->format('Y-m-d H:i:s'), $toDateTime->format('Y-m-d H:i:s')]);
     }
 
     /**
-     * @param Builder $query
-     * @param $categoryId
      * @return \Illuminate\Database\Query\Builder
      */
     public function scopeCategoryId(Builder $query, $categoryId)
     {
         // NOTE: joinを入れた場合、結合先の論理削除は効かないので、明示する必要あり。
         return $query->join('event_searches', 'events.id', '=', 'event_searches.event_id')
-            ->where('event_searches.category_id',  $categoryId)
+            ->where('event_searches.category_id', $categoryId)
             ->whereNull('event_searches.deleted_at');
     }
 
-
     /**
-     * @param Builder $query
      * @return \Illuminate\Database\Query\Builder
      */
     public function scopeIsPublished(Builder $query)
     {
         $now = Carbon::now();
-        return $query->where($this->table . '.publish_datetime', '<=', $now->format('Y-m-d H:i:s'));
+
+        return $query->where($this->table.'.publish_datetime', '<=', $now->format('Y-m-d H:i:s'));
     }
 
     /**
-     * @param Builder $query
      * @return \Illuminate\Database\Query\Builder
      */
     public function scopeNotFree(Builder $query)
     {
-        return $query->where($this->table . '.free_flg', 0);
+        return $query->where($this->table.'.free_flg', 0);
     }
 }

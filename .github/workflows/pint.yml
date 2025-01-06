@@ -18,22 +18,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          # GitHub上でPATを生成して環境変数を設定してください
           token: ${{ secrets.GITHUB_TOKEN }}
-
-      # 現在動いているワークフローをキャンセル
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.8.0
-        with:
-          access_token: ${{ github.token }}
 
       # PHPのインストール
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.1'
-          extensions: intl, zip, pcntl, bcmath, gd, pdo_mysql, exif, redis, imagick, soap, xsl, gmp, opcache, sockets, memcached, apcu, mongodb, swoole, xdebug
-          coverage: pcov
 
       # Composer インストール
       - name: Install dependencies
@@ -47,30 +38,47 @@ jobs:
           files: |
             **/*.php
           separator: " "
-          base_sha: 'master' # 差分の比較先（マージ先のブランチを指定してください）
+          base_sha: 'master'
 
-      # 差分ファイルのパスが、 working-directoryを無視して laravel/* と始まってしまうため、 laravel/ を削除
-      - name: Remove 'laravel/' from paths
-        id: remove-laravel-path
+      # 差分ファイルから不要なパスを除外
+      - name: Filter out excluded paths
+        id: filter-excluded
         run: |
+          excluded_patterns="vendor|node_modules|storage|bootstrap/cache"
           changed_files="${{ steps.changed-files.outputs.all_changed_files }}"
-          modified_files=$(echo "$changed_files" | sed 's|laravel/||g')
-          echo "Modified PHP files: $modified_files"
-          echo "::set-output name=modified_files::$modified_files"
+          if [ -z "$changed_files" ]; then
+            echo "No files to filter"
+            filtered_files=""
+          else
+            filtered_files=$(echo "$changed_files" | grep -Ev "$excluded_patterns" || echo "")
+          fi
+          echo "Filtered PHP files: $filtered_files"
+          echo "filtered_files=$filtered_files" >> $GITHUB_ENV
 
       # PHPファイルが変更されていない場合は、Pintをスキップさせる
       - name: Check if PHP files have changed
-        id: check-changed
+        id: check-php-files
         run: |
-          if [ -z "${{ steps.remove-laravel-path.outputs.modified_files }}" ]; then
-            echo "No PHP files have changed"
-            echo "::set-output name=skip::true"
+          if [ -z "${{ env.filtered_files }}" ]; then
+            echo "No PHP files to process"
+            echo "skip=true" >> $GITHUB_ENV
           else
-            echo "Changed PHP files: ${{ steps.remove-laravel-path.outputs.modified_files }}"
-            echo "::set-output name=skip::false"
+            echo "PHP files found: ${{ env.filtered_files }}"
+            echo "skip=false" >> $GITHUB_ENV
           fi
 
       # Pintを実行
-      - name: Run pint for Changed Files
-        if: ${{ steps.check-changed.outputs.skip == 'false' }}
-        run: vendor/bin/pint -v ${{ steps.remove-laravel-path.outputs.modified_files }}
+      - name: Run Pint
+        if: ${{ env.skip == 'false' }}
+        run: |
+          if [ -n "${{ env.filtered_files }}" ]; then
+            vendor/bin/pint -v ${{ env.filtered_files }}
+          else
+            echo "No PHP files to process with Pint"
+          fi
+
+      # デバッグ用: 除外されたファイルと処理結果を表示
+      - name: Debug filtered files
+        if: always()
+        run: |
+          echo "Filtered files: ${{ env.filtered_files }}"

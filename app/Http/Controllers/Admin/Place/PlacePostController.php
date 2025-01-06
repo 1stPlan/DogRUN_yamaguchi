@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin\Place;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Place;
-use App\Models\Post\Post;
-use App\Models\User;
-use App\Models\Post\Rating;
 use App\Models\Post\Like;
+use App\Models\Post\Post;
+use App\Models\Post\Rating;
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class PlacePostController extends Controller
 {
@@ -25,14 +25,14 @@ class PlacePostController extends Controller
 
         foreach ($posts as $post) {
             $rating = Rating::postId($post->id)->first();
-            $like = Like::postId($post->id)->ipAddress($request->ip())->first() ? "1" : "0";
-            $sameIp =  $post->ip_address == $request->ip() ?  "1" : "0";
+            $like = Like::postId($post->id)->ipAddress($request->ip())->first() ? '1' : '0';
+            $sameIp = $post->ip_address == $request->ip() ? '1' : '0';
 
             $like_count = Like::postId($post->id)->count();
 
-            $post['rating'] =  $rating['rating'];
-            $post['like'] =  $like;
-            $post['like_count'] =  $like_count;
+            $post['rating'] = $rating['rating'];
+            $post['like'] = $like;
+            $post['like_count'] = $like_count;
             $post['sameIp'] = $sameIp;
         }
 
@@ -57,7 +57,6 @@ class PlacePostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -90,7 +89,6 @@ class PlacePostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
