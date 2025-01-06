@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "dbdocs": "^0.14.0",
         "footable": "^2.0.6",
         "scrollreveal": "^4.0.7",
         "slick-carousel": "^1.8.1",

@@ -518,10 +518,12 @@ class ComposerStaticInit8f4fded4492181a13a78547e541c430e
         'Database\\Seeders\\' => 
         array (
             0 => __DIR__ . '/../..' . '/database/seeders',
+            1 => __DIR__ . '/..' . '/laravel/pint/database/seeders',
         ),
         'Database\\Factories\\' => 
         array (
             0 => __DIR__ . '/../..' . '/database/factories',
+            1 => __DIR__ . '/..' . '/laravel/pint/database/factories',
         ),
         'Cron\\' => 
         array (
@@ -546,6 +548,7 @@ class ComposerStaticInit8f4fded4492181a13a78547e541c430e
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
+            1 => __DIR__ . '/..' . '/laravel/pint/app',
         ),
     );
 
@@ -607,6 +610,7 @@ class ComposerStaticInit8f4fded4492181a13a78547e541c430e
         'App\\Http\\Controllers\\User\\Event\\EventCommentController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/Event/EventCommentController.php',
         'App\\Http\\Controllers\\User\\Event\\EventController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/Event/EventController.php',
         'App\\Http\\Controllers\\User\\Event\\EventPostController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/Event/EventPostController.php',
+        'App\\Http\\Controllers\\User\\Food\\FoodController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/Food/FoodController.php',
         'App\\Http\\Controllers\\User\\MypageController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/MypageController.php',
         'App\\Http\\Controllers\\User\\Place\\PlaceController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/Place/PlaceController.php',
         'App\\Http\\Controllers\\User\\Place\\PostController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/Place/PostController.php',
@@ -625,6 +629,7 @@ class ComposerStaticInit8f4fded4492181a13a78547e541c430e
         'App\\Http\\Requests\\ContactRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ContactRequest.php',
         'App\\Http\\Requests\\EventRequest' => __DIR__ . '/../..' . '/app/Http/Requests/EventRequest.php',
         'App\\Http\\Requests\\PostRequest' => __DIR__ . '/../..' . '/app/Http/Requests/PostRequest.php',
+        'App\\Mail\\Event\\RemindEventStartForParticipant' => __DIR__ . '/../..' . '/app/Mail/Event/RemindEventStartForParticipant.php',
         'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
         'App\\Models\\ContactForm' => __DIR__ . '/../..' . '/app/Models/ContactForm.php',
         'App\\Models\\Event\\Event' => __DIR__ . '/../..' . '/app/Models/Event/Event.php',
@@ -648,7 +653,7 @@ class ComposerStaticInit8f4fded4492181a13a78547e541c430e
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
-        'App\\Services\\HogeService' => __DIR__ . '/../..' . '/app/Services/HogeService.php',
+        'App\\Services\\DogFoodService' => __DIR__ . '/../..' . '/app/Services/DogFoodService.php',
         'App\\Traits\\SeedingFromCsv' => __DIR__ . '/../..' . '/app/Traits/SeedingFromCsv.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Aws\\ACMPCA\\ACMPCAClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/ACMPCA/ACMPCAClient.php',

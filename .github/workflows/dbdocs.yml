@@ -1,0 +1,64 @@
+name: dbdocs CI
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "database/migrations/**"
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+
+    services:
+      db:
+        image: mysql:8.0
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: dbdocs
+    env:
+      DB_CONNECTION: mysql
+      DB_HOST: 127.0.0.1
+      DB_PORT: 3306
+      DB_DATABASE: dbdocs
+      DB_USERNAME: root
+      DB_PASSWORD: root
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: cache vendor
+        id: cache
+        uses: actions/cache@v1
+        with:
+          path: ./vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: copy .env.example
+        run: cp .env.example .env
+      - name: composer install
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: composer install -n --prefer-dist
+      - name: migrate
+        run: php artisan migrate
+
+        # dbdocsのCLIパッケージをインストールします
+      - name: install dbdocs
+        run: npm install -g dbdocs
+        # 正常にパッケージがインストールできたか確認します
+      - name: Check dbdocs
+        run: dbdocs
+        # dbmlファイルを生成します。
+      - name: create dbml file
+        # run: php artisan dbml:parse
+        run: php artisan dbml:export
+        # 生成されたファイル名は毎回異なるため、dbdocs.dbmlというファイル名にリネームします
+      - name: rename dbml file
+        run:  mv storage/app/dbml/`ls storage/app/dbml/` storage/app/dbml/dbdocs.dbml
+        # 生成されたdbmlファイルでdbdocsを更新します
+      - name: update dbdocs
+        run: dbdocs build ./storage/app/dbml/dbdocs.dbml --project="dogrun"
