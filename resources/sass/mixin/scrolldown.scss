@@ -1,0 +1,68 @@
+/*-------------------
+  scrolldown
+-------------------*/
+
+.scrolldown{
+    position:absolute;
+    bottom: 0%;
+    right:50%;
+    animation: arrowmove 1s ease-in-out infinite;
+
+    @keyframes arrowmove{
+        0%{bottom:-8%;}
+        50%{bottom:-3%;}
+        100%{bottom:-8%;}
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: -10px;
+        width: 3px;
+        height: 35px;
+        background: black;
+        transform: skewX(-31deg);
+    }
+    &:after{
+        content:"";
+        position: absolute;
+        bottom:0;
+        right:0;
+        width:3px;
+        height: 60px;
+        background: black;
+    }
+
+    span{
+        position: absolute;
+        left:-20px;
+        bottom:10px;
+        color: black;
+        font-size: 13px;
+        font-weight: bold;
+        letter-spacing: 0.05em;
+        -ms-writing-mode: tb-rl;
+        -webkit-writing-mode: vertical-rl;
+        writing-mode: vertical-rl;
+        word-break: normal;
+    }
+
+  }
+  
+  @include responsive("sp") {
+    .scrolldown{
+
+        &:before {
+            height: 25px;
+            right: -7px;
+        }
+        &:after{
+            height: 50px;
+        }
+    
+        span{
+            font-size: 11px;
+        }
+    }
+  }

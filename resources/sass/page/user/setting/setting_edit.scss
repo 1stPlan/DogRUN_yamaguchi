@@ -1,0 +1,97 @@
+@charset "UTF-8";
+
+/* -------------------------------------
+  mixin
+--------------------------------------*/
+
+@import "../../../mixin/responsive";
+@import "../../../mixin/inner";
+@import "../../../mixin/font-size";
+@import "../../../mixin/floating";
+
+/* -------------------------------------
+  setting-edit
+--------------------------------------*/
+.setting-edit {
+    background-color: #f5f7fa;
+    &__inner {
+        @include inner;
+    }
+    &__title {
+        padding-top: min(5vw, 5rem);
+        @include font-size("48");
+        font-weight: 900;
+    }
+
+    &__cont {
+        margin-top: min(2vw, 2rem);
+    }
+
+    &__table {
+        width: 100%;
+        th {
+            @include font-size("16");
+            line-height: 1;
+            width: 9em;
+            padding-top: min(2vw, 2rem);
+            vertical-align: middle;
+        }
+        td {
+            @include font-size("14");
+            padding-top: min(2vw, 2rem);
+
+            &.setting-edit__flex {
+                display: flex;
+                gap:  min(2vw, 2rem);
+            }
+            textarea{
+                min-height: 12em;
+            }
+        }
+    }
+    &__btn-box{
+        text-align: center;
+        padding: min(7vw, 7rem) 0 min(3vw, 3rem);
+    }
+    // &__thumbnail {
+    //     width: 15%;
+    // }
+    // .form-control {
+    //     width: min(100%, 50rem);
+    // }
+}
+
+@include responsive("sp") {
+    .setting-edit {
+        &__title {
+            padding-top: min(6.98vw, 3rem);
+        }
+        &__cont {
+            margin-top: min(4.65vw, 2rem);
+        }
+        &__table {
+            th {
+                display: block;
+                width: 100%;
+                padding-top: 1.5em;
+            }
+            td {
+                display: block;
+                width: 100%;
+                padding-top: 1em;
+
+                &.setting-edit__flex {
+                    // font-size: min(3.2vw, 1.2rem);
+                    gap: min(5.33vw, 2rem);
+                    flex-direction: column-reverse;
+                }
+            }
+        }
+        &__thumbnail {
+            width: 50%;
+        }
+        .small {
+            padding-top: 0.5em;
+        }
+    }
+}

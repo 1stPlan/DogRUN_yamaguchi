@@ -1,0 +1,141 @@
+/* -------------------------------------
+	mixin
+--------------------------------------*/
+
+/* -------------------------------------
+	function
+--------------------------------------*/
+
+.login {
+  height: 100vh;
+  margin-top: -8rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login__inner {
+  width: 100%;
+  padding: 0 7.5%;
+  margin: auto;
+  box-sizing: border-box;
+  max-width: calc(119rem + 15%);
+  border: 0;
+}
+
+@media screen and (max-width: 960px) {
+  .login__inner {
+    padding: 0 5%;
+  }
+}
+
+.login__logo {
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+
+.login__logo::before {
+  content: "";
+  display: block;
+  padding-top: 15%;
+}
+
+.login__logo > img {
+  position: absolute;
+  width: 25%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  -o-object-fit: contain;
+  object-fit: contain;
+  transition: 0.5s all;
+}
+
+.login__cont {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 5%;
+  background-color: #fff;
+  box-shadow: 0px 0px 15px -5px #777777;
+  border-radius: 2rem;
+}
+
+.login__form {
+  border-bottom: 1px solid #d7d7d7;
+  padding-bottom: min(5vw, 5rem);
+  margin-top: min(3vw, 3rem);
+}
+
+.login__btn {
+  font-size: clamp(1rem, 1.4vw, 1.4rem);
+  line-height: 1.3;
+  margin: min(2vw, 2rem) auto 0;
+  padding: 1rem 0;
+  background: #4bb582;
+  color: #fff;
+  border-radius: 9999px;
+}
+
+@media screen and (max-width: 530px) {
+  .login__btn {
+    font-size: min(2.79vw, 1.2rem);
+  }
+}
+
+.login__btn:hover {
+  color: #fff;
+}
+
+.login__txt {
+  margin-top: min(2vw, 2rem);
+}
+
+.login__txt a {
+  color: #3490dc;
+}
+
+.login__register-txt {
+  margin-top: min(4vw, 4rem);
+  text-align: center;
+  font-size: clamp(1.2rem, 1.6vw, 1.6rem);
+  line-height: 1.3;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 530px) {
+  .login__register-txt {
+    font-size: min(3.26vw, 1.4rem);
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .login {
+    height: calc(100vh - 8rem);
+    margin-top: 0;
+  }
+
+  .login__form {
+    padding-bottom: min(6.98vw, 3rem);
+    margin-top: min(4.65vw, 2rem);
+  }
+
+  .login__btn {
+    margin: min(3.49vw, 1.5rem) auto 0;
+    padding: min(2.33vw, 1rem) 0;
+  }
+
+  .login__txt {
+    margin-top: min(3.49vw, 1.5rem);
+  }
+
+  .login__register-txt {
+    margin-top: min(4.65vw, 2rem);
+  }
+}
+

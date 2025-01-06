@@ -1,0 +1,60 @@
+/* arrow */
+
+  .slide-arrow {
+    background-color: #fff;
+    bottom: 0;
+    height: 0;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    width: 0;
+  }
+
+  .prev-arrow {
+    border-bottom: 10px solid #fff;
+    border-left: 0;
+    border-right: 15px solid #999;
+    border-top: 10px solid #fff;
+    left: -25px;
+  }
+  .next-arrow {
+    border-bottom: 10px solid #fff;
+    border-left: 15px solid #999;
+    border-right: 0;
+    border-top: 10px solid #fff;
+    right: -25px;
+  }
+
+/* dots */
+
+.slick-dots {
+  position: relative;
+  z-index: 3;
+  margin: -20px auto;
+  text-align: center;
+}
+
+.slick-dots li {
+  display: inline-block;
+  margin: 0 5px;
+}
+.slick-dots li button {
+  padding: 0;
+  color: transparent;
+  outline: none;
+  width: 40px;
+  border: unset;
+  height: 4px;
+  display: block;
+  background: #fff;
+  cursor: pointer;
+}
+.slick-dots .slick-active button {
+    background: black;
+}
+
+
+@media screen and (max-width: 530px) {
+
+
+}

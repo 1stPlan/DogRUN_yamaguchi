@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+/* -------------------------------------
+	mypage　(profile画面)
+--------------------------------------*/
+.mypage {
+    // &__status-name {
+    //     @include font-size("20");
+    //     font-weight: bold;
+    //     background: white;
+    //     display: inline-block;
+    //     background-color: white;
+    //     padding-bottom: 0.5rem;
+    //     width: 100%;
+    //     text-align: left;
+    //     border-bottom: 0.2rem solid;
+
+    //     span {
+    //         font-size: 1.3rem;
+    //         font-weight: bold;
+    //     }
+    // }
+
+    &__status-list {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    &__status-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    &__status-item-tit {
+        @include font-size("14");
+        font-weight: bold;
+        border-bottom: 0.2rem solid;
+        text-align: left;
+    }
+    &__status-item-body {
+        @include font-size("16");
+        line-height: 1.5;
+        text-align: left;
+        white-space: pre-wrap;
+    }
+}
+.mypage__icon {
+    border: none;
+    width: 30%;
+    height: auto;
+    margin: 2.5em auto 0.6em;
+}
+
+.swal2-actions {
+    display: none;
+}
+
+@include responsive("tb") {
+    .mypage {
+        &__status-list {
+            width: 100%;
+        }
+    }
+}
+
+@include responsive("sp") {
+    .mypage {
+        &__status-list {
+            padding: 0;
+            margin-top: 1rem;
+            gap: min(4.65vw, 2rem);
+            flex-direction: column;
+            width: 100%;
+        }
+    }
+}

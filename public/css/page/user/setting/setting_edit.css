@@ -1,0 +1,194 @@
+/* -------------------------------------
+  mixin
+--------------------------------------*/
+
+.floating__banner {
+  position: fixed;
+  z-index: 99998;
+  bottom: 40%;
+  right: 0;
+}
+
+.floating__banner a {
+  text-decoration: none;
+}
+
+.floating__banner-back {
+  background-color: #fff;
+  border-radius: 1.5rem;
+}
+
+.floating__banner-body {
+  text-align: center;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.4);
+  padding: 3rem 2rem;
+  background: radial-gradient(#0ab0c7, #006eb0 70%);
+  font-size: clamp(1.2rem, 1.6vw, 1.6rem);
+  line-height: 1.3;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  gap: 1rem;
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+}
+
+@media screen and (max-width: 530px) {
+  .floating__banner-body {
+    font-size: min(3.26vw, 1.4rem);
+  }
+}
+
+.floating__banner-body:hover {
+  transition: opacity 0.3s ease;
+  opacity: 0.7;
+}
+
+.floating__banner-close {
+  font-weight: bold;
+  position: absolute;
+  top: -2px;
+  right: -4px;
+  z-index: 99999;
+  padding: 4px 8px;
+  border: none;
+  background-color: #f8f8f8;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.4);
+}
+
+@media screen and (max-width: 750px) {
+  .floating__banner-body {
+    padding: min(4.65vw, 2rem);
+    border-radius: 1rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .floating__banner-close {
+    display: none;
+  }
+}
+
+/* -------------------------------------
+  setting-edit
+--------------------------------------*/
+
+.setting-edit {
+  background-color: #f5f7fa;
+}
+
+.setting-edit__inner {
+  width: 100%;
+  padding: 0 7.5%;
+  margin: auto;
+  box-sizing: border-box;
+  max-width: calc(119rem + 15%);
+}
+
+@media screen and (max-width: 960px) {
+  .setting-edit__inner {
+    padding: 0 5%;
+  }
+}
+
+.setting-edit__title {
+  padding-top: min(5vw, 5rem);
+  font-size: clamp(3.4rem, 4.8vw, 4.8rem);
+  line-height: 1.5;
+  font-weight: 900;
+  font-weight: 900;
+}
+
+@media screen and (max-width: 530px) {
+  .setting-edit__title {
+    font-size: min(8.37vw, 3.6rem);
+  }
+}
+
+.setting-edit__cont {
+  margin-top: min(2vw, 2rem);
+}
+
+.setting-edit__table {
+  width: 100%;
+}
+
+.setting-edit__table th {
+  font-size: clamp(1.2rem, 1.6vw, 1.6rem);
+  line-height: 1.3;
+  line-height: 1;
+  width: 9em;
+  padding-top: min(2vw, 2rem);
+  vertical-align: middle;
+}
+
+@media screen and (max-width: 530px) {
+  .setting-edit__table th {
+    font-size: min(3.26vw, 1.4rem);
+  }
+}
+
+.setting-edit__table td {
+  font-size: clamp(1rem, 1.4vw, 1.4rem);
+  line-height: 1.3;
+  padding-top: min(2vw, 2rem);
+}
+
+@media screen and (max-width: 530px) {
+  .setting-edit__table td {
+    font-size: min(2.79vw, 1.2rem);
+  }
+}
+
+.setting-edit__table td.setting-edit__flex {
+  display: flex;
+  gap: min(2vw, 2rem);
+}
+
+.setting-edit__table td textarea {
+  min-height: 12em;
+}
+
+.setting-edit__btn-box {
+  text-align: center;
+  padding: min(7vw, 7rem) 0 min(3vw, 3rem);
+}
+
+@media screen and (max-width: 530px) {
+  .setting-edit__title {
+    padding-top: min(6.98vw, 3rem);
+  }
+
+  .setting-edit__cont {
+    margin-top: min(4.65vw, 2rem);
+  }
+
+  .setting-edit__table th {
+    display: block;
+    width: 100%;
+    padding-top: 1.5em;
+  }
+
+  .setting-edit__table td {
+    display: block;
+    width: 100%;
+    padding-top: 1em;
+  }
+
+  .setting-edit__table td.setting-edit__flex {
+    gap: min(5.33vw, 2rem);
+    flex-direction: column-reverse;
+  }
+
+  .setting-edit__thumbnail {
+    width: 50%;
+  }
+
+  .setting-edit .small {
+    padding-top: 0.5em;
+  }
+}
+

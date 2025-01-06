@@ -1,0 +1,38 @@
+/* -------------------------------------
+	bunner
+--------------------------------------*/
+
+.bunner {
+    margin-top: 100px;
+    margin-top: 0px;
+
+    &__inner{
+        @include inner;
+    }
+
+    &__cont{
+        width: 80%;
+        margin: 14rem auto 0;
+    }
+    &__imgbox{
+        display: block;
+        width: 100%;
+        transition: all 0.5ms;
+
+        &:hover{
+            opacity: 0.6;
+        }
+
+        &:active{
+            transform: translate(1em, 1em);
+            box-shadow:  0 0 0 0 rgba(0, 0, 0, 0.2);
+        }
+    }
+
+    @include responsive("sp") {
+        &__cont {
+            width: 90%;
+            margin: 7rem auto 0;
+        }
+    }
+}

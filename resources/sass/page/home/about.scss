@@ -1,0 +1,122 @@
+/* -------------------------------------
+	about
+--------------------------------------*/
+
+.about {
+    margin-top: calculation(15, 7); 
+
+    &__background{
+        background-color: #FCF7E9;
+        padding: calculation(10, 5) 0;
+
+        &--top{
+            vertical-align: bottom;
+        }
+        &--bottom{
+            vertical-align: bottom;
+        }
+    }
+    &__title{
+        @include home-title("main");
+    }
+    &__subtitle{
+        @include home-title("sub");
+    }
+    &__inner{
+        @include inner;
+    }
+    &__cont{
+        width: 75%;
+        margin: 0 auto;
+    }
+    &__desc{
+        @include font-size("20");
+
+        margin-top: calculation(5, 2);
+        text-align: left;
+    }
+    &__list{
+        background: white;
+        margin: calculation(10, 5) calc(25% - 50vw) 0;
+        width: 100vw;
+        padding: 5% 0 5% 50%;
+    }
+
+    &__item{
+        display: flex;
+        gap: calculation(5, 3);
+        padding: calculation(3, 1);
+
+        &--reverse{
+            flex-direction: row-reverse;
+        }
+        &:not(:first-child){
+            margin-top: calculation(7, 3);
+        }
+    }
+
+    &__gif{
+        flex: 1;
+    }
+    &__info{
+        flex: 1.5;
+    }
+    &__info-ttl{
+        @include font-size("32");
+        display: flex;
+        align-items: center;
+
+        span{
+            @include font-size("54");
+            color: rgba(189,156,64,0.8);
+            margin-right: calculation(3, 2);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            
+            &::after{
+                content: "";
+                display: inline-block;
+                width: 5px;
+                height: max(3.85vw, 4rem);;
+                background-color: rgba(189,156,64,0.8);
+                margin-left: 2rem;
+                vertical-align: sub;
+            }
+        }
+
+    }
+
+    &__info-desc{
+        @include font-size("16");
+        margin-top: calculation(5, 3);
+    }
+
+}
+@include responsive("sp") {
+    .about {
+        margin-top: min(11.63vw, 5rem); 
+
+        &__background {
+            padding: 5rem 0;
+        }
+
+        &__desc{
+            font-size: 1.6rem;
+        }
+
+        &__cont {
+            width: 100%;
+        }
+
+        &__list {
+            background: white;
+            margin: min(11.63vw, 5rem);
+            width: 100%;
+            padding: 0%;
+        }
+
+        &__item {
+            padding: 2rem;
+            display: block;
+        }
+    }
+}

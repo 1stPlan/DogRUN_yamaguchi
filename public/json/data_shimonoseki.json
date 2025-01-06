@@ -1,0 +1,34 @@
+
+{
+	"data": [
+		{
+			"name": "Animal Resort HARERUYA",
+			"address": "山口県下関市豊北町大字阿川３７６１",
+			"tag": "shimonoseki",
+			"price":"500円 ※時間無制限",
+			"time":"",
+			"off" : "",
+			"tel":"",
+			"lat":"",
+			"lng" : "",
+			"url" : "https://animal-resort.jp/dogrun/",
+			"img" : "hareruya",
+			"services": ["cafe","indoor"]
+		},
+		{
+			"name": "ドッグランドしものせき",
+			"address": "山口県下関市清末２５５−２",
+			"tag": "shimonoseki",
+			"price":"1時間:650円",
+			"time":"月～日｜10:00～16:00",
+			"off" : "年中無休",
+			"tel":"",
+			"lat":"",
+			"lng" : "",
+			"url" : "https://orange-park.net/",
+			"img" : "sibanoie",
+			"services": [""]
+		}
+
+	]
+}

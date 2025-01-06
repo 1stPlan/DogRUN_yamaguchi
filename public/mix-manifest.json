@@ -1,0 +1,23 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/css/style.css": "/css/style.css",
+    "/css/page/first.css": "/css/page/first.css",
+    "/css/page/home.css": "/css/page/home.css",
+    "/css/page/contact.css": "/css/page/contact.css",
+    "/css/page/auth/login.css": "/css/page/auth/login.css",
+    "/css/page/auth/register.css": "/css/page/auth/register.css",
+    "/css/page/auth/password.css": "/css/page/auth/password.css",
+    "/css/page/user/event/event.css": "/css/page/user/event/event.css",
+    "/css/page/user/event/event_show.css": "/css/page/user/event/event_show.css",
+    "/css/page/user/event/event_edit.css": "/css/page/user/event/event_edit.css",
+    "/css/page/user/event/event_create.css": "/css/page/user/event/event_create.css",
+    "/css/page/user/post/post.css": "/css/page/user/post/post.css",
+    "/css/page/user/post/post_show.css": "/css/page/user/post/post_show.css",
+    "/css/page/user/setting/setting.css": "/css/page/user/setting/setting.css",
+    "/css/page/user/setting/setting_edit.css": "/css/page/user/setting/setting_edit.css",
+    "/css/page/user/setting/setting_withdrawal.css": "/css/page/user/setting/setting_withdrawal.css",
+    "/css/page/user/place.css": "/css/page/user/place.css",
+    "/css/page/user/type.css": "/css/page/user/type.css",
+    "/css/page/user/select.css": "/css/page/user/select.css"
+}

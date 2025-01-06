@@ -1,0 +1,84 @@
+name: Pint
+
+on:
+  pull_request:
+    paths:
+      - '**.php'
+
+jobs:
+  pint:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: .
+
+    steps:
+      # リポジトリをチェックアウト
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # PHPのインストール
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+
+      # Composer インストール
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest --ansi
+
+      # PRの差分ファイル名のみを抽出
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v40
+        with:
+          files: |
+            **/*.php
+          separator: " "
+          base_sha: 'master'
+
+      # 差分ファイルから不要なパスを除外
+      - name: Filter out excluded paths
+        id: filter-excluded
+        run: |
+          excluded_patterns="vendor|node_modules|storage|bootstrap/cache"
+          changed_files="${{ steps.changed-files.outputs.all_changed_files }}"
+          if [ -z "$changed_files" ]; then
+            echo "No files to filter"
+            filtered_files=""
+          else
+            filtered_files=$(echo "$changed_files" | grep -Ev "$excluded_patterns" || echo "")
+          fi
+          echo "Filtered PHP files: $filtered_files"
+          echo "filtered_files=$filtered_files" >> $GITHUB_ENV
+
+      # PHPファイルが変更されていない場合は、Pintをスキップさせる
+      - name: Check if PHP files have changed
+        id: check-php-files
+        run: |
+          if [ -z "${{ env.filtered_files }}" ]; then
+            echo "No PHP files to process"
+            echo "skip=true" >> $GITHUB_ENV
+          else
+            echo "PHP files found: ${{ env.filtered_files }}"
+            echo "skip=false" >> $GITHUB_ENV
+          fi
+
+      # Pintを実行
+      - name: Run Pint
+        if: ${{ env.skip == 'false' }}
+        run: |
+          if [ -n "${{ env.filtered_files }}" ]; then
+            vendor/bin/pint -v ${{ env.filtered_files }}
+          else
+            echo "No PHP files to process with Pint"
+          fi
+
+      # デバッグ用: 除外されたファイルと処理結果を表示
+      - name: Debug filtered files
+        if: always()
+        run: |
+          echo "Filtered files: ${{ env.filtered_files }}"

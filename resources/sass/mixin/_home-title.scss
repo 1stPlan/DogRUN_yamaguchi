@@ -1,0 +1,28 @@
+@mixin home-title($type: "main") {
+    @if $type == "main" {
+
+        @include font-size("48");
+        position: relative;
+        font-family: source-sans-pro, "arial black";
+        text-align: center;
+
+        &::before{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 260px;
+            border-bottom: 3px solid rgb(167, 123 ,0);
+            transform: translate(-50%);
+        }
+    }
+
+    @if $type == "sub" {
+
+        @include font-size("32");
+
+        padding-top: 1rem;
+        color: rgb(167, 123 ,0);
+        text-align: center;
+    }
+}

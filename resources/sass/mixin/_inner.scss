@@ -1,0 +1,15 @@
+
+@mixin inner($type: "home") {
+
+    @if $type == "home" {
+        width: 100%;
+        padding: 0 7.5%;
+        margin: auto;
+        box-sizing: border-box;
+        max-width: calc(119rem + 15%);
+
+        @include responsive("tb") {
+            padding: 0 5%;
+        }
+    }
+} 

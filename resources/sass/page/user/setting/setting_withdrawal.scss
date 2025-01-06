@@ -1,0 +1,104 @@
+@charset "UTF-8";
+
+/* -------------------------------------
+  mixin
+--------------------------------------*/
+
+@import "../../../mixin/responsive";
+@import "../../../mixin/inner";
+@import "../../../mixin/font-size";
+
+@import "../../../mixin/floating";
+
+/* -------------------------------------
+  withdrawal
+--------------------------------------*/
+.withdrawal {
+    height: 100vh;
+    margin-top: -8rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__inner {
+        @include inner;
+        border: 0;
+    }
+
+    &__cont {
+        max-width: 600px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 5%;
+        background-color: #fff;
+        box-shadow: 0px 0px 15px -5px #777777;
+        border-radius: 2rem;
+    }
+
+    &__logo {
+        position: relative;
+        overflow: hidden;
+        display: block;
+        margin-bottom: min(3vw, 3rem);
+
+        &::before {
+            content: "";
+            display: block;
+            padding-top: 15%;
+        }
+        > img {
+            position: absolute;
+            width: 25%;
+            height: 100%;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            -o-object-fit: contain;
+            object-fit: contain;
+            transition: 0.5s all;
+        }
+    }
+
+    &__ttl {
+        text-align: center;
+        @include font-size("24");
+        font-weight: bold;
+        margin-bottom: min(1vw, 1rem);
+    }
+    &__text {
+        @include font-size("16");
+        margin: auto;
+        line-height: 2;
+    }
+
+    &__btn-box {
+        margin-top: min(4vw, 4rem);
+    }
+
+    &__btn {
+        border: none;
+        text-align: center;
+        margin: 0 auto;
+        padding: 1rem 0;
+        color: #fff;
+        border-radius: 9999px;
+        @include font-size("14");
+        &:hover {
+            color: #fff;
+        }
+    }
+    &__mypage-btn {
+        text-align: center;
+        margin: min(2vw, 2rem) auto 0;
+        padding: 1rem 0;
+        color: #fff;
+        border-radius: 9999px;
+        @include font-size("14");
+        &:hover {
+            color: #fff;
+        }
+    }
+}
