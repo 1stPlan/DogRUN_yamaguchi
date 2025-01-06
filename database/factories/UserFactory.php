@@ -4,8 +4,8 @@
 
 use App\Models\User;
 use Faker\Generator as Faker;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,12 +22,12 @@ $factory->define(User::class, function (Faker $faker) {
     return [
         // 'name'              => $faker->name,
         // 'email'             => $faker->unique()->safeEmail,
-        'name'              => "user",
-        'email'             => "user@example.com",
-        'nick_name'         => $faker->firstName,
-        'address'           => $faker->address,
-        'tel'               => $faker->phoneNumber,
-        'password'          => Hash::make('12345678'),
-        'remember_token'    => Str::random(10),
+        'name' => 'user',
+        'email' => 'user@example.com',
+        'nick_name' => $faker->firstName,
+        'address' => $faker->address,
+        'tel' => $faker->phoneNumber,
+        'password' => Hash::make('12345678'),
+        'remember_token' => Str::random(10),
     ];
 });

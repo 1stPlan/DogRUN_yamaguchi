@@ -3,13 +3,10 @@
 namespace App\Http\Controllers\Admin\Event;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Post\Comment;
-use App\Models\Post\Post;
-use App\Models\User;
 use App\Models\Event\Event;
-use App\Models\Event\EventPost;
 use App\Models\Event\EventComment;
+use App\Models\Event\EventPost;
+use Illuminate\Http\Request;
 
 class EventPostController extends Controller
 {
@@ -23,11 +20,10 @@ class EventPostController extends Controller
         $post = EventPost::eventId($request->event_id)->first();
         $event = Event::id($request->event_id)->first();
 
-
         return view('admin.event.post.index')
             ->with([
                 'post' => $post,
-                'event' => $event
+                'event' => $event,
             ]);
     }
 
@@ -44,7 +40,6 @@ class EventPostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -77,7 +72,6 @@ class EventPostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

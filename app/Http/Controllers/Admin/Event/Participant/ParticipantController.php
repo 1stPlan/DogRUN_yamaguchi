@@ -2,32 +2,27 @@
 
 namespace App\Http\Controllers\Admin\Event\Participant;
 
-use Illuminate\Support\Facades\Auth;
-
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use DB;
-// use Hashids\Hashids;
-use Carbon\Carbon;
-
-use App\Models\User;
 use App\Models\Event\Event;
 use App\Models\Event\EventParticipant;
-use App\Models\Event\EventPayment;
+// use Hashids\Hashids;
 
+use App\Models\User;
+use DB;
+use Illuminate\Http\Request;
 
 class ParticipantController extends Controller
 {
-      /**
-       * Create a new controller instance.
-       *
-       * @return void
-       */
-      public function __construct()
-      {
-          // parent::__construct();
-          $this->middleware('auth:admin');
-      }
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        // parent::__construct();
+        $this->middleware('auth:admin');
+    }
 
     /**
      * Display a listing of the resource.
@@ -39,10 +34,10 @@ class ParticipantController extends Controller
         $event = Event::find($request->event_id);
         $eventParticipants = EventParticipant::eventId($request->event_id)->orderBy('id', 'desc')->get();
 
-      return view('admin.event.participant.index')->with([
-          'event' => $event,
-          'eventParticipants' => $eventParticipants,
-      ]);
+        return view('admin.event.participant.index')->with([
+            'event' => $event,
+            'eventParticipants' => $eventParticipants,
+        ]);
     }
 
     /**
@@ -52,11 +47,11 @@ class ParticipantController extends Controller
      */
     public function create(Request $request)
     {
-      $event = Event::find($request->event_id);
+        $event = Event::find($request->event_id);
 
-      return view('admin.event.participant.create')->with([
-          'event' => $event,
-      ]);
+        return view('admin.event.participant.create')->with([
+            'event' => $event,
+        ]);
     }
 
     public function store(Request $request)
@@ -67,28 +62,28 @@ class ParticipantController extends Controller
             $user = User::find($request->user_id);
         }
 
-        if (!isset($user) && isset($request->email)) {
+        if (! isset($user) && isset($request->email)) {
             $user = User::email($request->email)->first();
         }
 
-        if (!isset($user)) {
+        if (! isset($user)) {
             dump('不正なユーザー');
+
             return redirect()->route('admin.participant.index', $request->event_id);
         }
 
         $participant = EventParticipant::userId($user->id)->EventId($request->event_id)->first();
         if ($participant) {
             dump('参加済み');
+
             return redirect()->route('admin.participant.index', $request->event_id);
         }
-
 
         DB::beginTransaction();
         try {
             $participantData = [];
             $participantData['user_id'] = $user->id;
             $participantData['event_id'] = $request->event_id;
-
 
             // 修正必須
             // $hashids = new Hashids(config('const.remoteStyleKey'), config('const.hashLength'));
@@ -97,13 +92,12 @@ class ParticipantController extends Controller
 
             EventParticipant::create($participantData);
 
-
             DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();
         }
 
-         return redirect()->route('admin.participant.index', $participantData['event_id']);
+        return redirect()->route('admin.participant.index', $participantData['event_id']);
     }
 
     public function edit(Request $request)
@@ -120,5 +114,4 @@ class ParticipantController extends Controller
 
         return redirect()->back();
     }
-
 }

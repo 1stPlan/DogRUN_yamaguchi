@@ -3,13 +3,11 @@
 namespace App\Http\Controllers\Admin\Place;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Place;
+use Illuminate\Http\Request;
 
 class indexController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth:admin');
@@ -49,7 +47,6 @@ class indexController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -62,7 +59,7 @@ class indexController extends Controller
         $place = Place::find($request->place);
 
         return view('admin.places.show')->with([
-            'place' => $place
+            'place' => $place,
         ]);
     }
 
@@ -77,14 +74,13 @@ class indexController extends Controller
         $place = Place::find($request->place);
 
         return view('admin.places.edit')->with([
-            'place' => $place
+            'place' => $place,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -97,7 +93,7 @@ class indexController extends Controller
     {
         $place = Place::find($request->event);
         $place->delete();
-        
+
         return redirect()->back();
     }
 }

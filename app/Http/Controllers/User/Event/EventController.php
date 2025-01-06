@@ -2,22 +2,19 @@
 
 namespace App\Http\Controllers\User\Event;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Event\Event;
 use App\Models\Event\EventParticipant;
-use App\Models\Event\EventView;
+use App\Models\Event\EventPost;
 use App\Models\Event\EventSearch;
 use App\Models\Event\EventSearchCategory;
-
-use App\Models\Event\EventPost;
-
+use App\Models\Event\EventView;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class EventController extends Controller
 {
@@ -29,13 +26,13 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::orderBy('start_datetime', 'desc')->get();
-        $event_search =  EventSearch::get();
-        $event_categories =  EventSearchCategory::get();
+        $event_search = EventSearch::get();
+        $event_categories = EventSearchCategory::get();
 
         foreach ($event_search as $index => $search) {
             for ($i = 0; $i < count($events); $i++) {
                 if ($search->event_id == $events[$i]->id) {
-                    $events[$i]["categoryid"] = $search->category_id;
+                    $events[$i]['categoryid'] = $search->category_id;
                 }
             }
         }
@@ -44,7 +41,7 @@ class EventController extends Controller
         foreach ($event_search as $index => $search) {
             for ($i = 0; $i < count($event_count); $i++) {
                 if ($search->event_id == $event_count[$i]->id) {
-                    $event_count[$i]["categoryid"] = $search->category_id;
+                    $event_count[$i]['categoryid'] = $search->category_id;
                 }
             }
         }
@@ -54,7 +51,7 @@ class EventController extends Controller
         return view('user.event.event')->with([
             'events' => $events,
             'event_count' => $event_count,
-            'now' => $now
+            'now' => $now,
         ]);
     }
 
@@ -66,18 +63,17 @@ class EventController extends Controller
     public function create()
     {
         $events = Event::orderBy('id', 'desc')->get();
-        $event_categories =  EventSearchCategory::get();
+        $event_categories = EventSearchCategory::get();
 
         return view('user.event.create')->with([
             'events' => $events,
-            'event_categories' => $event_categories
+            'event_categories' => $event_categories,
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -89,7 +85,7 @@ class EventController extends Controller
 
             if ($request->file('img_url')) {
                 $extension = $request->file('img_url')->getClientOriginalExtension();
-                $path = Storage::disk('local')->putFileAs('public/image', $data['img_url'], date('YmdHis') . $data['title'] . "." . $extension, 'public');
+                $path = Storage::disk('local')->putFileAs('public/image', $data['img_url'], date('YmdHis').$data['title'].'.'.$extension, 'public');
                 $data['img_url'] = Storage::url($path);
             }
 
@@ -109,10 +105,7 @@ class EventController extends Controller
             ]);
         });
 
-
         // );
-
-
 
         // 審査完了メール
         // if (isset($event->accept_flg)) {
@@ -130,6 +123,7 @@ class EventController extends Controller
         if ($participant) {
             // 参加済みを削除
             $participant->delete();
+
             return redirect()->route('user.event.show', ['event' => $event->id]);
         }
 
@@ -169,22 +163,22 @@ class EventController extends Controller
                     'ip_address' => $request->ip(),
                     'user_agent' => $request->userAgent(),
                     'event_id' => $event->id,
-                    'user_id' => $user->id
+                    'user_id' => $user->id,
                 ]);
 
-                $event->fill(['view_count' =>  $event->views->count()])->save();
+                $event->fill(['view_count' => $event->views->count()])->save();
             });
         } else {
-            $user = "";
-            $participant = "";
+            $user = '';
+            $participant = '';
         }
 
-        $participant ?  $participant_flg = 1 : $participant_flg = 0;
+        $participant ? $participant_flg = 1 : $participant_flg = 0;
 
         return view('user.event.event_show')->with([
             'event' => $event,
             'participant_flg' => $participant_flg,
-            'author' => $author
+            'author' => $author,
         ]);
     }
 
@@ -197,18 +191,17 @@ class EventController extends Controller
     public function edit(Request $request)
     {
         $event = Event::find($request->event);
-        $event_categories =  EventSearchCategory::get();
+        $event_categories = EventSearchCategory::get();
 
         return view('user.event.edit')->with([
             'event' => $event,
-            'event_categories' => $event_categories
+            'event_categories' => $event_categories,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -221,7 +214,7 @@ class EventController extends Controller
 
         if (isset($data['image'])) {
             $extension = $request->file('img_url')->getClientOriginalExtension();
-            $path = Storage::disk('local')->putFileAs('public/image', $data['img_url'], date('YmdHis') . $data['name'] . "." . $extension, 'public');
+            $path = Storage::disk('local')->putFileAs('public/image', $data['img_url'], date('YmdHis').$data['name'].'.'.$extension, 'public');
             $data['img_url'] = Storage::url($path);
         }
 
@@ -244,6 +237,7 @@ class EventController extends Controller
 
             $event->fill($data)->save();
         });
+
         return redirect()->back();
     }
 

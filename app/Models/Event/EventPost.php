@@ -11,11 +11,14 @@ class EventPost extends Model
     use SoftDeletes;
 
     protected $table = 'event_posts';
+
     protected $primaryKey = 'id';
+
     protected $guarded = [];
+
     protected $fillable = [
         // 'title',
-        'event_id'
+        'event_id',
     ];
 
     /**
@@ -35,22 +38,18 @@ class EventPost extends Model
     }
 
     /**
-     * @param Builder $query
-     * @param $id
      * @return \Illuminate\Database\Query\Builder
      */
     public function scopeId(Builder $query, $id)
     {
-        return $query->where($this->table . '.id', $id);
+        return $query->where($this->table.'.id', $id);
     }
 
     /**
-     * @param Builder $query
-     * @param $eventId
      * @return \Illuminate\Database\Query\Builder
      */
     public function scopeEventId(Builder $query, $eventId)
     {
-        return $query->where($this->table . '.event_id', $eventId);
+        return $query->where($this->table.'.event_id', $eventId);
     }
 }

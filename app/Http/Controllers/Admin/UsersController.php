@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\User;
-
+use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
@@ -17,7 +16,8 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::orderBy('id', 'ASC')->get();
-        return view('admin.users.index')->with(['users'=> $users]);
+
+        return view('admin.users.index')->with(['users' => $users]);
     }
 
     /**
@@ -33,7 +33,6 @@ class UsersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -49,7 +48,7 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
-      return view('admin.users.show')->with([ 'user'=> $user ]);
+        return view('admin.users.show')->with(['user' => $user]);
     }
 
     /**
@@ -60,13 +59,12 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-      return view('admin.users.edit')->with([ 'user'=> $user ]);
+        return view('admin.users.edit')->with(['user' => $user]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -96,6 +94,6 @@ class UsersController extends Controller
 
         $users = User::orderBy('id', 'ASC')->get();
 
-        return view('admin.users.index')->with(['users'=> $users]);
+        return view('admin.users.index')->with(['users' => $users]);
     }
 }

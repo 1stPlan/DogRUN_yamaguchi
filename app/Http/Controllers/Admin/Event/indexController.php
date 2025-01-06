@@ -3,21 +3,16 @@
 namespace App\Http\Controllers\Admin\Event;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Carbon\Carbon;
 use App\Http\Requests\EventRequest;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-
-use App\Mail\Event\DecidePublishEventForOrganizer;
-use App\Models\User;
 use App\Models\Event\Event;
+use App\Models\Event\EventPost;
 use App\Models\Event\EventSearch;
 use App\Models\Event\EventSearchCategory;
-use App\Models\Event\EventPost;
 use App\Models\Place;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class IndexController extends Controller
 {
@@ -26,7 +21,6 @@ class IndexController extends Controller
      *
      * @return void
      */
-
     public function __construct()
     {
         // parent::__construct();
@@ -44,8 +38,8 @@ class IndexController extends Controller
         $count = count($events);
 
         for ($i = 0; $i < $count; $i++) {
-            $eventInfo[$i]['id']             = $events[$i]->id;
-            $eventInfo[$i]['title']          = $events[$i]->title;
+            $eventInfo[$i]['id'] = $events[$i]->id;
+            $eventInfo[$i]['title'] = $events[$i]->title;
             $eventInfo[$i]['start_datetime'] = $events[$i]->start_datetime;
             $eventInfo[$i]['img_url'] = $events[$i]->img_url;
             $eventInfo[$i]['ticket_price'] = $events[$i]->ticket_price;
@@ -57,7 +51,7 @@ class IndexController extends Controller
         }
 
         return view('admin.event.index')->with([
-            'eventInfo' => $eventInfo
+            'eventInfo' => $eventInfo,
         ]);
     }
 
@@ -68,7 +62,7 @@ class IndexController extends Controller
 
         return view('admin.event.create')->with([
             'events' => $events,
-            'places' => $places
+            'places' => $places,
         ]);
     }
 
@@ -80,7 +74,7 @@ class IndexController extends Controller
 
             if (isset($data['img_url'])) {
                 $extension = $request->file('img_url')->getClientOriginalExtension();
-                $path = Storage::disk('local')->putFileAs('public/image/event/', $data['img_url'], $data['title'] . "." . $extension, 'public');
+                $path = Storage::disk('local')->putFileAs('public/image/event/', $data['img_url'], $data['title'].'.'.$extension, 'public');
 
                 $filepath = pathinfo(Storage::url($path));
                 $data['img_url'] = $filepath['filename'];
@@ -92,7 +86,7 @@ class IndexController extends Controller
 
             EventSearch::create([
                 'event_id' => $event->id,
-                'category_id' => (int)$data['maker'],
+                'category_id' => (int) $data['maker'],
             ]);
 
             EventPost::create([
@@ -115,7 +109,6 @@ class IndexController extends Controller
         ]);
     }
 
-
     public function edit(Request $request)
     {
         $event = Event::find($request->event);
@@ -135,7 +128,7 @@ class IndexController extends Controller
 
             if (isset($data['img_url'])) {
                 $extension = $request->file('img_url')->getClientOriginalExtension();
-                $path = Storage::disk('local')->putFileAs('public/image/event/', $data['img_url'], $data['name'] . "." . $extension, 'public');
+                $path = Storage::disk('local')->putFileAs('public/image/event/', $data['img_url'], $data['name'].'.'.$extension, 'public');
 
                 $filepath = pathinfo(Storage::url($path));
                 $data['img_url'] = $filepath['filename'];
@@ -146,7 +139,6 @@ class IndexController extends Controller
 
         return redirect()->route('admin.events.index');
     }
-
 
     public function destroy(Request $request)
     {

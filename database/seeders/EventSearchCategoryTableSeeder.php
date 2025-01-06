@@ -1,17 +1,17 @@
 <?php
+
 namespace Database\Seeders;
+
+use App\Models\Event\EventSearchCategory;
+use App\Traits\SeedingFromCsv;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
-
-use App\Traits\SeedingFromCsv;
-use App\Models\Event\EventSearchCategory;
 
 class EventSearchCategoryTableSeeder extends Seeder
 {
     use SeedingFromCsv;
 
-    private $table = "event_search_categories";
+    private $table = 'event_search_categories';
 
     /**
      * Run the database seeds.
@@ -20,11 +20,11 @@ class EventSearchCategoryTableSeeder extends Seeder
      */
     public function run()
     {
-      $model = new EventSearchCategory();
-      DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-      DB::statement('TRUNCATE TABLE ' . $this->table . ';');
-      DB::statement('ALTER TABLE ' . $this->table . ' AUTO_INCREMENT = 1;');
-      DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-      $this->insertFromCsv($this->table, $model, $this);
+        $model = new EventSearchCategory;
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        DB::statement('TRUNCATE TABLE '.$this->table.';');
+        DB::statement('ALTER TABLE '.$this->table.' AUTO_INCREMENT = 1;');
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        $this->insertFromCsv($this->table, $model, $this);
     }
 }

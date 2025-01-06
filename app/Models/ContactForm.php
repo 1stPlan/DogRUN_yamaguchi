@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-
 class ContactForm extends Model
 {
     use SoftDeletes;
@@ -14,9 +13,10 @@ class ContactForm extends Model
         'name_top',
         'name_bottom',
         'mail',
-        'content'
+        'content',
     ];
+
     protected $dates = [
-        'deleted_at'
-      ];
+        'deleted_at',
+    ];
 }

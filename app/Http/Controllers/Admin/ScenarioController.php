@@ -3,22 +3,16 @@
 namespace App\Http\Controllers\Admin\Scenario;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Http\Requests\GetPresignedUrlRequest;
-use Aws\S3\S3Client;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Http;
 use App\Models\BasicScenario;
 use App\Models\LifeScenario;
 use App\Models\MainScenario;
 use App\Models\MotionCheck;
 use App\Models\Movie;
-use App\Models\ScenarioSet;
+use Aws\S3\S3Client;
+use DB;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Storage;
-use DB;
-use Carbon\Carbon;
 
 class ScenarioController extends Controller
 {
@@ -31,9 +25,9 @@ class ScenarioController extends Controller
     {
 
         $basicscenario = BasicScenario::orderBy('id', 'ASC')->get();
-        $lifescenario  = LifeScenario::orderBy('id', 'ASC')->get();
-        $mainscenario  = MainScenario::orderBy('id', 'ASC')->get();
-        $motion_check  = MotionCheck::orderBy('id', 'ASC')->get();
+        $lifescenario = LifeScenario::orderBy('id', 'ASC')->get();
+        $mainscenario = MainScenario::orderBy('id', 'ASC')->get();
+        $motion_check = MotionCheck::orderBy('id', 'ASC')->get();
 
         $scenarioLists = [];
 
@@ -44,14 +38,14 @@ class ScenarioController extends Controller
             $movie = Movie::movieId($mainscenario[$i]->movie_id)->first();
             $count = $i + 1;
 
-            $scenarioLists[$i]['id']        = $mainscenario[$i]->id;
-            $scenarioLists[$i]['set_id']    = $count;
-            $scenarioLists[$i]['name']      = $mainscenario[$i]->name;
-            $scenarioLists[$i]['movie']     = empty($movie->url) ? '×' : '〇';  //movieが歩かないかはURLの有無でとる？
-            $scenarioLists[$i]['thumbnail']     = empty($movie->thumbnail_url) ? '×' : '〇';  //thumbnailが歩かないかはURLの有無でとる？
-            $scenarioLists[$i]['movie_id']  = $mainscenario[$i]->movie_id;
-            $scenarioLists[$i]['text']      = isset($mainscenario[$i]->point) ? '〇' : '×';
-            $scenarioLists[$i]['type']      = "main";
+            $scenarioLists[$i]['id'] = $mainscenario[$i]->id;
+            $scenarioLists[$i]['set_id'] = $count;
+            $scenarioLists[$i]['name'] = $mainscenario[$i]->name;
+            $scenarioLists[$i]['movie'] = empty($movie->url) ? '×' : '〇';  // movieが歩かないかはURLの有無でとる？
+            $scenarioLists[$i]['thumbnail'] = empty($movie->thumbnail_url) ? '×' : '〇';  // thumbnailが歩かないかはURLの有無でとる？
+            $scenarioLists[$i]['movie_id'] = $mainscenario[$i]->movie_id;
+            $scenarioLists[$i]['text'] = isset($mainscenario[$i]->point) ? '〇' : '×';
+            $scenarioLists[$i]['type'] = 'main';
         }
         // return exit;
         $count_basic = count($basicscenario) + $count_main;
@@ -62,14 +56,14 @@ class ScenarioController extends Controller
             $movie = Movie::movieId($basicscenario[$j]->movie_id)->first();
             $count = $i + 1;
 
-            $scenarioLists[$i]['id']        = $basicscenario[$j]->id;
-            $scenarioLists[$i]['set_id']    = $count;
-            $scenarioLists[$i]['name']      = $basicscenario[$j]->name;
-            $scenarioLists[$i]['movie']     = empty($movie->url) ? '×' : '〇';  //movieが歩かないかはURLの有無でとる？
-            $scenarioLists[$i]['thumbnail']     = empty($movie->thumbnail_url) ? '×' : '〇';  //thumbnailが歩かないかはURLの有無でとる？
-            $scenarioLists[$i]['movie_id']  = $basicscenario[$j]->movie_id;
-            $scenarioLists[$i]['text']      = isset($basicscenario[$j]->point) ? '〇' : '×';
-            $scenarioLists[$i]['type']      = "basic";
+            $scenarioLists[$i]['id'] = $basicscenario[$j]->id;
+            $scenarioLists[$i]['set_id'] = $count;
+            $scenarioLists[$i]['name'] = $basicscenario[$j]->name;
+            $scenarioLists[$i]['movie'] = empty($movie->url) ? '×' : '〇';  // movieが歩かないかはURLの有無でとる？
+            $scenarioLists[$i]['thumbnail'] = empty($movie->thumbnail_url) ? '×' : '〇';  // thumbnailが歩かないかはURLの有無でとる？
+            $scenarioLists[$i]['movie_id'] = $basicscenario[$j]->movie_id;
+            $scenarioLists[$i]['text'] = isset($basicscenario[$j]->point) ? '〇' : '×';
+            $scenarioLists[$i]['type'] = 'basic';
         }
 
         $count_life = count($lifescenario) + $count_basic;
@@ -79,14 +73,14 @@ class ScenarioController extends Controller
             $movie = Movie::movieId($lifescenario[$j]->movie_id)->first();
             $count = $i + 1;
 
-            $scenarioLists[$i]['id']        = $lifescenario[$j]->id;
-            $scenarioLists[$i]['set_id']    = $count;
-            $scenarioLists[$i]['name']      = $lifescenario[$j]->name;
-            $scenarioLists[$i]['movie']     = empty($movie->url) ? '×' : '〇';  //movieが歩かないかはURLの有無でとる？
-            $scenarioLists[$i]['thumbnail']     = empty($movie->thumbnail_url) ? '×' : '〇';  //thumbnailが歩かないかはURLの有無でとる？
-            $scenarioLists[$i]['movie_id']  = $lifescenario[$j]->movie_id;
-            $scenarioLists[$i]['text']      = isset($lifescenario[$j]->point) ? '〇' : '×';
-            $scenarioLists[$i]['type']      = "life";
+            $scenarioLists[$i]['id'] = $lifescenario[$j]->id;
+            $scenarioLists[$i]['set_id'] = $count;
+            $scenarioLists[$i]['name'] = $lifescenario[$j]->name;
+            $scenarioLists[$i]['movie'] = empty($movie->url) ? '×' : '〇';  // movieが歩かないかはURLの有無でとる？
+            $scenarioLists[$i]['thumbnail'] = empty($movie->thumbnail_url) ? '×' : '〇';  // thumbnailが歩かないかはURLの有無でとる？
+            $scenarioLists[$i]['movie_id'] = $lifescenario[$j]->movie_id;
+            $scenarioLists[$i]['text'] = isset($lifescenario[$j]->point) ? '〇' : '×';
+            $scenarioLists[$i]['type'] = 'life';
         }
 
         $count_motion = count($motion_check) + $count_life;
@@ -96,14 +90,14 @@ class ScenarioController extends Controller
             $movie = Movie::movieId($motion_check[$j]->movie_id)->first();
             $count = $i + 1;
 
-            $scenarioLists[$i]['id']        = $motion_check[$j]->id;
-            $scenarioLists[$i]['set_id']    = $count;
-            $scenarioLists[$i]['name']      = $motion_check[$j]->name;
-            $scenarioLists[$i]['movie']     = empty($movie->url) ? '×' : '〇';  //movieが歩かないかはURLの有無でとる？
-            $scenarioLists[$i]['thumbnail']     = empty($movie->thumbnail_url) ? '×' : '〇';  //thumbnailが歩かないかはURLの有無でとる？
-            $scenarioLists[$i]['movie_id']  = $motion_check[$j]->movie_id;
-            $scenarioLists[$i]['text']      = "-";
-            $scenarioLists[$i]['type']      = "motion";
+            $scenarioLists[$i]['id'] = $motion_check[$j]->id;
+            $scenarioLists[$i]['set_id'] = $count;
+            $scenarioLists[$i]['name'] = $motion_check[$j]->name;
+            $scenarioLists[$i]['movie'] = empty($movie->url) ? '×' : '〇';  // movieが歩かないかはURLの有無でとる？
+            $scenarioLists[$i]['thumbnail'] = empty($movie->thumbnail_url) ? '×' : '〇';  // thumbnailが歩かないかはURLの有無でとる？
+            $scenarioLists[$i]['movie_id'] = $motion_check[$j]->movie_id;
+            $scenarioLists[$i]['text'] = '-';
+            $scenarioLists[$i]['type'] = 'motion';
         }
 
         return view('admin.scenario.index')->with(['scenarioLists' => $scenarioLists]);
@@ -122,7 +116,6 @@ class ScenarioController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -151,7 +144,7 @@ class ScenarioController extends Controller
     {
 
         $scenarioList = [];
-        if ($type == "main") {
+        if ($type == 'main') {
 
             $mainscernaro = MainScenario::mainId($id)->first();
             $movie = Movie::movieId($mainscernaro->movie_id)->first();
@@ -159,34 +152,34 @@ class ScenarioController extends Controller
             $scenarioList = $mainscernaro;
 
             if ($movie) {
-                $scenarioList['movie_url']   =  $movie->url;
-                $scenarioList['movie_id']    =  $movie->id;
+                $scenarioList['movie_url'] = $movie->url;
+                $scenarioList['movie_id'] = $movie->id;
             }
-        } elseif ($type == "life") {
+        } elseif ($type == 'life') {
             $lifescenario = LifeScenario::lifeId($id)->first();
             $movie = Movie::movieId($lifescenario->movie_id)->first();
             $scenarioList = $lifescenario;
             if ($movie) {
-                $scenarioList['movie_url']    = $movie->url;
-                $scenarioList['movie_id']     =  $movie->id;
+                $scenarioList['movie_url'] = $movie->url;
+                $scenarioList['movie_id'] = $movie->id;
             }
-        } elseif ($type == "basic") {
+        } elseif ($type == 'basic') {
             $basicscenario = BasicScenario::basicId($id)->first();
-            $movie  =  Movie::movieId($basicscenario->movie_id)->first();
+            $movie = Movie::movieId($basicscenario->movie_id)->first();
             $scenarioList = $basicscenario;
 
             if ($movie) {
-                $scenarioList['movie_url']    = $movie->url;
-                $scenarioList['movie_id']     =  $movie->id;
+                $scenarioList['movie_url'] = $movie->url;
+                $scenarioList['movie_id'] = $movie->id;
             }
         } else {
             $motion_check = MotionCheck::motionId($id)->first();
-            $movie  =  Movie::movieId($motion_check->movie_id)->first();
+            $movie = Movie::movieId($motion_check->movie_id)->first();
             $scenarioList = $motion_check;
 
             if ($movie) {
-                $scenarioList['movie_url']    = $movie->url;
-                $scenarioList['movie_id']     =  $movie->id;
+                $scenarioList['movie_url'] = $movie->url;
+                $scenarioList['movie_id'] = $movie->id;
             }
         }
 
@@ -196,58 +189,57 @@ class ScenarioController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $type, $id)
     {
 
-    //S3用の署名用関数を定義-----------------------------------------------
+        // S3用の署名用関数を定義-----------------------------------------------
 
-    /**
-    * @param  \App\Http\Requests\GetPresignedUrlRequest  $request
-    * @return \Illuminate\Http\JsonResponse
-    */
+        /**
+         * @param  \App\Http\Requests\GetPresignedUrlRequest  $request
+         * @return \Illuminate\Http\JsonResponse
+         */
 
-    // function getPresignedUrl($key)
-    // {
-    //     $s3Client = new S3Client([
-    //       'region' => config('filesystems.disks.s3.region'),
-    //       'version' => config('filesystems.disks.s3.aws_sdk.version'),
-    //   ]);
+        // function getPresignedUrl($key)
+        // {
+        //     $s3Client = new S3Client([
+        //       'region' => config('filesystems.disks.s3.region'),
+        //       'version' => config('filesystems.disks.s3.aws_sdk.version'),
+        //   ]);
 
-    //   $cmd = $s3Client->getCommand('PutObject', [
-    //       'Bucket' => config('filesystems.disks.s3.bucket'),
-    //       'Key' => $key,
-    //     //   'ACL' => 'public-read', // 画像は一般公開されます
-    //   ]);
+        //   $cmd = $s3Client->getCommand('PutObject', [
+        //       'Bucket' => config('filesystems.disks.s3.bucket'),
+        //       'Key' => $key,
+        //     //   'ACL' => 'public-read', // 画像は一般公開されます
+        //   ]);
 
-    //   $presignedRequest = $s3Client->createPresignedRequest(
-    //       $cmd,
-    //       config('filesystems.disks.s3.aws_sdk.pre_signed_url.expired_time')
-    //   );
+        //   $presignedRequest = $s3Client->createPresignedRequest(
+        //       $cmd,
+        //       config('filesystems.disks.s3.aws_sdk.pre_signed_url.expired_time')
+        //   );
 
-    //   return response()->json([
-    //     'pre_signed_url' => (string) $presignedRequest->getUri()
-    //   ]);
+        //   return response()->json([
+        //     'pre_signed_url' => (string) $presignedRequest->getUri()
+        //   ]);
 
-    // }
-    //---------------------------------------------------------------------------
+        // }
+        // ---------------------------------------------------------------------------
 
-        if ($type == "main") {
+        if ($type == 'main') {
 
             $mainscernaro = MainScenario::mainId($id)->first();
             $movie = Movie::movieId($mainscernaro->movie_id)->first();
 
             $data = $request->all();
 
-            DB::transaction(function () use ($request, $id, $type, $mainscernaro, $movie, $data) {
+            DB::transaction(function () use ($id, $type, $mainscernaro, $movie, $data) {
                 if (isset($data['file']) || isset($data['thumbnail_file'])) {
                     if (isset($data['file'])) {
-                        //url取得(s3)
-                        $url_path = Storage::disk('s3')->putFileAs('/movie', $data['file'], $type . $id . '.mp4');
-                        $new_movie_path= Storage::disk('s3')->url($url_path);
+                        // url取得(s3)
+                        $url_path = Storage::disk('s3')->putFileAs('/movie', $data['file'], $type.$id.'.mp4');
+                        $new_movie_path = Storage::disk('s3')->url($url_path);
 
                         // url取得(s3 署名付き)※いつか対応
                         // $key = 'movie/'. $type . $id.'.mp4';
@@ -270,7 +262,7 @@ class ScenarioController extends Controller
 
                     if (isset($data['thumbnail_file'])) {
 
-                        $thumbnail_path = Storage::disk('s3')->putFileAs('/thumbnail', $data['thumbnail_file'], $type . $id . '.jpg');
+                        $thumbnail_path = Storage::disk('s3')->putFileAs('/thumbnail', $data['thumbnail_file'], $type.$id.'.jpg');
                         $new_thumbnail_path = Storage::disk('s3')->url($thumbnail_path);
 
                         // url取得(s3 署名付き)※作成中
@@ -289,14 +281,13 @@ class ScenarioController extends Controller
                         // ]);
                         // $new_thumbnail_path = $key;
 
-
                     } else {
                         // 古いthumbnail_url取得
                         $old_thumbnail = $movie->thumbnail_url;
                         $new_thumbnail_path = $old_thumbnail;
                     }
 
-                    if (!$mainscernaro->movie_id) {
+                    if (! $mainscernaro->movie_id) {
                         // $new_movie = Movie::create(['url' => Storage::disk('local')->url($path)]);
                         // $mainscernaro->fill(['movie_id' => $new_movie->id])->save();
                         $new_movie = Movie::create([
@@ -317,21 +308,21 @@ class ScenarioController extends Controller
 
                 $mainscernaro->fill(['point' => $data['point']])->save();
             });
-        } elseif ($type == "life") {
+        } elseif ($type == 'life') {
 
             $lifescenario = LifeScenario::lifeId($id)->first();
             $movie = Movie::movieId($lifescenario->movie_id)->first();
 
             $data = $request->all();
 
-            DB::transaction(function () use ($request, $id, $type, $lifescenario, $movie, $data) {
+            DB::transaction(function () use ($id, $type, $lifescenario, $movie, $data) {
                 if (isset($data['file']) || isset($data['thumbnail_file'])) {
                     if (isset($data['file'])) {
                         // url取得
                         // $url_path = Storage::disk('local')->putFileAs('public/movie', $data['file'], $type . $id . '.mp4', 'public');
                         // $new_movie_path = Storage::disk('local')->url($url_path);
-                        $url_path = Storage::disk('s3')->putFileAs('/movie', $data['file'], $type . $id . '.mp4');
-                        $new_movie_path= Storage::disk('s3')->url($url_path);
+                        $url_path = Storage::disk('s3')->putFileAs('/movie', $data['file'], $type.$id.'.mp4');
+                        $new_movie_path = Storage::disk('s3')->url($url_path);
                     } else {
                         // 古いurl取得
                         $old_movie = $movie->url;
@@ -342,7 +333,7 @@ class ScenarioController extends Controller
                         // thumbnail_url取得
                         // $thumbnail_path = Storage::disk('local')->putFileAs('public/thumbnail', $data['thumbnail_file'], $type . $id . '.jpg', 'public');
                         // $new_thumbnail_path = Storage::disk('local')->url($thumbnail_path);
-                        $thumbnail_path = Storage::disk('s3')->putFileAs('/thumbnail', $data['thumbnail_file'], $type . $id . '.jpg');
+                        $thumbnail_path = Storage::disk('s3')->putFileAs('/thumbnail', $data['thumbnail_file'], $type.$id.'.jpg');
                         $new_thumbnail_path = Storage::disk('s3')->url($thumbnail_path);
                     } else {
                         // 古いthumbnail_url取得
@@ -350,8 +341,7 @@ class ScenarioController extends Controller
                         $new_thumbnail_path = $old_thumbnail;
                     }
 
-
-                    if (!$lifescenario->movie_id) {
+                    if (! $lifescenario->movie_id) {
                         // $new_movie = Movie::create(['url' => Storage::disk('local')->url($path)]);
                         // $mainscernaro->fill(['movie_id' => $new_movie->id])->save();
                         $new_movie = Movie::create([
@@ -376,20 +366,20 @@ class ScenarioController extends Controller
 
                 $lifescenario->fill(['point' => $data['point']])->save();
             });
-        } elseif ($type == "basic") {
+        } elseif ($type == 'basic') {
             $basicscenario = BasicScenario::basicId($id)->first();
             $movie = Movie::movieId($basicscenario->movie_id)->first();
 
             $data = $request->all();
 
-            DB::transaction(function () use ($request, $id, $type, $basicscenario, $movie, $data) {
+            DB::transaction(function () use ($id, $type, $basicscenario, $movie, $data) {
                 if (isset($data['file']) || isset($data['thumbnail_file'])) {
                     if (isset($data['file'])) {
                         // url取得
                         // $url_path = Storage::disk('local')->putFileAs('public/movie', $data['file'], $type . $id . '.mp4', 'public');
                         // $new_movie_path = Storage::disk('local')->url($url_path);
-                        $url_path = Storage::disk('s3')->putFileAs('/movie', $data['file'], $type . $id . '.mp4');
-                        $new_movie_path= Storage::disk('s3')->url($url_path);
+                        $url_path = Storage::disk('s3')->putFileAs('/movie', $data['file'], $type.$id.'.mp4');
+                        $new_movie_path = Storage::disk('s3')->url($url_path);
                     } else {
                         // 古いurl取得
                         $old_movie = $movie->url;
@@ -400,7 +390,7 @@ class ScenarioController extends Controller
                         // thumbnail_url取得
                         // $thumbnail_path = Storage::disk('local')->putFileAs('public/thumbnail', $data['thumbnail_file'], $type . $id . '.jpg', 'public');
                         // $new_thumbnail_path = Storage::disk('local')->url($thumbnail_path);
-                        $thumbnail_path = Storage::disk('s3')->putFileAs('/thumbnail', $data['thumbnail_file'], $type . $id . '.jpg');
+                        $thumbnail_path = Storage::disk('s3')->putFileAs('/thumbnail', $data['thumbnail_file'], $type.$id.'.jpg');
                         $new_thumbnail_path = Storage::disk('s3')->url($thumbnail_path);
                     } else {
                         // 古いthumbnail_url取得
@@ -408,8 +398,7 @@ class ScenarioController extends Controller
                         $new_thumbnail_path = $old_thumbnail;
                     }
 
-
-                    if (!$basicscenario->movie_id) {
+                    if (! $basicscenario->movie_id) {
                         // $new_movie = Movie::create(['url' => Storage::disk('local')->url($path)]);
                         // $mainscernaro->fill(['movie_id' => $new_movie->id])->save();
                         $new_movie = Movie::create([
@@ -440,7 +429,7 @@ class ScenarioController extends Controller
 
             $data = $request->all();
 
-            DB::transaction(function () use ($request, $id, $type, $motion_check, $movie, $data) {
+            DB::transaction(function () use ($id, $type, $motion_check, $movie, $data) {
                 if (isset($data['file']) || isset($data['thumbnail_file'])) {
                     // 古いurl取得
                     $old_movie = $movie->url;
@@ -451,8 +440,8 @@ class ScenarioController extends Controller
                         // url取得
                         // $url_path = Storage::disk('local')->putFileAs('public/movie', $data['file'], $type . $id . '.mp4', 'public');
                         // $new_movie_path = Storage::disk('local')->url($url_path);
-                        $url_path = Storage::disk('s3')->putFileAs('/movie', $data['file'], $type . $id . '.mp4');
-                        $new_movie_path= Storage::disk('s3')->url($url_path);
+                        $url_path = Storage::disk('s3')->putFileAs('/movie', $data['file'], $type.$id.'.mp4');
+                        $new_movie_path = Storage::disk('s3')->url($url_path);
                     } else {
                         $new_movie_path = $old_movie;
                     }
@@ -461,14 +450,13 @@ class ScenarioController extends Controller
                         // thumbnail_url取得
                         // $thumbnail_path = Storage::disk('local')->putFileAs('public/thumbnail', $data['thumbnail_file'], $type . $id . '.jpg', 'public');
                         // $new_thumbnail_path = Storage::disk('local')->url($thumbnail_path);
-                        $thumbnail_path = Storage::disk('s3')->putFileAs('/thumbnail', $data['thumbnail_file'], $type . $id . '.jpg');
+                        $thumbnail_path = Storage::disk('s3')->putFileAs('/thumbnail', $data['thumbnail_file'], $type.$id.'.jpg');
                         $new_thumbnail_path = Storage::disk('s3')->url($thumbnail_path);
                     } else {
                         $new_thumbnail_path = $old_thumbnail;
                     }
 
-
-                    if (!$motion_check->movie_id) {
+                    if (! $motion_check->movie_id) {
                         // $new_movie = Movie::create(['url' => Storage::disk('local')->url($path)]);
                         // $mainscernaro->fill(['movie_id' => $new_movie->id])->save();
                         $new_movie = Movie::create([
@@ -494,8 +482,7 @@ class ScenarioController extends Controller
             });
         }
 
-
-        return redirect('admin/scenario/' . $type . '/' . $id . '/edit');
+        return redirect('admin/scenario/'.$type.'/'.$id.'/edit');
     }
 
     /**

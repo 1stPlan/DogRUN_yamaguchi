@@ -2,35 +2,33 @@
 
 namespace App\Models\Type;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class QuestionText extends Model
 {
-  use SoftDeletes;
-  protected $table = 'question_texts';
+    use SoftDeletes;
 
-  protected $primaryKey = 'id';
+    protected $table = 'question_texts';
 
-  protected $guarded = [];
+    protected $primaryKey = 'id';
 
-  protected $dates = [
-    'deleted_at'
-  ];
+    protected $guarded = [];
 
-  protected $fillable = [
-    'question_text'
-  ];
+    protected $dates = [
+        'deleted_at',
+    ];
 
-  
-  /**
-   * @param Builder $query
-   * @param $id
-   * @return \Illuminate\Database\Query\Builder
-   */
-  public function scopeQuestionTextId(Builder $query, $id)
-  {
-    return $query->where($this->table . '.id', $id);
-  }
+    protected $fillable = [
+        'question_text',
+    ];
+
+    /**
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public function scopeQuestionTextId(Builder $query, $id)
+    {
+        return $query->where($this->table.'.id', $id);
+    }
 }
