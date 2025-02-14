@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Post\Post;
+use App\Models\Place;
 
 class Rating extends Model
 {
@@ -20,7 +22,6 @@ class Rating extends Model
 
     protected $fillable = [
         'post_id',
-        'place_id',
         'rating',
     ];
 
@@ -29,12 +30,12 @@ class Rating extends Model
      */
     public function post()
     {
-        return $this->belongsTo('App\Models\Post\Post');
+        return $this->belongsTo(Post::class);
     }
 
     public function place()
     {
-        return $this->belongsTo('App\Models\Place');
+        return $this->belongsTo(Place::class);
     }
 
     /**

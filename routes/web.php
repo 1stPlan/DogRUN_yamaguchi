@@ -153,6 +153,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('place/{place}', 'Place\indexController@show')->name('places.show')->where('place', '[0-9]+');
         Route::get('places/edit/{place}', 'Place\indexController@edit')->name('places.edit');
         Route::get('places/create', 'Place\indexController@create')->name('places.create');
+        Route::patch('places/{place}', 'Place\indexController@update')->name('places.update')->where('place', '[0-9]+');
+        Route::post('places/{place}', 'Place\indexController@store')->name('places.store')->where('place', '[0-9]+');
         Route::delete('places/{place}', 'Place\indexController@destroy')->name('places.destroy')->where('place', '[0-9]+');
 
         Route::get('places/post/{place}', 'Place\PlacePostController@index')->name('places.post.index')->where('place', '[0-9]+');

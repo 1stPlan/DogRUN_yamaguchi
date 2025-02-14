@@ -72,7 +72,7 @@
             <tr>
               <td>画像</td>
               <td><span>
-                  <img src="{{ asset('/images/shop/'. $place['data_id'] .'.jpg') }}" alt="" width="50%">
+                  <img src="{{ asset('storage/image/shop/'. $place['id'] .'.jpg') }}" alt="" width="50%">
                 </span>
               </td>
             </tr>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin\Place;
 use App\Http\Controllers\Controller;
 use App\Models\Place;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class indexController extends Controller
 {
@@ -51,7 +53,31 @@ class indexController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        DB::transaction(function () use ($data, $request) {
+
+            if ($request->hasFile('img_url')) {
+
+                $extension = $request->file('img_url')->getClientOriginalExtension();
+                Storage::disk('local')->putFileAs('public/image/shop/', $data['img_url'], $data['id'] . '.' . $extension, 'public');
+            }
+
+            Place::create([
+                'name' => $request->name,
+                'address' => $request->address,
+                'price' => $request->price,
+                'time' => $request->time,
+                'off' => $request->off,
+                'url' => $request->url,
+                'CAFE' => $request->has('CAFE') ? 1 : 0,
+                'INDOOR' => $request->has('INDOOR') ? 1 : 0,
+                'KASIKIRI' => $request->has('KASIKIRI') ? 1 : 0,
+                // 'data_id' => null
+            ]);
+        });
+
+        return redirect()->route('admin.places.index')->with('success', '登録が完了しました');
     }
 
     public function show(Request $request)
@@ -86,7 +112,34 @@ class indexController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $place = Place::find($id);
+
+        $data = $request->all();
+
+        DB::transaction(function () use ($data, $place, $request) {
+
+            if ($request->hasFile('img_url')) {
+                $extension = $request->file('img_url')->getClientOriginalExtension();
+                Storage::disk('local')->putFileAs('public/image/shop/', $data['img_url'], $data['id'] . '.' . $extension, 'public');
+            }
+
+            $place->update([
+                'name' => $request->name,
+                'address' => $request->address,
+                'price' => $request->price,
+                'time' => $request->time,
+                'off' => $request->off,
+                'url' => $request->url,
+                'CAFE' => $request->has('CAFE') ? 1 : 0,
+                'INDOOR' => $request->has('INDOOR') ? 1 : 0,
+                'KASIKIRI' => $request->has('KASIKIRI') ? 1 : 0,
+                // 'data_id' => null
+            ]);
+        });
+
+
+
+        return redirect()->route('admin.places.index')->with('success', '更新が完了しました');
     }
 
     public function destroy(Request $request)
