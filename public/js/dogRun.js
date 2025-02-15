@@ -218,7 +218,8 @@ function generateHTML(dataList, showDistance, ratingList) {
 
     dataList.forEach(data => {
         for (let i = 0; i < ratingList.length; i++) {
-            if (data["data_id"] == ratingList[i]["place"]) {
+
+            if (data["id"] == ratingList[i]["place"]) {
                 rating_sum += ratingList[i]["rating"];
                 rating_count++;
             }
@@ -310,8 +311,8 @@ function createStoreHTML(data, showDistance, rating_ave, rating_count) {
         <a href="${data.url}" class="store__link">
             <div class="store__pic">
                 <img src="${host +
-                    "/images/shop/" +
-                    data.data_id +
+                    "/storage/image/shop/" +
+                    data.id +
                     ".jpg"}" alt="">
             </div>
             <div class="store__content">

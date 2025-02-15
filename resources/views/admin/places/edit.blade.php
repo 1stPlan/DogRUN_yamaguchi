@@ -30,8 +30,9 @@
       </div><!-- END card-->
 
 
-      <form action="{{ route('admin.events.store') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
-        {{ csrf_field() }}
+      <form action="{{ route('admin.places.update', $place->id) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+        @csrf
+        @method('PATCH')
 
         <div class="card card-default mb-1">
           <div class="card-heDader font-weight-bold" style="font-size:16px;">ショップ情報</div>
@@ -80,7 +81,7 @@
                   <td>
                     <input class="col-sm-10" id="icon5" type="file" class="mt-2" name="img_url">
                     <div class="thumbnail">
-                      <img id="icon_img_prv5" src="{{ asset('/images/shop/'. old('data_id', $place['data_id'] ) .'.jpg') }}" width="100%">
+                      <img id="icon_img_prv5" src="{{ asset('storage/image/shop/'. old('id', $place['id'] ) .'.jpg') }}" width="100%"> 
                     </div>
                   </td>
                 </tr>
@@ -91,9 +92,9 @@
                   <td>サービス</td>
                   <td>
                     <ul>
-                      <li><span>CAFE</span> : <input type="checkbox" name="CAFE" value=""></li>
-                      <li><span>INDOOR</span> : <input type="checkbox" name="INDOOR" value=""></li>
-                      <li><span>KASIKIRI</span> : <input type="checkbox" name="KASIKIRI" value=""></li>
+                      <li><span>CAFE</span> : <input type="checkbox" name="CAFE" value="1" {{ $place->CAFE ? 'checked' : '' }}></li>
+                      <li><span>INDOOR</span> : <input type="checkbox" name="INDOOR" value="1" {{ $place->INDOOR ? 'checked' : '' }}></li>
+                      <li><span>KASIKIRI</span> : <input type="checkbox" name="KASIKIRI" value="1" {{ $place->KASIKIRI ? 'checked' : '' }}></li>
                     </ul>
                   </td>
                 </tr>

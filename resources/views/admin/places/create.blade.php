@@ -25,8 +25,8 @@
 
     <div class="wrapper wrapper-content animated fadeInRight">
 
-      <form action="{{ route('admin.events.store') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
-        {{ csrf_field() }}
+      <form action="{{ route('admin.places.store') }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+        @csrf
 
         <div class="card card-default mb-1">
           <div class="card-heDader font-weight-bold" style="font-size:16px;">ショップ情報</div>
@@ -85,9 +85,9 @@
                   <td>サービス</td>
                   <td>
                     <ul>
-                      <li><span>CAFE</span> : <input type="checkbox" name="CAFE" value=""></li>
-                      <li><span>INDOOR</span> : <input type="checkbox" name="INDOOR" value=""></li>
-                      <li><span>KASIKIRI</span> : <input type="checkbox" name="KASIKIRI" value=""></li>
+                      <li><span>CAFE</span> : <input type="checkbox" name="CAFE" value="1"></li>
+                      <li><span>INDOOR</span> : <input type="checkbox" name="INDOOR" value="1"></li>
+                      <li><span>KASIKIRI</span> : <input type="checkbox" name="KASIKIRI" value="1"></li>
                     </ul>
                   </td>
                 </tr>

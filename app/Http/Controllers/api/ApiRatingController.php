@@ -15,11 +15,11 @@ class ApiRatingController extends Controller
 
     public function Rating()
     {
-        $ratingAll = Rating::get();
+        $ratingAll = Rating::with('post')->get();
         $ratings = [];
 
         for ($i = 0; $i < count($ratingAll); $i++) {
-            $ratings[$i]['place'] = $ratingAll[$i]['place_id'];
+            $ratings[$i]['place'] = $ratingAll[$i]->post->place_id;
             $ratings[$i]['rating'] = $ratingAll[$i]['rating'];
         }
 

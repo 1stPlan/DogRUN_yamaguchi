@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('places', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('data_id');
+            // $table->string('data_id');
             $table->string('address');
             $table->string('tag');
             $table->string('price');

@@ -16,7 +16,7 @@
 
     <div class="post_create__head">
       <div class="post_create__pic">
-        <img src="{{ asset('/images/shop/'. $place->data_id .'.jpg') }}" alt="">
+        <img src="{{ asset('storage/image/shop/'. $place->id .'.jpg') }}" alt="">
       </div>
       <h3 class="post_create__title">{{ $place->name }} 口コミ</h3>
     </div>
