@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User\Place;
+namespace App\Http\Controllers\Place;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
@@ -33,7 +33,7 @@ class PostController extends Controller
             $post['sameIp'] = $sameIp;
         }
 
-        return view('user.place.posts.post')
+        return view('place.posts.post')
             ->with([
                 'posts' => $posts,
                 'users' => $users,
@@ -47,7 +47,7 @@ class PostController extends Controller
         $place = Place::id($id)->first();
         $user = Auth::id() ? User::find(Auth::id()) : '';
 
-        return view('user.place.posts.create')
+        return view('place.posts.create')
             ->with([
                 'place' => $place,
                 'user' => $user,

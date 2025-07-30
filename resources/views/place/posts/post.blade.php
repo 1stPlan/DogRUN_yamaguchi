@@ -145,7 +145,7 @@
       $place_key = $_SESSION['place_key'] ? $_SESSION['place_key'] : 'all';
       @endphp
       <div class="post__item-back">
-        <a href="{{ route('user.place.result', ['result' => $place_key ])  }}">戻る</a>
+        <a href="{{ route('place.result', ['result' => $place_key ])  }}">戻る</a>
       </div>
     </div>
 

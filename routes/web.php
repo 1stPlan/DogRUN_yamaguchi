@@ -19,6 +19,19 @@ use Illuminate\Support\Facades\Route;
 // TOPページ
 Route::get('/', 'TopController@index')->name('top');
 
+//  place
+Route::namespace('Place')->group(function () {
+    // Route::get('/place', 'PlaceController@index')->name('place');
+    Route::get('/', 'PlaceController@index')->name('top');
+    Route::get('/place/{result}', 'PlaceController@result')->name('place.result');
+
+    Route::get('/posts/{place_id}', 'PostController@index')->name('post');
+    Route::get('/post/create', 'PostController@create')->name('post.create');
+    Route::post('/post', 'PostController@store')->name('post.store');
+
+    Route::delete('/posts/destroy/{post}/', 'PostController@destroy')->name('post.destroy');
+});
+
 // 会員登録
 Route::post('/register', 'Auth\RegisterController@register')->name('register');
 Route::get('/confirm', 'Auth\RegisterController@confirm')->name('confirm');
@@ -81,18 +94,6 @@ Route::namespace('User')->prefix('user')->name('user.')->group(function () {
     Route::get('/type', 'TypeController@index')->name('type');
     Route::get('/type/select/{setid}/{nextid}', 'TypeController@select')->name('select.type');
     Route::get('/type/select_complete', 'TypeController@select_complete')->name('select_complete.type');
-
-    //  place
-    Route::namespace('Place')->group(function () {
-        Route::get('/place', 'PlaceController@index')->name('place');
-        Route::get('/place/{result}', 'PlaceController@result')->name('place.result');
-
-        Route::get('/posts/{place_id}', 'PostController@index')->name('post');
-        Route::get('/post/create', 'PostController@create')->name('post.create');
-        Route::post('/post', 'PostController@store')->name('post.store');
-
-        Route::delete('/posts/destroy/{post}/', 'PostController@destroy')->name('post.destroy');
-    });
 
     // food
     Route::namespace('Food')->group(function () {

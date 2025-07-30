@@ -1,2 +1,17 @@
 User-agent: *
-Disallow:
+Allow: /
+
+# Sitemap
+Sitemap: http://dogrun.localhost/sitemap.xml
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /storage/
+Disallow: /vendor/
+
+# Allow important pages
+Allow: /user/
+Allow: /contact
+Allow: /login
+Allow: /register

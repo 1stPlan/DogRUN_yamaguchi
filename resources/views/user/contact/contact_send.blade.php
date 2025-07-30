@@ -21,7 +21,7 @@
     </div>
 
     <div class="contact__button contact__button--3">
-      <a class="" href="{{ route('user.place') }}">PAGE TOP</a>
+      <a class="" href="{{ route('top') }}">PAGE TOP</a>
     </div>
   </div>
 
