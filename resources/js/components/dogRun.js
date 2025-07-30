@@ -96,8 +96,9 @@ async function dogrun() {
                 ratings
             );
             CurrentPosition(position, dataList, ratingList);
-        } catch ([error, dataList, ratingList]) {
-            notCurrentPosition(error, dataList, ratingList);
+        } catch (error) {
+            console.error('Error in geolocationCheck:', error);
+            notCurrentPosition(error, results, ratings);
         }
     }
 }
@@ -214,7 +215,9 @@ function notCurrentPosition(error, dataList, ratingList) {
 
 function generateHTML(dataList, showDistance, ratingList) {
     let html = "";
-    let rating_count = rating_sum = rating_ave = 0;
+    let rating_count = 0;
+    let rating_sum = 0;
+    let rating_ave = 0;
 
     dataList.forEach(data => {
         for (let i = 0; i < ratingList.length; i++) {
@@ -231,7 +234,9 @@ function generateHTML(dataList, showDistance, ratingList) {
         }
 
         html += createStoreHTML(data, showDistance, rating_ave, rating_count);
-        rating_count = rating_sum = rating_ave = 0;
+        rating_count = 0;
+        rating_sum = 0;
+        rating_ave = 0;
     });
 
     return [html, dataList.length];
@@ -308,12 +313,10 @@ function createStoreHTML(data, showDistance, rating_ave, rating_count) {
 
     return `
       <div class="store">
-        <a href="${data.url}" class="store__link">
+        <a href="${data.url}" class="store__link" target="_blank" rel="noopener noreferrer">
             <div class="store__pic">
                 <img src="${host +
-                    "/storage/image/shop/" +
-                    data.id +
-                    ".jpg"}" alt="">
+                    "/storage/image/shop/" + data.id + ".jpg"}" alt="">
             </div>
             <div class="store__content">
                 <div class="store__name">${data.name}</div>
@@ -331,7 +334,7 @@ function createStoreHTML(data, showDistance, rating_ave, rating_count) {
                 <div class="store__rating-count">口コミ件数 ： ${rating_count}件 </div>
             </div>
         </a>
-        <div class="store__flex"> 
+        <div class="store__flex">
             <div class="store__btn-flex">
                 <a class="store__phone" href="tel:${data.tel}">電話</a>
                 <a class="store__review" href="${host + "/user/posts/" + data.id}">口コミ</a>

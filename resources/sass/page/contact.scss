@@ -32,7 +32,7 @@
         align-items: center;
         background-repeat: no-repeat;
         flex-direction: column;
-        background-image: url(./../images/contact_header.jpg);
+        background-image: url(@images/contact_header.jpg);
     }
     &__page_title {
         @include font-size("48");

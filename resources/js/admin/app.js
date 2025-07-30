@@ -40,8 +40,10 @@ function _typeof(obj) {
         // CommonJS-like
         module.exports = factory();
     } else {
-        // Browser
-        if (typeof global.jQuery === "undefined") global.$ = factory();
+        // Browser - jQueryが既に存在する場合は独自ライブラリを設定しない
+        if (typeof global.jQuery === "undefined" && typeof global.$ === "undefined") {
+            global.$ = factory();
+        }
     }
 })(window, function() {
     // HELPERS
@@ -2675,6 +2677,11 @@ function _typeof(obj) {
     var savedLanguage = Storages.localStorage.get(STORAGEKEY);
 
     function initTranslation() {
+        // i18nextXHRBackendが利用可能かチェック
+        if (typeof i18nextXHRBackend === 'undefined') {
+            return;
+        }
+
         i18next
             .use(i18nextXHRBackend) // .use(LanguageDetector)
             .init(
@@ -5061,16 +5068,35 @@ function _typeof(obj) {
 (function() {
     "use strict";
 
-    $(initCustom);
+    // jQueryが利用可能になるまで待つ
+    function waitForJQuery() {
+        if (typeof $ === 'undefined') {
+            setTimeout(waitForJQuery, 100);
+            return;
+        }
+        $(initCustom);
+    }
+
+    waitForJQuery();
 
     function initCustom() {
         // custom code
 
+        // カスタム初期化処理
+
         // datetimepicker
-        $.datetimepicker.setLocale("ja");
-        $(".date_picker").datetimepicker({
-            lang: "ja"
-        });
+        if (typeof $.datetimepicker !== 'undefined') {
+            $.datetimepicker.setLocale("ja");
+            $(".date_picker").datetimepicker({
+                lang: "ja"
+            });
+            // datetimepicker初期化完了
+        } else {
+            // datetimepickerが利用できない場合の代替処理
+            $(".date_picker").on('focus', function() {
+                // ネイティブのdatetime inputを使用
+            });
+        }
 
         /*Dropdown Menu*/
         $(".dropdown_2").on("click", function() {

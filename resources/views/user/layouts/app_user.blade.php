@@ -62,16 +62,11 @@
     <!-- ANIMATE.CSS-->
     <link rel="stylesheet" href="{{ asset('vendor/animate.css/animate.css') }}">
     <!-- WHIRL (spinners)-->
-    <link rel="stylesheet" href="{{ asset('vendor/whirl/dist/whirl.css') }}">
 
 
     <!-- =============== BOOTSTRAP STYLES ===============-->
 
-    <!-- app -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
-
-    <!-- style -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+    @vite(['resources/js/app.js', 'resources/sass/app.scss'])
 
     <!-- slick -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/slick/slick.css') }}">
@@ -104,7 +99,7 @@
     @endif
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <!-- Viteで読み込まれるため削除 -->
 
     <!-- 各ページのCSS読み込み -->
     @yield('css')
@@ -134,16 +129,6 @@
 
 
     <!-- =============== APP SCRIPTS ===============-->
-
-    <!-- datetimepicker -->
-    <script src="{{ asset('vendor/components-jqueryui/jquery-ui.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-datetimepicker@2.5.20/build/jquery.datetimepicker.full.min.js">
-    </script>
-
-
-    <!-- <script src="{{ asset('js/dogRun.js') }}"></script> -->
-    <script src="{{ asset('js/main.js') }}"></script>
-    <script src="{{ asset('js/bubblyButton.js') }}"></script>
 
     <!-- 各ページのJS読み込み -->
     @yield('script')

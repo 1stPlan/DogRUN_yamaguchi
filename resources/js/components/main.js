@@ -1,4 +1,15 @@
-$(function() {
+// jQueryが利用可能になるまで待つ
+function initMain() {
+    if (typeof $ === 'undefined') {
+        setTimeout(initMain, 100);
+        return;
+    }
+    
+    console.log('main.js loaded');
+    console.log('jQuery version:', $.fn.jquery);
+    console.log('cross_menu element:', $('#cross_menu').length);
+    console.log('header-nav element:', $('#header-nav').length);
+    
     // スクロール
     var startPos = 0,
         winScrollTop = 0;
@@ -19,6 +30,7 @@ $(function() {
 
     // メニュー
     $("#cross_menu").on("click", function() {
+        console.log('cross_menu clicked');
         $("#header-nav").slideToggle();
     });
 
@@ -115,7 +127,17 @@ $(function() {
         $(this).parents(".dropdown").find("input").attr("value", $(this).attr("id"));
     });
 
-});
+    // datetimepicker - 必要に応じて後で追加
+    // if (typeof $.datetimepicker !== 'undefined') {
+    //     $.datetimepicker.setLocale("ja");
+    //     $(".date_picker").datetimepicker({
+    //         lang: "ja"
+    //     });
+    // }
+}
+
+// 初期化を開始
+initMain();
 
 //post削除
 function deletePost(e) {
@@ -187,10 +209,4 @@ function deleteEvent(e) {
     });
 }
 
-// datetimepicker
-$(function() {
-    $.datetimepicker.setLocale("ja");
-    $(".date_picker").datetimepicker({
-        lang: "ja"
-    });
-});
+

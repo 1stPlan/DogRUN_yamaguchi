@@ -33,6 +33,58 @@
 --------------------------------------*/
 @import "base/common";
 
+/* -------------------------------------
+	tailwind
+--------------------------------------*/
+// @import "tailwindcss";
+
+/* -------------------------------------
+	page
+--------------------------------------*/
+// auth
+@import "page/auth/login";
+@import "page/auth/register";
+@import "page/auth/password";
+
+// contact
+@import "page/contact";
+
+// first
+@import "page/first";
+
+// user home
+@import "page/home/home";
+
+// user event
+@import "page/user/event/event";
+@import "page/user/event/event_show";
+@import "page/user/event/event_edit";
+@import "page/user/event/event_create";
+
+// user post
+@import "page/user/post/post";
+@import "page/user/post/post_show";
+
+// user setting
+@import "page/user/setting/setting";
+@import "page/user/setting/setting_edit";
+@import "page/user/setting/setting_withdrawal";
+
+// user place
+@import "page/user/place";
+
+// user type
+@import "page/user/type";
+
+// user select
+@import "page/user/select";
+
+// user instagram
+@import "page/user/instagram";
+
+// user food
+@import "page/user/food";
+
 
 /* -------------------------------------
 	module

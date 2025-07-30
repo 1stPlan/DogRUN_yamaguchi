@@ -28,6 +28,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'img_no',
         // 'img_url',
         'intro',
+        'google_id',
+        'google_email',
+        'avatar',
     ];
 
     protected $dates = [

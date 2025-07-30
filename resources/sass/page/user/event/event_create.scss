@@ -25,7 +25,7 @@
         align-items: center;
         background-repeat: no-repeat;
         flex-direction: column;
-        background-image: url(./../../images/dogevent_header.jpg);
+        background-image: url(@images/dogevent_header.jpg);
     }
     &__title {
         @include font-size("48");

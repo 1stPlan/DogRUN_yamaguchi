@@ -15,11 +15,11 @@
             color: red;
         }
     }
-   
+
     &__subtitle{
         @include home-title("sub");
     }
-    
+
     &__cont{
         margin-top: calculation(5, 2);
     }

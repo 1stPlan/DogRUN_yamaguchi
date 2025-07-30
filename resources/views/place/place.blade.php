@@ -40,7 +40,6 @@
 @endsection
 
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/page/user/place.css') }}">
 @endsection
 
 @section( 'script' )

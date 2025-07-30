@@ -3,6 +3,28 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/page/auth/login.css') }}">
+<style>
+.btn-google {
+  background: #4285f4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.btn-google:hover {
+  background: #357ae8;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-google i {
+  margin-right: 8px;
+}
+</style>
 @endsection
 
 @section('js')
@@ -67,6 +89,17 @@
         </div>
 
       </form>
+
+      <!-- Googleログインボタン -->
+      <div class="row mt-3">
+        <div class="col-12 text-center">
+          <p class="text-muted">または</p>
+          <a href="{{ route('google.auth') }}" class="btn btn-google">
+            <i class="fab fa-google"></i> Googleでログイン
+          </a>
+        </div>
+      </div>
+
       <div class="row">
         <div class="login__register-txt col-12">
           初めてご利用の方はこちら

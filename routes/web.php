@@ -14,14 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', 'TopController@first')->name('first');
-
 // TOPページ
-Route::get('/', 'TopController@index')->name('top');
+// Route::get('/index', 'TopController@index')->name('top');
 
 //  place
 Route::namespace('Place')->group(function () {
-    // Route::get('/place', 'PlaceController@index')->name('place');
     Route::get('/', 'PlaceController@index')->name('top');
     Route::get('/place/{result}', 'PlaceController@result')->name('place.result');
 
@@ -48,6 +45,10 @@ Auth::routes([
     'reset' => true,
     'verify' => true,
 ]);
+
+// Google認証ルート
+Route::get('/auth/google', 'Auth\GoogleAuthController@redirectToGoogle')->name('google.auth');
+Route::get('/auth/google/callback', 'Auth\GoogleAuthController@handleGoogleCallback')->name('google.callback');
 
 // ログイン認証後
 Route::middleware('auth:user')->group(function () {
@@ -96,11 +97,12 @@ Route::namespace('User')->prefix('user')->name('user.')->group(function () {
     Route::get('/type/select_complete', 'TypeController@select_complete')->name('select_complete.type');
 
     // food
-    Route::namespace('Food')->group(function () {
-        Route::get('/food', 'FoodController@index')->name('food');
-    });
 
-    // Route::namespace('Setting')->prefix('Setting')->group(function () {
+    Route::get('/food', 'FoodController@index')->name('food');
+
+    // Instagram
+    Route::get('/instagram', 'InstagramController@index')->name('instagram');
+
     Route::middleware('auth:user')->group(function () {
         Route::middleware('afterAuthentication')->group(function () {
             Route::get('/setting', 'SettingController@index')->name('setting');
@@ -111,7 +113,6 @@ Route::namespace('User')->prefix('user')->name('user.')->group(function () {
             Route::delete('/setting/withdraw/{user}/', 'SettingController@withdrawal_complate')->name('setting.withdrawl_complate');
         });
     });
-    // });
 
     // contactページ
     Route::get('/contact', 'ContactFormController@index')->name('contact');
