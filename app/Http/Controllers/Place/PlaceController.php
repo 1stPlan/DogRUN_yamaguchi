@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User\Place;
+namespace App\Http\Controllers\Place;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +14,7 @@ class PlaceController extends Controller
 
     public function index()
     {
-        return view('user.place.place');
+        return view('place.place');
     }
 
     public function result()
@@ -46,7 +46,7 @@ class PlaceController extends Controller
             $place_area = '';
         }
 
-        return view('user.place.result')
+        return view('place.result')
             ->with([
                 'place_area' => $place_area,
             ]);

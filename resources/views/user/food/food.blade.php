@@ -35,7 +35,7 @@
     </div>
   </div>
   <div class="result__store-button">
-    <a href="{{ route('user.place') }}" class="">戻る</a>
+    <a href="{{ route('top') }}" class="">戻る</a>
   </div>
 </div>
 

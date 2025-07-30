@@ -72,7 +72,7 @@
 
   <ul class="header-nav__list">
     <li class="header-nav__item">
-      <a href="{{ route('user.place') }}">
+      <a href="{{ route('top') }}">
         <div class="header-nav__thumbnail">
           <img src="{{ asset('/images/dogrun.jpg') }}" alt="" width="100%">
         </div>
