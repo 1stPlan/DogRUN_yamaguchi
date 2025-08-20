@@ -1,3 +1,5 @@
+@use "../mixin/responsive" as *;
+
 * {
     margin: 0;
     padding: 0;
@@ -14,13 +16,13 @@
 
 html {
     width: 100%;
-    font-size: 62.5%;
+    font-size: 100%;
 }
-
 body {
     width: 100%;
     box-sizing: border-box;
     margin: 0;
+    line-height: 1.5;
     font-family: "Noto Sans JP", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -42,13 +44,13 @@ input:-webkit-autofill {
 }
 
 main {
-    padding-top: 8rem;
+    padding-top: 80px;
 }
 
 /* -レスポンシブ----- */
 
 @include responsive("sp") {
     main {
-        padding-top: 6rem;
+        padding-top: 60px;
     }
 }

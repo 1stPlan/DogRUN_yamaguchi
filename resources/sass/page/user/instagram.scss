@@ -1,11 +1,16 @@
 /* -------------------------------------
+	mixin
+--------------------------------------*/
+@use "../../mixin/font-size" as *;
+
+/* -------------------------------------
 	instagram
 --------------------------------------*/
 
 .instagram {
   width: 100%;
   background-color: #f5f7fa;
-  padding-bottom: min(10vw, 10rem);
+  padding-bottom: min(10vw, 100px);
 
   a:hover {
     text-decoration: none;
@@ -17,7 +22,7 @@
     width: 100%;
     background-size: cover;
     background-position: center;
-    height: min(28.12vw, 30rem);
+    height: min(28.12vw, 300px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,15 +32,15 @@
   }
 
   &__page_title {
-    padding-top: min(3.57vw, 5rem);
-    @include font-size('48');
+    padding-top: min(3.57vw, 50px);
+    @include font-size(48);
     color: #fff;
     text-shadow: 0 3px 4px rgba(34, 32, 32, 0.9);
     display: flex;
   }
 
   &__page_exp {
-    @include font-size('16');
+    @include font-size(16);
     color: #fff;
     text-shadow: 0 3px 4px rgba(34, 32, 32, 0.9);
   }
@@ -91,7 +96,7 @@
       margin: 0;
       color: #333;
       line-height: 1.5;
-      font-size: 0.9rem;
+      font-size: 9px;
     }
   }
 
@@ -113,7 +118,7 @@
       color: white;
       text-decoration: none;
       border-radius: 20px;
-      font-size: 0.9rem;
+      font-size: 9px;
       transition: opacity 0.3s ease;
 
       &:hover {
@@ -130,7 +135,7 @@
 
   .instagram__date small {
     color: #666;
-    font-size: 0.8rem;
+    font-size: 8px;
   }
 }
 

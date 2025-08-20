@@ -1,165 +1,201 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://localhost/</loc>
-    <lastmod>2025-07-28</lastmod>
+    <loc>https://dogrun-yamaguchi.com/</loc>
+    <lastmod>2025-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost/login</loc>
-    <lastmod>2025-07-28</lastmod>
+    <loc>https://dogrun-yamaguchi.com/login</loc>
+    <lastmod>2025-08-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>http://localhost/register</loc>
-    <lastmod>2025-07-28</lastmod>
+    <loc>https://dogrun-yamaguchi.com/register</loc>
+    <lastmod>2025-08-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>http://localhost/user/place</loc>
-    <lastmod>2025-07-28</lastmod>
+    <loc>https://dogrun-yamaguchi.com/user/place</loc>
+    <lastmod>2025-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>http://localhost/user/food</loc>
-    <lastmod>2025-07-28</lastmod>
+    <loc>https://dogrun-yamaguchi.com/user/food</loc>
+    <lastmod>2025-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://localhost/user/event</loc>
-    <lastmod>2025-07-28</lastmod>
+    <loc>https://dogrun-yamaguchi.com/user/event</loc>
+    <lastmod>2025-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://localhost/contact</loc>
-    <lastmod>2025-07-28</lastmod>
+    <loc>https://dogrun-yamaguchi.com/user/contact</loc>
+    <lastmod>2025-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost/user/place/detail/1</loc>
-    <lastmod>2025-07-28</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://dogrun-yamaguchi.com/user/type</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost/user/place/detail/2</loc>
-    <lastmod>2025-07-28</lastmod>
+    <loc>https://dogrun-yamaguchi.com/user/instagram</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dogrun-yamaguchi.com/place/1</loc>
+    <lastmod>2025-08-11</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dogrun-yamaguchi.com/place/2</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dogrun-yamaguchi.com/place/3</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dogrun-yamaguchi.com/place/4</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dogrun-yamaguchi.com/place/5</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dogrun-yamaguchi.com/place/6</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dogrun-yamaguchi.com/place/7</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dogrun-yamaguchi.com/place/8</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dogrun-yamaguchi.com/place/9</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dogrun-yamaguchi.com/place/10</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dogrun-yamaguchi.com/place/11</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dogrun-yamaguchi.com/place/12</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dogrun-yamaguchi.com/place/13</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dogrun-yamaguchi.com/place/14</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dogrun-yamaguchi.com/place/15</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dogrun-yamaguchi.com/place/16</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dogrun-yamaguchi.com/place/17</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dogrun-yamaguchi.com/place/18</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dogrun-yamaguchi.com/place/19</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dogrun-yamaguchi.com/place/20</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dogrun-yamaguchi.com/user/event/1</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost/user/place/detail/3</loc>
-    <lastmod>2025-07-28</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://dogrun-yamaguchi.com/user/event/2</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost/user/place/detail/4</loc>
-    <lastmod>2025-07-28</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://dogrun-yamaguchi.com/user/event/3</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost/user/place/detail/5</loc>
-    <lastmod>2025-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://localhost/user/place/detail/6</loc>
-    <lastmod>2025-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://localhost/user/place/detail/7</loc>
-    <lastmod>2025-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://localhost/user/place/detail/8</loc>
-    <lastmod>2025-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://localhost/user/place/detail/9</loc>
-    <lastmod>2025-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://localhost/user/place/detail/10</loc>
-    <lastmod>2025-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://localhost/user/place/detail/11</loc>
-    <lastmod>2025-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://localhost/user/place/detail/12</loc>
-    <lastmod>2025-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://localhost/user/place/detail/13</loc>
-    <lastmod>2025-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://localhost/user/place/detail/14</loc>
-    <lastmod>2025-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://localhost/user/place/detail/15</loc>
-    <lastmod>2025-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://localhost/user/place/detail/16</loc>
-    <lastmod>2025-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://localhost/user/place/detail/17</loc>
-    <lastmod>2025-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://localhost/user/place/detail/18</loc>
-    <lastmod>2025-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://localhost/user/place/detail/19</loc>
-    <lastmod>2025-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://localhost/user/place/detail/20</loc>
-    <lastmod>2025-07-28</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://dogrun-yamaguchi.com/user/event/4</loc>
+    <lastmod>2025-08-11</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 </urlset>

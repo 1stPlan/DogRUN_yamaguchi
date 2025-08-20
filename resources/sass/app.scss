@@ -1,15 +1,21 @@
 // Fonts :Nunito(使えてた。)
 
 // Variables
-@import 'variables';
+@use 'variables' as *;
 
 // Bootstrap
-@import 'bootstrap/scss/bootstrap';
+@use 'bootstrap/scss/bootstrap' as *;
 
-@import 'style';
+// ミキシンの読み込み
+@use 'mixin/responsive' as *;
+@use 'mixin/font-size' as *;
+@use 'mixin/home-title' as *;
+@use 'mixin/spacing' as *;
 
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-// Fonts :source-sans-pro
-@import url('https://use.typekit.net/igw1tvj.css');
-// Fonts :fontawesome
-@import url('https://use.fontawesome.com/releases/v5.5.0/css/all.css');
+// スタイルの読み込み
+@use 'style' as *;
+
+// 外部フォントの読み込み（HTMLのheadセクションで読み込むことを推奨）
+// @import url('https://fonts.googleapis.com/css?family=Nunito');
+// @import url('https://use.typekit.net/igw1tvj.css');
+// @import url('https://use.fontawesome.com/releases/v5.5.0/css/all.css');

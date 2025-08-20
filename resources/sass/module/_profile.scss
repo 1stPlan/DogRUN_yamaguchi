@@ -1,22 +1,26 @@
-@charset "UTF-8";
+/* -------------------------------------
+	mixin
+--------------------------------------*/
+@use "../mixin/font-size" as *;
+@use "../mixin/responsive" as *;
 
 /* -------------------------------------
-	mypage　(profile画面)
+	profile
 --------------------------------------*/
 .mypage {
     // &__status-name {
-    //     @include font-size("20");
+    //     @include font-size(20);
     //     font-weight: bold;
     //     background: white;
     //     display: inline-block;
     //     background-color: white;
-    //     padding-bottom: 0.5rem;
+    //     padding-bottom: 5px;
     //     width: 100%;
     //     text-align: left;
-    //     border-bottom: 0.2rem solid;
+    //     border-bottom: 2px solid;
 
     //     span {
-    //         font-size: 1.3rem;
+    //         font-size: 13px;
     //         font-weight: bold;
     //     }
     // }
@@ -25,21 +29,21 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 2rem;
+        gap: 20px;
     }
     &__status-item {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 5px;
     }
     &__status-item-tit {
-        @include font-size("14");
+        @include font-size(14);
         font-weight: bold;
-        border-bottom: 0.2rem solid;
+        border-bottom: 2px solid;
         text-align: left;
     }
     &__status-item-body {
-        @include font-size("16");
+        @include font-size(16);
         line-height: 1.5;
         text-align: left;
         white-space: pre-wrap;
@@ -68,8 +72,8 @@
     .mypage {
         &__status-list {
             padding: 0;
-            margin-top: 1rem;
-            gap: min(4.65vw, 2rem);
+            margin-top: 10px;
+            gap: min(4.65vw, 20px);
             flex-direction: column;
             width: 100%;
         }

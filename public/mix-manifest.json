@@ -2,8 +2,6 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/css/style.css": "/css/style.css",
-    "/css/page/first.css": "/css/page/first.css",
-    "/css/page/home.css": "/css/page/home.css",
     "/css/page/contact.css": "/css/page/contact.css",
     "/css/page/auth/login.css": "/css/page/auth/login.css",
     "/css/page/auth/register.css": "/css/page/auth/register.css",

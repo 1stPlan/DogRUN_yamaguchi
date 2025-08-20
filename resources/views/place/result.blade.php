@@ -8,7 +8,7 @@
 @endsection
 
 @section( 'script' )
-<script src="{{ asset('js/dogRun.js') }}"></script>
+@vite('resources/js/components/dogRun.js')
 @endsection
 
 @section('content')

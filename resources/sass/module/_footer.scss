@@ -1,67 +1,73 @@
-/*--------------------------
-   footer
--------------------------- */
+/* -------------------------------------
+	mixin
+--------------------------------------*/
+@use '../mixin/inner' as *;
+@use '../mixin/font-size' as *;
+@use '../mixin/responsive' as *;
+
+/* -------------------------------------
+	footer
+--------------------------------------*/
 
 .footer {
   position: relative;
   z-index: 1;
   width: 100%;
-  background-color: #f5f7fa;
-  height: 7rem;
+  // background-color: #f5f7fa;
+  // height: 70px;
   display: flex;
+  padding-bottom: 30px;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
 
-  &__inner{
+  &__inner {
     @include inner;
   }
 
-  &__nav{
-    width: 70%;
-    padding-top: 1.5rem;
+  &__nav {
+    width: 80%;
+    padding-top: 15px;
     margin: 0 auto;
     padding-bottom: calculation(4, 2);
   }
 
-  &__nav-list{
+  &__nav-list {
     width: 100%;
     display: flex;
     align-items: center;
   }
 
-  &__nav-item{
+  &__nav-item {
     flex: 1;
     text-align: center;
   }
 
-  &__nav-link{
-    @include font-size("18");
-
+  &__nav-link {
+    @include font-size(12);
     color: black;
-    padding: 1rem;
+    padding: 10px;
     letter-spacing: 3px;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 10px;
   }
-  
+
   &__copyright {
     color: black;
     letter-spacing: 3px;
     text-align: center;
-    @include font-size("12");
+    margin-top: 20px;
+    @include font-size(12);
   }
-
 }
 
-/* 
+/*
 レスポンシブ--------------------------- */
 
-@include responsive("sp") {
-
+@include responsive('sp') {
   .footer {
-
-    &__inner{
+    &__inner {
       padding: 0;
     }
 
@@ -75,7 +81,7 @@
       width: 100%;
       display: block;
     }
-    
+
     &__nav-item {
       // font-size: 1.1em;
       list-style-type: none;
@@ -83,20 +89,20 @@
       overflow: hidden;
     }
 
-    &__nav-link{
-      font-size: min(3.48vw, 1.3rem);
+    &__nav-link {
+      font-size: min(3.48vw, 13px);
       display: inline-block;
       color: black;
       padding: 3% 0;
       width: 100%;
       text-align: center;
-      
-      span{
+
+      span {
         display: inline;
         float: right;
-        padding-right: 1rem;
+        padding-right: 10px;
       }
-      img{
+      img {
         width: 50%;
       }
     }

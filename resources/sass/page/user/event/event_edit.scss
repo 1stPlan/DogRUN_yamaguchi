@@ -1,11 +1,10 @@
 /* -------------------------------------
 	mixin
 --------------------------------------*/
-
-@import "../../../mixin/responsive";
-@import "../../../mixin/inner";
-@import "../../../mixin/home-title";
-@import "../../../mixin/font-size";
+@use "../../../mixin/responsive" as *;
+@use "../../../mixin/inner" as *;
+@use "../../../mixin/home-title" as *;
+@use "../../../mixin/font-size" as *;
 
 /* -------------------------------------
 	event_edit
@@ -15,17 +14,17 @@
     background-color: #f5f7fa;
 
     &__title {
-        @include font-size("48");
-        padding-top: max(3.57vw, 3.5rem);
-        padding-bottom: max(1.43vw, 1.5rem);
-        padding-left: 3rem;
+        @include font-size(48);
+        padding-top: max(3.57vw, 35px);
+        padding-bottom: max(1.43vw, 15px);
+        padding-left: 30px;
     }
     &__page_header {
         position: relative;
         width: 100%;
         background-size: cover;
         background-position: center;
-        height: min(28.12vw, 30rem);
+        height: min(28.12vw, 30px);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -37,8 +36,8 @@
         @include inner;
     }
     &__cont {
-        margin-top: min(3.5vw, 3.5rem);
-        padding-bottom: 3rem;
+        margin-top: min(3.5vw, 35px);
+        padding-bottom: 30px;
     }
     &__table {
         border-collapse: collapse;
@@ -51,21 +50,21 @@
     &__table-th {
         width: 25%;
         padding: 0 5%;
-        @include font-size("14");
+        @include font-size(14);
         vertical-align: middle;
     }
     &__table-td {
         text-align: center;
-        padding: min(1.5vw, 1.5rem) 0;
+        padding: min(1.5vw, 15px) 0;
     }
     &__table-icon {
-        @include font-size("14");
+        @include font-size(14);
     }
     &__table-date {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 1rem;
+        gap: 10px;
     }
 
     &__detail {
@@ -74,24 +73,24 @@
 
     &__btn {
         width: 50%;
-        margin: min(3.57vw, 5rem) auto 0;
+        margin: min(3.57vw, 50px) auto 0;
         text-align: center;
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 2rem;
+        gap: 20px;
     }
 
     .form-control {
         height: 3.5em;
-        @include font-size("12");
-        padding: 0.6em 0.75rem;
+        @include font-size(12);
+        padding: 0.6em 7.5px;
     }
 }
 @include responsive("sp") {
     .event_edit {
         &__page_header {
-            height: min(34.88vw, 15rem);
+            height: min(34.88vw, 150px);
         }
     }
 }

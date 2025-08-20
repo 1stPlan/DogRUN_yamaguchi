@@ -4,6 +4,74 @@
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('css/page/user/post/post_show.css') }}">
+<style>
+/* コメントフォームのツールチップ */
+.comment_form__form {
+  position: relative;
+}
+
+.tooltip-message {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.tooltip-message::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top: 6px solid #333;
+}
+
+/* フォームにホバーしたらツールチップを表示 */
+.comment_form__form:hover .tooltip-message {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 無効化されたsubmitボタンのスタイル */
+.comment_form__submit--disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.comment_form__submit--disabled:hover {
+  background-color: #ccc;
+  transform: none;
+}
+
+/* 無効化されたインプットフィールドのスタイル */
+.comment_form__input--disabled {
+  background-color: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+  opacity: 0.7;
+  border: 1px solid #ddd;
+}
+
+.comment_form__input--disabled:focus {
+  outline: none;
+  border-color: #ddd;
+  box-shadow: none;
+}
+</style>
 @endsection
 
 @section('content')
@@ -94,11 +162,21 @@
 
     <form class="comment_form__form" method="post" action="{{ route('user.event.comment.store', $post) }}">
       {{ csrf_field() }}
-      <input class="comment_form__input" type="text" name="body" placeholder="" value="{{ old('body') }}">
-      @if ($errors->has('body'))
-      <span class="error">{{ $errors->first('body') }}</span>
-      @endif
-      <input class="comment_form__submit" type="submit" value="コメント">
+      @auth
+        <input class="comment_form__input" type="text" name="body" placeholder="" value="{{ old('body') }}">
+        @if ($errors->has('body'))
+        <span class="error">{{ $errors->first('body') }}</span>
+        @endif
+        <input class="comment_form__submit" type="submit" value="コメント">
+      @else
+        <input class="comment_form__input comment_form__input--disabled" type="text" name="body" placeholder="" value="" disabled>
+        <input class="comment_form__submit comment_form__submit--disabled" type="button" value="コメント" disabled>
+      @endauth
+
+      <!-- ツールチップ（ログインしていない場合のみ表示） -->
+      @guest
+        <div class="tooltip-message">ログインが必要です</div>
+      @endguest
     </form>
 
   </div>

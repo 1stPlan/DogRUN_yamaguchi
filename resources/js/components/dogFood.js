@@ -80,9 +80,12 @@ function dataList(amazonDataList) {
 function generateHTML(dataList) {
     let html = "";
 
-    dataList.forEach(data => {
+    // 最大10個まで表示
+    const displayCount = Math.min(dataList.length, 10);
+    for (let i = 0; i < displayCount; i++) {
+        const data = dataList[i];
         html += createStoreHTML(data);
-    });
+    }
 
     return [html];
 }

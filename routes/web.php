@@ -70,21 +70,12 @@ Route::namespace('User')->prefix('user')->name('user.')->group(function () {
 
         Route::get('/event/posts/{event}', 'EventPostController@show')->name('event.post.show');
 
-        // イベントを作成したら同期して作成して消したら一緒に消えるようにする為不要
-        // Route::post('/post', 'EventPostController@store')->name('post.store');
-        // Route::delete('/posts/destroy/{post}/', 'EventPostController@destroy');
 
         Route::post('/event/posts/{event}/comments', 'EventCommentController@store')->name('event.comment.store');
         Route::delete('/event/posts/comments/{comment}', 'EventCommentController@destroy')->name('event.comment.destroy');
 
         Route::middleware('auth:user')->group(function () {
             Route::middleware('afterAuthentication')->group(function () {
-
-                //         Route::get('/event/create', 'EventController@create')->name('event.create');
-                //         Route::post('/event', 'EventController@store')->name('event.store');
-                //         Route::get('/event/edit/{event}', 'EventController@edit')->name('event.edit');
-                //         Route::patch('/event/{event}', 'EventController@update')->name('event.update');
-                //         Route::delete('/event/{event}', 'EventController@destroy')->name('event.destroy');
 
                 Route::post('event/{event}/participant', 'EventController@eventParticipant')->name('event.participant');
             });
@@ -118,6 +109,15 @@ Route::namespace('User')->prefix('user')->name('user.')->group(function () {
     Route::get('/contact', 'ContactFormController@index')->name('contact');
     Route::post('/contact/form', 'ContactFormController@form')->name('contact.form');
     Route::post('/contact/send', 'ContactFormController@send')->name('contact.send');
+    
+    // プライバシーポリシー・利用規約ページ
+    Route::get('/privacy-policy', function () {
+        return view('user.privacy-policy');
+    })->name('privacy-policy');
+    
+    Route::get('/terms', function () {
+        return view('user.terms');
+    })->name('terms');
 });
 
 // });

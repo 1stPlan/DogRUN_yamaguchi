@@ -3,99 +3,79 @@
 /* -------------------------------------
 	reset
 --------------------------------------*/
-@import "base/reset";
-
-/* -------------------------------------
-	mixin
---------------------------------------*/
-// responsive
-@import "mixin/responsive";
-
-// font-size
-@import "mixin/font-size";
-
-// inner
-@import "mixin/inner";
-
-//home-title
-@import  "mixin/home-title";
-
-
-/* -------------------------------------
-	function
---------------------------------------*/
-//culation
-@import  "functions/calculation";
-
+@use 'base/reset' as *;
 
 /* -------------------------------------
 	common
 --------------------------------------*/
-@import "base/common";
+@use 'base/common' as *;
 
 /* -------------------------------------
-	tailwind
+	mixin
 --------------------------------------*/
-// @import "tailwindcss";
+@use 'mixins' as *;
+
 
 /* -------------------------------------
 	page
 --------------------------------------*/
 // auth
-@import "page/auth/login";
-@import "page/auth/register";
-@import "page/auth/password";
+@use 'page/auth/login' as *;
+@use 'page/auth/register' as *;
+@use 'page/auth/password' as *;
 
 // contact
-@import "page/contact";
-
-// first
-@import "page/first";
-
-// user home
-@import "page/home/home";
+@use 'page/contact' as *;
 
 // user event
-@import "page/user/event/event";
-@import "page/user/event/event_show";
-@import "page/user/event/event_edit";
-@import "page/user/event/event_create";
+@use 'page/user/event/event' as *;
+@use 'page/user/event/event_show' as *;
+@use 'page/user/event/event_edit' as *;
+@use 'page/user/event/event_create' as *;
 
 // user post
-@import "page/user/post/post";
-@import "page/user/post/post_show";
+@use 'page/user/post/post' as *;
+@use 'page/user/post/post_show' as *;
 
 // user setting
-@import "page/user/setting/setting";
-@import "page/user/setting/setting_edit";
-@import "page/user/setting/setting_withdrawal";
+@use 'page/user/setting/setting' as *;
+@use 'page/user/setting/setting_edit' as *;
+@use 'page/user/setting/setting_withdrawal' as *;
 
-// user place
-@import "page/user/place";
+// user top
+@use 'page/user/top' as *;
+
+// user result
+@use 'page/user/result' as *;
 
 // user type
-@import "page/user/type";
+@use 'page/user/type' as *;
 
 // user select
-@import "page/user/select";
+@use 'page/user/select' as *;
 
 // user instagram
-@import "page/user/instagram";
+@use 'page/user/instagram' as *;
 
 // user food
-@import "page/user/food";
-
+@use 'page/user/food' as *;
 
 /* -------------------------------------
 	module
 --------------------------------------*/
-@import "module/page_top";
-@import "module/button";
-@import "module/header";
-@import "module/footer";
+@use 'module/page_top' as *;
+@use 'module/header' as *;
+@use 'module/footer' as *;
 
-@import "module/bubblyButton";
-@import "module/pagination";
-@import "module/comment_form";
-@import "module/dropdown";
-@import "module/profile";
+@use 'module/bubblyButton' as *;
+@use 'module/pagination' as *;
+@use 'module/comment_form' as *;
+@use 'module/dropdown' as *;
+@use 'module/profile' as *;
+@use 'module/floating' as *;
+
+// user privacy-policy
+@use 'page/user/privacy-policy' as *;
+
+// user terms
+@use 'page/user/terms' as *;

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Place;
 
 use App\Http\Controllers\Controller;
+use App\Models\Place;
 use Illuminate\Support\Facades\Auth;
 
 class PlaceController extends Controller
@@ -14,7 +15,12 @@ class PlaceController extends Controller
 
     public function index()
     {
-        return view('place.place');
+        // ドッグランの総数を取得
+        $dogrunCount = Place::count();
+
+        return view('place.top')->with([
+            'dogrunCount' => $dogrunCount,
+        ]);
     }
 
     public function result()

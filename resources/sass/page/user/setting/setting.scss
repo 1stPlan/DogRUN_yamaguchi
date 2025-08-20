@@ -3,11 +3,9 @@
 /* -------------------------------------
   mixin
 --------------------------------------*/
-
-@import "../../../mixin/responsive";
-@import "../../../mixin/inner";
-@import "../../../mixin/font-size";
-@import "../../../mixin/floating";
+@use "../../../mixin/responsive" as *;
+@use "../../../mixin/inner" as *;
+@use "../../../mixin/font-size" as *;
 
 /* -------------------------------------
   setting
@@ -15,58 +13,58 @@
 
 .setting {
     background-color: #f5f7fa;
-    padding-bottom: min(5vw, 5rem);
+    padding-bottom: min(5vw, 50px);
     &__inner {
         @include inner;
     }
     &__title {
-        padding-top: min(5vw, 5rem);
-        @include font-size("48");
+        padding-top: min(5vw, 50px);
+        @include font-size(48);
         font-weight: 900;
     }
     &__cards {
-        padding-top: min(3vw, 3rem);
-        @include font-size("16");
+        padding-top: min(3vw, 30px);
+        @include font-size(16);
     }
     &__card {
-        padding: min(2vw, 2rem);
+        padding: min(2vw, 20px);
         background: white;
     }
     &__card:nth-child(n + 2) {
-        margin-top: min(5vw, 5rem);
+        margin-top: min(5vw, 50px);
     }
     &__card-header {
-        @include font-size("20");
+        @include font-size(20);
         font-weight: bold;
     }
     &__card-body {
-        margin-top: min(3vw, 3rem);
+        margin-top: min(3vw, 30px);
     }
     &__card-commands {
         display: flex;
-        gap: 1rem;
-        margin-top: min(2vw, 2rem);
+        gap: 10px;
+        margin-top: min(2vw, 20px);
         flex-wrap: wrap;
 
         a {
-            @include font-size("14");
+            @include font-size(14);
         }
     }
     &__card-table {
-        margin: min(2vw, 2rem) 0;
+        margin: min(2vw, 20px) 0;
         line-height: 2;
-        border-bottom: 0.1rem solid #dee2e6;
-        @include font-size("16");
+        border-bottom: 1px solid #dee2e6;
+        @include font-size(16);
 
         th {
             vertical-align: middle;
-            padding: 1rem;
+            padding: 10px;
             width: 30%;
-            padding: min(2vw, 2rem) min(0.75vw, 0.75rem);
+            padding: min(2vw, 20px) min(0.75vw, 7.5px);
         }
         td {
             vertical-align: middle !important;
-            padding: min(2vw, 2rem) min(1vw, 1rem);
+            padding: min(2vw, 20px) min(1vw, 10px);
 
             &.setting__card-td-height {
                 width: 100%;
@@ -84,11 +82,11 @@
     &__card-pic::before {
         content: "";
         display: block;
-        padding-top: min(15vw, 15rem);
+        padding-top: min(15vw, 150px);
     }
     &__card-img {
         position: absolute;
-        width: min(15vw, 15rem);
+        width: min(15vw, 150px);
         height: 100%;
         top: 0;
         bottom: 0;
@@ -101,17 +99,17 @@
     }
     &__commands {
         display: flex;
-        gap: 1rem;
+        gap: 10px;
 
         a {
             display: block;
             flex: 1;
-            @include font-size("14");
+            @include font-size(14);
         }
     }
 
     &__modal-dialog {
-        height: calc(100vh - 3.5rem);
+        height: calc(100vh - 35px);
         display: flex;
         align-items: center;
     }
@@ -124,14 +122,14 @@
         padding: 2%;
     }
     &__modal-tit {
-        @include font-size("24");
+        @include font-size(24);
     }
     &__modal-body {
         padding: 2em;
         display: flex;
         flex-direction: column;
-        gap: min(2vw, 2rem);
-        @include font-size("16");
+        gap: min(2vw, 20px);
+        @include font-size(16);
 
         span {
             display: inline-block;
@@ -167,34 +165,34 @@
         padding: 2%;
     }
     &__modal-btn {
-        @include font-size("16");
+        @include font-size(16);
     }
 }
 @include responsive("sp") {
     .setting {
-        padding-bottom: min(9.3vw, 4rem);
+        padding-bottom: min(9.3vw, 40px);
 
         &__title {
-            padding-top: min(6.98vw, 3rem);
+            padding-top: min(6.98vw, 30px);
         }
         &__cards {
-            padding-top: min(4.65vw, 2rem);
+            padding-top: min(4.65vw, 20px);
         }
         &__card {
-            padding: min(3.49vw, 1.5rem);
+            padding: min(3.49vw, 15px);
             background: white;
         }
         &__card:nth-child(n + 2) {
-            margin-top: min(4.65vw, 3rem);
+            margin-top: min(4.65vw, 30px);
         }
         &__card-table {
-            margin: min(4.65vw, 2rem) 0;
+            margin: min(4.65vw, 20px) 0;
             th {
-                padding: min(4.65vw, 2rem) min(1.74vw, 0.75rem);
+                padding: min(4.65vw, 20px) min(1.74vw, 7.5px);
             }
 
             td {
-                padding: min(4.65vw, 2rem) min(2.33vw, 1rem);
+                padding: min(4.65vw, 20px) min(2.33vw, 10px);
             }
         }
         &__card-table--profile {
@@ -203,11 +201,11 @@
             }
         }
         &__card-body {
-            margin-top: min(2.67vw, 1rem);
+            margin-top: min(2.67vw, 10px);
         }
         &__card-commands {
-            gap: min(2.67vw, 1rem);
-            margin-top: min(4.65vw, 2rem);
+            gap: min(2.67vw, 10px);
+            margin-top: min(4.65vw, 20px);
         }
         &__card-pic::before {
             padding-top: 50%;
