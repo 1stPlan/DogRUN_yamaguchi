@@ -1,7 +1,9 @@
+@use "font-size" as *;
+
 @mixin home-title($type: "main") {
     @if $type == "main" {
 
-        @include font-size("48");
+        @include font-size(48);
         position: relative;
         font-family: source-sans-pro, "arial black";
         text-align: center;
@@ -19,9 +21,9 @@
 
     @if $type == "sub" {
 
-        @include font-size("32");
+        @include font-size(32);
 
-        padding-top: 1rem;
+        padding-top: 10px;
         color: rgb(167, 123 ,0);
         text-align: center;
     }

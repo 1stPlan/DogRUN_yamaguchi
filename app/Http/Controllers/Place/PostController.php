@@ -77,7 +77,7 @@ class PostController extends Controller
             ]);
         });
 
-        return redirect()->action('User\Place\PostController@index', ['place_id' => $data['place_id']]);
+        return redirect()->action('Place\PostController@index', ['place_id' => $data['place_id']]);
     }
 
     public function destroy(Post $post)

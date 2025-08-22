@@ -7,8 +7,8 @@ window._ = _;
  * code may be modified to fit the specific needs of your application.
  */
 
-import Popper from 'popper.js';
-window.Popper = Popper.default;
+import * as Popper from '@popperjs/core';
+window.Popper = Popper;
 
 import jQuery from 'jquery';
 window.$ = window.jQuery = jQuery;

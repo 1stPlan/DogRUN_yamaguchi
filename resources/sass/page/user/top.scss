@@ -1,0 +1,861 @@
+@charset "UTF-8";
+/* -------------------------------------
+	mixin
+--------------------------------------*/
+@use '../../mixin/responsive' as *;
+@use '../../mixin/inner' as *;
+@use '../../mixin/font-size' as *;
+@use '../../mixin/spacing' as *;
+
+/*------------------------------------
+    top
+--------------------------------------- */
+.top {
+  // padding-bottom: min(8vw, 80px);
+
+  &__page_header {
+    position: relative;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    height: min(28.12vw, 300px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    flex-direction: column;
+    background-image: url(@images/dogrun_header.jpg);
+  }
+  &__page_title {
+    @include padding-top(50);
+    @include font-size(48);
+    color: #fff;
+    text-shadow: 0 3px 4px rgba(34, 32, 32, 0.9);
+    display: flex;
+    align-items: center;
+  }
+  &__page_exp {
+    @include font-size(16);
+    color: #fff;
+    text-shadow: 0 3px 4px rgba(34, 32, 32, 0.9);
+  }
+  &__inner {
+    @include inner;
+  }
+
+  &__title {
+    @include font-size(24);
+    text-align: center;
+    @include margin-bottom(30);
+    color: #2c3e50;
+    font-weight: 700;
+  }
+
+  /*------------------------------------
+    top-info 山口県ドッグラン情報セクション
+  -------------------------------------- */
+  &-info {
+    padding: 80px 0;
+    // background-color: #f8f9fa;
+    width: 100%;
+    display: block;
+
+    &__features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 20px;
+    }
+
+    &__feature {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      h3 {
+        @include font-size(16);
+        font-weight: bold;
+        color: #333;
+      }
+
+      p {
+        @include font-size(12);
+        color: #666;
+        line-height: 1.6;
+      }
+    }
+  }
+
+  /*------------------------------------
+    top-overview
+  -------------------------------------- */
+  &-overview {
+    @include padding-top(80);
+    @include padding-bottom(80);
+    background-color: #f8f9fa;
+
+    &__picture {
+      display: none;
+    }
+
+    &__content {
+      @include margin-top(40);
+      @include responsive('tablet') {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    &__left {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    &__description {
+      @include font-size(16);
+      line-height: 1.8;
+      color: #495057;
+    }
+
+    &__stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+
+      @include responsive('tablet') {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    &__stat {
+      text-align: center;
+      padding: 15px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+      h3 {
+        @include font-size(14);
+        color: #6c757d;
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+
+      .stat-number {
+        @include font-size(24);
+        color: #e74c3c;
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+
+      .stat-description {
+        @include font-size(12);
+        color: #6c757d;
+      }
+    }
+
+    &__map {
+      position: relative;
+    }
+    &__map-title {
+      @include font-size(18);
+      font-weight: bold;
+      text-align: center;
+      color: #333;
+
+      span {
+        @include font-size(32);
+        color: #bc0d19;
+        font-weight: 900;
+        display: inline-block;
+      }
+    }
+
+    &__map-container {
+      position: relative;
+      @include margin-top(30);
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    &__map-google {
+      width: 100%;
+      height: 400px;
+      position: relative; // カスタムマーカーの基準点
+
+      .google-map {
+        width: 100%;
+        height: 400px;
+        border-radius: 15px;
+        background-color: #f0f0f0;
+        border: 1px solid #ddd;
+
+        // Google Mapsが読み込まれる前の表示
+        &:empty::before {
+          content: '地図を読み込み中...';
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          color: #666;
+          @include font-size(14);
+        }
+      }
+
+      // カスタムドッグランマーカーのスタイル
+      .custom-dogrun-marker {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: #ffd93d;
+        border: 3px solid #ff6b6b;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 10000;
+        transform: translate(-50%, -50%);
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        pointer-events: auto;
+
+        &:hover {
+          transform: translate(-50%, -50%) scale(1.2);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+          background: #ffe066;
+        }
+
+        &:active {
+          transform: translate(-50%, -50%) scale(0.95);
+        }
+      }
+
+      .custom-info-window {
+        position: absolute;
+        padding: 8px 12px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        min-width: 120px;
+        z-index: 10002;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        pointer-events: none;
+        white-space: nowrap;
+      }
+      .city-label {
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      // ドッグランマーカーのホバー効果
+      .gm-style-iw {
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        z-index: 10001; // マーカーより上に表示
+
+        // 情報ウィンドウの矢印を非表示
+        .gm-style-iw-t::after {
+          display: none;
+        }
+
+        // 情報ウィンドウの内容
+        .gm-style-iw-d {
+          overflow: hidden;
+          border-radius: 10px;
+        }
+
+        // 情報ウィンドウの背景
+        .gm-style-iw-c {
+          border-radius: 10px;
+          padding: 0;
+        }
+      }
+
+      // 情報ウィンドウの背景オーバーレイ
+      .gm-style-iw-tc {
+        display: none !important; // 矢印を完全に非表示
+      }
+
+      // マーカーのホバー効果
+      .gm-style-moc {
+        cursor: pointer !important;
+        transition: transform 0.2s ease !important;
+
+        &:hover {
+          transform: scale(1.1) !important;
+        }
+      }
+    }
+
+    &__map-tooltip {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 5px;
+      @include font-size(12);
+      z-index: 1000;
+      display: none;
+    }
+  }
+
+  /*------------------------------------
+    top-search
+  -------------------------------------- */
+  &-search {
+    @include padding-top(80);
+    @include padding-bottom(80);
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+
+    &__title {
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, #3498db, #2980b9);
+        border-radius: 2px;
+      }
+    }
+
+    &__content {
+      text-align: center;
+    }
+
+    &__description {
+      margin-bottom: 1px;
+
+      p {
+        @include font-size(14);
+        color: #5a6c7d;
+        line-height: 1.6;
+        font-weight: bold;
+      }
+    }
+
+    &__button {
+      @include margin-top(40);
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 15px 30px;
+        @include font-size(13);
+        font-weight: 600;
+        color: #fff;
+        background: linear-gradient(135deg, #3498db, #2980b9);
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
+
+        i {
+          @include font-size(12);
+        }
+      }
+    }
+
+    &__result {
+      background: #fff;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      @include margin-top(20);
+      text-align: left;
+      position: relative;
+      z-index: 9999999;
+
+      &.show {
+        display: block;
+      }
+    }
+
+    // &__coordinates {
+    //   background: #f8f9fa;
+    //   padding: 20px;
+    //   border-radius: 10px;
+    //   margin-bottom: 25px;
+
+    //   p {
+    //     margin: 5px 0;
+    //     font-family: 'Courier New', monospace;
+    //     color: #495057;
+    //   }
+    // }
+
+    &__nearby {
+      h3 {
+        @include font-size(13);
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 15px;
+      }
+
+      .nearby-dogrun-card {
+        &__header {
+          display: flex;
+          align-items: center;
+          margin-bottom: 15px;
+
+          span {
+            background: #bc0d19;
+            color: #fff;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            width: 30px;
+          }
+
+          &__title {
+            margin: 0;
+            color: #2c3e50;
+            font-size: 1.1rem;
+          }
+        }
+
+        &__list {
+          margin-bottom: 15px;
+          li {
+            margin: 5px 0;
+            font-weight: bold;
+          }
+        }
+
+        &__footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        &__point {
+          color: #6c757d;
+          font-size: 0.9rem;
+        }
+
+        &__btn {
+          background: #3498db;
+          color: #fff;
+          padding: 8px 15px;
+          border-radius: 5px;
+          text-decoration: none;
+          font-size: 0.9rem;
+          transition: background 0.3s;
+
+          &:hover {
+            background: #2980b9;
+            color: #fff;
+          }
+        }
+
+        .close-button-container {
+          text-align: center;
+          margin-top: 20px;
+          padding: 15px;
+
+          .close-nearby-list {
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+            &:hover {
+              background: #c0392b;
+              transform: translateY(-2px);
+            }
+
+            &:active {
+              transform: translateY(0);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /*------------------------------------
+     top-filter
+  -------------------------------------- */
+  &-filter {
+    padding: 80px 0px;
+
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 20px;
+    }
+
+    &__item {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+      }
+    }
+
+    &__image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    &__content {
+      padding: 15px;
+
+      h3 {
+        @include font-size(14);
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      p {
+        @include font-size(12);
+        color: #666;
+        line-height: 1.6;
+      }
+    }
+
+    &__checkbox {
+      @include font-size(16);
+      width: 100%;
+      margin-top: min(6vw, 60px);
+      border-top: 1px solid rgba(0, 0, 0, 0.2);
+    }
+    &__search-key-word {
+      margin-top: min(4vw, 40px);
+    }
+    &__title-key-word {
+      @include font-size(24);
+      margin-bottom: min(1.6vw, 16px);
+      letter-spacing: 0.2px;
+      opacity: 1;
+    }
+    &__input-key-word input {
+      width: 100%;
+      height: 40px;
+      background: #fff no-repeat padding-box;
+      border-radius: 4px;
+      opacity: 1;
+      padding: 14px 0 14px 12px;
+      border: 1px solid #7f7f7f;
+    }
+
+    &__checkbox-services {
+      margin-top: min(4vw, 40px);
+    }
+    &__title-key-word {
+      margin-bottom: min(3vw, 30px);
+      font-weight: 700;
+    }
+
+    &__my-checkbox {
+      display: inline-block;
+      position: relative;
+      margin: 1em 0;
+      padding: 3px 28px 0;
+      cursor: pointer;
+      user-select: none;
+      z-index: 1; // チェックボックスのz-indexを設定
+
+      // ホバー効果を追加
+      &:hover .top-filter__checkmark {
+        border-color: #2e80ff;
+        box-shadow: 0 0 5px rgba(46, 128, 255, 0.3);
+      }
+    }
+    &__my-checkbox input {
+      display: none;
+
+      &:checked + .top-filter__checkmark {
+        background: #2e80ff; /* チェック時の色 */
+        border-color: #2e80ff; /* チェック時の色 */
+      }
+      &:checked + .top-filter__checkmark:after {
+        opacity: 1; /* 透明を解除 */
+      }
+    }
+    &__checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 22px;
+      width: 22px;
+      border: solid 2px #d4dae2;
+      border-radius: 4px;
+      box-sizing: border-box;
+      z-index: 1; // チェックマークのz-indexを設定
+      background: #fff; // 背景色を設定
+      transition: all 0.2s ease; // アニメーション効果を追加
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 7px;
+        top: 3px;
+        width: 6px;
+        height: 10px;
+        border: solid #fff;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+        opacity: 0;
+        pointer-events: none; // ポインターイベントを無効化
+        z-index: 1; // z-indexを設定
+        transition: opacity 0.2s ease; // アニメーション効果を追加
+      }
+    }
+    &__button-filter {
+      margin-top: min(5vw, 50px);
+      flex-wrap: wrap;
+      width: 100%;
+      justify-content: center;
+      display: flex;
+      gap: min(4.65vw, 20px);
+      position: relative; // 位置関係を明確化
+      z-index: 20; // チェックボックスより前面に表示
+    }
+    &__button-filter-clear {
+      color: #000;
+      background: #eee;
+      border-radius: 4px;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      transition: opacity 0.2s ease;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: min(2.33vw, 10px) min(4vw, 40px);
+      @include font-size(14);
+      font-weight: 700;
+      position: relative; // 位置関係を明確化
+      z-index: 10; // チェックボックスより前面に表示
+    }
+    &__button-search {
+      color: #fff;
+      background: #bc0d19;
+      border-radius: 4px;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      transition: opacity 0.2s ease;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: min(2.33vw, 10px) min(4vw, 40px);
+      @include font-size(14);
+      font-weight: 700;
+      position: relative; // 位置関係を明確化
+      z-index: 10; // チェックボックスより前面に表示
+    }
+  }
+
+  /*------------------------------------
+    top-tips
+  -------------------------------------- */
+  &-tips {
+    margin-top: 40px;
+    padding: 80px 0px;
+    background-color: #f8f9fa;
+
+    &__content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    &__tip {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+      h3 {
+        @include font-size(13);
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        @include font-size(12);
+        line-height: 1.2;
+
+        li {
+          padding: 5px 0;
+          color: #666;
+          line-height: 1.6;
+          position: relative;
+          padding-left: 15px;
+
+          &:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*------------------------------------
+   tb
+--------------------------------------- */
+@include responsive('tb') {
+  // レスポンシブ対応
+  @media (max-width: 768px) {
+    .top {
+      /*------------------------------------
+        top-info
+      -------------------------------------- */
+      &-info {
+        display: none;
+      }
+
+      /*------------------------------------
+        top-overview
+      -------------------------------------- */
+      &-overview {
+        &__picture {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          @include margin-top(20);
+        }
+
+        &__map-google {
+          height: 300px;
+
+          .google-map {
+            height: 300px;
+          }
+        }
+      }
+
+      /*------------------------------------
+        top-filter
+      -------------------------------------- */
+      &-filter {
+        &__list {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+  }
+}
+
+/*------------------------------------
+    sp
+--------------------------------------- */
+@include responsive('sp') {
+  .top {
+    padding-bottom: min(11.63vw, 50px);
+    &__page_header {
+      height: min(34.88vw, 150px);
+    }
+
+    /*------------------------------------
+        top-overview
+      -------------------------------------- */
+    &-overview {
+      &__picture {
+      }
+      &__map-google {
+        height: 250px;
+        .google-map {
+          height: 250px; // SP時は高さを250pxに縮小
+          border-radius: 10px; // SP時は角丸も少し小さく
+        }
+      }
+    }
+
+    /*------------------------------------
+        top-search
+      -------------------------------------- */
+    &-search {
+    }
+
+    /*------------------------------------
+        top-filter
+      -------------------------------------- */
+    &-filter {
+      &__list {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      &__button-filter {
+        margin-top: min(9.3vw, 40px);
+      }
+      &__search-key-word {
+        margin-top: min(6.98vw, 30px);
+      }
+      &__title-key-word {
+        margin-bottom: min(4.65vw, 20px);
+      }
+      &__checkbox-services {
+        margin-top: min(6.98vw, 30px);
+      }
+      &__button-search {
+        width: 100%;
+      }
+    }
+    /*------------------------------------
+        top-tips
+      -------------------------------------- */
+    &-tips {
+      &__content {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}

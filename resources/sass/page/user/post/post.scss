@@ -1,410 +1,407 @@
 /* -------------------------------------
 	mixin
 --------------------------------------*/
-
-@import "../../../mixin/responsive";
-@import "../../../mixin/inner";
-@import "../../../mixin/font-size";
-@import "../../../mixin/home-title";
-@import "../../../mixin/floating";
+@use '../../../mixins' as *;
 
 /* -------------------------------------
 	post
 --------------------------------------*/
 
 .post {
-    background-color: #f5f7fa;
-    padding: min(5vw, 5rem) 0;
-    min-height: calc(100vh - 13rem);
+  background-color: #f5f7fa;
+  padding: min(5vw, 50px) 0;
+  min-height: calc(100vh - 130px);
 
-    &__inner {
-        @include inner;
-    }
+  &__inner {
+    @include inner;
+  }
 
-    &__head {
-        display: flex;
-        align-items: center;
-        gap: min(2vw, 2rem);
-        padding: min(3vw, 3rem) 0;
-    }
-
-    &__title {
-        @include font-size("32");
-        display: flex;
-        align-items: center;
-
-        span {
-            @include font-size("24");
-        }
-    }
-    &__pic {
-        width: min(10vw, 10rem);
-        position: relative;
-
-        &::before {
-            content: "";
-            display: block;
-            padding-top: 100%;
-        }
-        img {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            margin: auto;
-            object-fit: contain;
-        }
-    }
-    &__desc {
-        border-bottom: 0.1rem solid black;
-        @include font-size("18");
-        padding-bottom: min(2vw, 2rem);
-        line-height: 1.5;
-    }
-    &__cont {
-        padding-top: min(4vw, 4rem);
-    }
-    &__btn {
-        padding: 0.3em 0.6em;
-        border: 1px solid black;
-        border-radius: 1rem;
-        box-shadow: 0.4rem 0.4rem 0.4rem #ccc;
-
-        &:hover {
-            color: black;
-        }
-        &:active {
-            transform: translateY(0.2em);
-        }
-    }
-
-    &__list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: min(2vw, 2rem);
-    }
-
-    &__item {
-        width: min(33.3% - min(1.5vw, 1.5rem));
-        height: auto;
-        border: 1px solid black;
-        padding: min(2vw, 2rem);
-        border-radius: 5px;
-        background: white;
-        position: relative;
-        display: flex;
-        gap: 1rem;
-        flex-direction: column;
-        transition: all 0.3s ease-in-out;
-        transform: translateY(0);
-        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
-
-        &:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
-        }
-    }
-    &_item-link {
-        display: flex;
-        flex-direction: column;
-    }
-    &__item-tit {
-        flex: 1;
-        @include font-size("18");
-        font-weight: bold;
-    }
-    &__item-body {
-        border-top: 1px solid black;
-        @include font-size("16");
-        line-height: 1.5;
-        padding-top: 0.5em;
-        margin-top: 0.2em;
-        overflow-wrap: break-word;
-    }
-    &__item-date {
-        @include font-size("12");
-        width: auto;
-        text-align: right;
-    }
-
-    &__item-bottom {
-        display: flex;
-        gap: 1rem;
-    }
-
-    &__item-rating {
-        align-items: center;
-        display: flex;
-        i {
-            color: #ccc;
-            cursor: pointer;
-            @include font-size("20");
-            padding: 0 5px;
-            position: relative;
-            transition: color 0.3s;
-        }
-    }
-
-    &__item-user-name {
-        display: flex;
-        @include font-size("16");
-        margin-top: min(2vw, 2rem);
-        align-items: center;
-        gap: 1rem;
-        margin-top: auto;
-        justify-content: end;
-    }
-
-    &__item-form {
-        @include font-size("14");
-        position: absolute;
-        bottom: 8%;
-        right: 5%;
-        width: 4em;
-
-        .del {
-            width: 100%;
-            border: 2px solid #ababab;
-            text-align: center;
-            display: block;
-            padding: 3%;
-            background: darksalmon;
-            color: #fff;
-            border-radius: 0.5rem;
-        }
-    }
-    &__item-empty {
-        @include font-size("16");
-    }
-
-    &__item-back {
-        text-align: center;
-        @include font-size("14");
-        a {
-            border: 1px solid black;
-            padding: 0.5rem min(2vw, 2rem);
-            border-radius: 5px;
-            background: black;
-            color: #fff;
-            font-weight: 700;
-        }
-    }
-}
-[class^="post__item-like"],
-[class^="post__item-liked"] {
+  &__head {
     display: flex;
     align-items: center;
+    gap: min(2vw, 20px);
+    padding: min(3vw, 30px) 0;
+  }
+
+  &__title {
+    @include font-size(32);
+    display: flex;
+    align-items: center;
+
+    span {
+      @include font-size(24);
+    }
+  }
+  &__pic {
+    width: min(10vw, 100px);
+    position: relative;
+
+    &::before {
+      content: '';
+      display: block;
+      padding-top: 100%;
+    }
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      object-fit: contain;
+    }
+  }
+  &__desc {
+    border-bottom: 1px solid black;
+    @include font-size(18);
+    padding-bottom: min(2vw, 20px);
+    line-height: 1.5;
+  }
+  &__cont {
+    padding-top: min(4vw, 40px);
+  }
+  &__btn {
+    padding: 0.3em 0.6em;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px #ccc;
+
+    &:hover {
+      color: black;
+    }
+    &:active {
+      transform: translateY(0.2em);
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: min(2vw, 20px);
+  }
+
+  &__item {
+    width: min(33.3% - min(1.5vw, 15px));
+    height: auto;
+    border: 1px solid black;
+    padding: min(2vw, 20px);
+    border-radius: 5px;
+    background: white;
+    position: relative;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    transition: all 0.3s ease-in-out;
+    transform: translateY(0);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    }
+  }
+  &_item-link {
+    display: flex;
+    flex-direction: column;
+  }
+  &__item-tit {
+    flex: 1;
+    @include font-size(18);
+    font-weight: bold;
+  }
+  &__item-body {
+    border-top: 1px solid black;
+    @include font-size(16);
+    line-height: 1.5;
+    padding-top: 0.5em;
+    margin-top: 0.2em;
+    overflow-wrap: break-word;
+  }
+  &__item-date {
+    @include font-size(12);
+    width: auto;
+    text-align: right;
+  }
+
+  &__item-bottom {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__item-rating {
+    align-items: center;
+    display: flex;
+    i {
+      color: #ccc;
+      cursor: pointer;
+      @include font-size(20);
+      padding: 0 5px;
+      position: relative;
+      transition: color 0.3s;
+    }
+  }
+
+  &__item-user-name {
+    display: flex;
+    @include font-size(16);
+    margin-top: min(2vw, 20px);
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+    justify-content: end;
+  }
+
+  &__item-form {
+    @include font-size(14);
+    position: absolute;
+    bottom: 8%;
+    right: 5%;
+    width: 4em;
+
+    .del {
+      width: 100%;
+      border: 2px solid #ababab;
+      text-align: center;
+      display: block;
+      padding: 3%;
+      background: darksalmon;
+      color: #fff;
+      border-radius: 5px;
+    }
+  }
+  &__item-empty {
+    @include font-size(16);
+  }
+
+  &__item-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    a {
+      border: 1px solid black;
+      padding: 5px min(2vw, 20px);
+      border-radius: 5px;
+      background: black;
+      color: #fff;
+      font-weight: 700;
+      display: inline-block;
+    }
+  }
+
+  &__item-back {
+    @include btn('back');
+  }
 }
-[class^="post__item-like"] span,
-[class^="post__item-like"] span {
-    @include font-size("16");
-    padding-left: 0.5rem;
+[class^='post__item-like'],
+[class^='post__item-liked'] {
+  display: flex;
+  align-items: center;
+}
+[class^='post__item-like'] span,
+[class^='post__item-like'] span {
+  @include font-size(16);
+  padding-left: 5px;
 }
 
-[class^="post__item-like"] i {
-    color: #a2a2a2;
-    @include font-size("20");
-    padding-right: 0.5rem;
+[class^='post__item-like'] i {
+  color: #a2a2a2;
+  @include font-size(20);
+  padding-right: 5px;
 }
 
-[class^="post__item-liked"] i {
-    color: #c4c403;
-    @include font-size("20");
-    padding-right: 0.5rem;
+[class^='post__item-liked'] i {
+  color: #c4c403;
+  @include font-size(20);
+  padding-right: 5px;
 }
 /* -------------------------------------
 	post_create
 --------------------------------------*/
 
 .post_create {
-    padding: min(5vw, 5rem) 0;
-    &__inner {
-        @include inner;
-    }
-    &__head {
-        display: flex;
-        align-items: center;
-        gap: min(2vw, 2rem);
-        padding: min(3vw, 3rem) 0;
-    }
+  padding: min(5vw, 50px) 0;
+  &__inner {
+    @include inner;
+  }
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: min(2vw, 20px);
+    padding: min(3vw, 30px) 0;
+  }
 
-    &__title {
-        @include font-size("32");
-        display: flex;
-        align-items: center;
+  &__title {
+    @include font-size(32);
+    display: flex;
+    align-items: center;
 
-        span {
-            @include font-size("24");
-        }
+    span {
+      @include font-size(24);
     }
-    &__pic {
-        width: min(10vw, 10rem);
-        position: relative;
+  }
+  &__pic {
+    width: min(10vw, 100px);
+    position: relative;
 
-        &::before {
-            content: "";
-            display: block;
-            padding-top: 100%;
-        }
-        img {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            margin: auto;
-            object-fit: contain;
-        }
+    &::before {
+      content: '';
+      display: block;
+      padding-top: 100%;
     }
-    &__cont {
-        padding-top: min(3vw, 3rem);
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      object-fit: contain;
     }
-    &__form {
-        width: 100%;
-        padding: 1rem;
-        border-radius: 5px;
-        background: white;
-        display: flex;
-        flex-direction: column;
-        @include font-size("16");
-    }
-    &__desc {
-        border-bottom: 0.1rem solid black;
-        @include font-size("18");
-        padding-bottom: min(2vw, 2rem);
-        line-height: 1.5;
-    }
-    &__form-label {
-        display: block;
-        @include font-size("12");
-        font-weight: bold;
-        margin-top: min(2vw, 2rem);
-    }
-    &__form-tit {
-        padding: 0.5rem 1rem;
-        margin-top: 0.5em;
-        width: 100%;
-        @include font-size("16");
-    }
-    &__form-body {
-        width: 100%;
-        height: 20rem;
-        margin-top: 0.5em;
-        padding: 0.5rem 1rem;
+  }
+  &__cont {
+    padding-top: min(3vw, 30px);
+  }
+  &__form {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    @include font-size(16);
+  }
+  &__desc {
+    border-bottom: 1 solid black;
+    @include font-size(18);
+    padding-bottom: min(2vw, 20px);
+    line-height: 1.5;
+  }
+  &__form-label {
+    display: block;
+    @include font-size(12);
+    font-weight: bold;
+    margin-top: min(2vw, 20px);
+  }
+  &__form-tit {
+    padding: 5px 10px;
+    margin-top: 0.5em;
+    width: 100%;
+    @include font-size(16);
+  }
+  &__form-body {
+    width: 100%;
+    height: 200px;
+    margin-top: 0.5em;
+    padding: 5px 10px;
 
-        @include font-size("16");
-    }
-    &__form-name {
-        padding: 0.5rem 1rem;
-        margin-top: 0.5em;
-        width: 30%;
-        @include font-size("16");
-    }
-    &__form-btn {
-        width: 25%;
-        margin: min(2vw, 2rem) auto 0;
-        display: block;
-        line-height: 2;
-        border-radius: 9999px;
-        @include font-size("16");
-        padding: 1rem;
-    }
+    @include font-size(16);
+  }
+  &__form-name {
+    padding: 5px 10px;
+    margin-top: 0.5em;
+    width: 30%;
+    @include font-size(16);
+  }
+  &__form-btn {
+    @include btn('form');
+  }
+  &__back-btn {
+    @include btn('back');
+  }
 
-    &__form-rating {
-        align-items: center;
-        display: flex;
-        flex-direction: row-reverse;
-        justify-content: flex-end;
-        margin: 0.5em 0 min(2vw, 2rem);
-    }
-    &__form-rating-input {
-        display: none;
-    }
-    &__form-rating-label {
-        color: #ccc;
-        cursor: pointer;
-        @include font-size("24");
-        padding: 0 1rem;
-        position: relative;
-        transition: color 0.3s;
-    }
+  &__form-rating {
+    align-items: center;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    margin: 0.5em 0 min(2vw, 20px);
+  }
+  &__form-rating-input {
+    display: none;
+  }
+  &__form-rating-label {
+    color: #ccc;
+    cursor: pointer;
+    @include font-size(24);
+    padding: 0 10px;
+    position: relative;
+    transition: color 0.3s;
+  }
 }
 
 .post_create__form-rating-label:hover,
 .post_create__form-rating-label:hover ~ .post_create__form-rating-label,
 .post_create__form-rating-input:checked ~ .post_create__form-rating-label {
-    /* 「~」でホバー時を動的に、チェック時にそれ以下の数字をもつスターの色も変化 */
-    color: #c4c403;
+  /* 「~」でホバー時を動的に、チェック時にそれ以下の数字をもつスターの色も変化 */
+  color: #c4c403;
 }
 .error {
-    color: #ff6200;
+  color: #ff6200;
 }
 
-@include responsive("tb") {
-    .post {
-        &__list {
-            gap: 5%;
-            row-gap: min(5.33vw, 2rem);
-        }
-        &__item {
-            width: 47.5%;
-            padding: min(5.33vw, 2rem);
-        }
+@include responsive('tb') {
+  .post {
+    &__list {
+      gap: 5%;
+      row-gap: min(5.33vw, 20px);
     }
+    &__item {
+      width: 47.5%;
+      padding: min(5.33vw, 20px);
+    }
+  }
 }
 
-@include responsive("sp") {
-    .post {
-
-        &__head {
-            gap: min(4.65vw, 2rem);
-            padding: min(4.65vw, 2rem) 0;
-        }
-        &__desc {
-            padding-bottom: min(4.65vw, 2rem);
-        }
-        &__cont {
-            padding-top: min(6.98vw, 3rem);
-        }
-        &__list {
-            gap: 5%;
-            row-gap: min(5.33vw, 2rem);
-            min-height: 22vh;
-        }
-        &__item {
-            width: 100%;
-            height: auto;
-            gap: min(3.49vw, 1.5rem);
-        }
-        &__item-back {
-            a {
-                padding: min(2.33vw, 1rem);
-                width: 40%;
-                display: block;
-                margin: auto;
-            }
-        }
-        &__item-user-pic {
-            width: min(13.33vw, 5rem);
-        }
+@include responsive('sp') {
+  .post {
+    &__head {
+      gap: min(4.65vw, 20px);
+      padding: min(4.65vw, 20px) 0;
     }
+    &__desc {
+      padding-bottom: min(4.65vw, 20px);
+    }
+    &__cont {
+      padding-top: min(6.98vw, 30px);
+    }
+    &__list {
+      gap: 5%;
+      row-gap: min(5.33vw, 20px);
+      min-height: 22vh;
+    }
+    &__item {
+      width: 100%;
+      height: auto;
+      gap: min(3.49vw, 15px);
+    }
+    &__item-back {
+      a {
+        padding: min(2.33vw, 10px);
+        width: 40%;
+        display: block;
+        margin: auto;
+      }
+    }
+    &__item-user-pic {
+      width: min(13.33vw, 50px);
+    }
+  }
 }
 
-@include responsive("sp") {
-    .post_create {
-        &__form-name {
-            padding: 0.5rem 1rem;
-            width: 50%;
-        }
-        &__form-btn {
-            margin: min(6.98vw, 3rem) auto 0;
-            padding:  min(2.33vw, 1rem);
-            width: 40%;
-        }
+@include responsive('sp') {
+  .post_create {
+    &__form-name {
+      padding: 5px 10px;
+      width: 50%;
     }
+    &__form-btn {
+      margin: min(6.98vw, 30px) auto 0;
+      padding: min(2.33vw, 10px);
+      width: 40%;
+    }
+  }
 }

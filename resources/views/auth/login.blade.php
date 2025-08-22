@@ -2,29 +2,6 @@
 @section('title','ログイン')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/page/auth/login.css') }}">
-<style>
-.btn-google {
-  background: #4285f4;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  display: inline-block;
-  transition: background-color 0.3s ease;
-}
-
-.btn-google:hover {
-  background: #357ae8;
-  color: white;
-  text-decoration: none;
-}
-
-.btn-google i {
-  margin-right: 8px;
-}
-</style>
 @endsection
 
 @section('js')
@@ -91,10 +68,10 @@
       </form>
 
       <!-- Googleログインボタン -->
-      <div class="row mt-3">
+      <div class="login__google row mt-3">
         <div class="col-12 text-center">
           <p class="text-muted">または</p>
-          <a href="{{ route('google.auth') }}" class="btn btn-google">
+          <a href="{{ route('google.auth') }}" class="mt-3 col-md-5 col-8 mx-auto btn login__btn login__btn--google">
             <i class="fab fa-google"></i> Googleでログイン
           </a>
         </div>

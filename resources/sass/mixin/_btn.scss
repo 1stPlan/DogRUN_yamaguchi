@@ -1,0 +1,104 @@
+@use 'font-size' as *;
+
+@mixin btn($type: 'back') {
+  @if $type == 'back' {
+    margin-top: min(5vw, 50px);
+    text-align: center;
+
+    a {
+      margin: 0 auto;
+      color: #333;
+      @include font-size(14);
+      font-weight: bold;
+      background: transparent;
+      width: min(25vw, 200px);
+      height: min(7.55vw, 40px);
+      text-align: center;
+      line-height: min(7.54vw, 35px);
+      border: 2px solid #333;
+      position: relative;
+      z-index: 1;
+      display: block;
+      overflow: hidden;
+      transition: 0.3s;
+      border-radius: 9999px;
+    }
+    a::before {
+      content: '';
+      width: 120%;
+      height: 200%;
+      position: absolute;
+      top: -50%;
+      right: 0;
+      z-index: -1;
+      background: #333;
+      border-radius: 0 100% 100% 0;
+      transform: translateX(-100%);
+      transition: transform ease 0.3s;
+    }
+    a:hover {
+      color: #fff;
+    }
+    a:hover::before {
+      transform: translateX(10%);
+    }
+  }
+
+  @if $type == 'form' {
+    @include font-size(14);
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    width: 25%;
+    margin: min(5vw, 50px) auto 0;
+    text-align: center;
+    display: block;
+    a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+      color: #fff;
+    }
+  }
+
+  @if $type == 'contact' {
+    margin-top: min(5vw, 50px);
+    text-align: center;
+
+    input {
+      margin: 0 auto;
+      color: #333;
+      @include font-size(14);
+      font-weight: bold;
+      background: transparent;
+      width: clamp(100px, 25%, 400px);
+      height: clamp(100px, 25%, 400px);
+      text-align: center;
+      line-height: min(7.54vw, 35px);
+      border: 2px solid #333;
+      position: relative;
+      z-index: 1;
+      display: block;
+      overflow: hidden;
+      transition: 0.3s;
+      border-radius: 9999px;
+    }
+    input:hover {
+      opacity: 0.7;
+    }
+  }
+}

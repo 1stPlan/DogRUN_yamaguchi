@@ -3,11 +3,10 @@
 /* -------------------------------------
 	mixin
 --------------------------------------*/
-
-@import "../../mixin/responsive";
-@import "../../mixin/inner";
-@import "../../mixin/home-title";
-@import "../../mixin/font-size";
+@use "../../mixin/responsive" as *;
+@use "../../mixin/inner" as *;
+@use "../../mixin/home-title" as *;
+@use "../../mixin/font-size" as *;
 
 .select {
     margin: auto;
@@ -15,8 +14,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: min(5vw, 5rem) auto;
-    min-height: calc(100vh - 21rem);
+    margin: min(5vw, 50px) auto;
+    min-height: calc(100vh - 210px);
 
     &__inner {
         @include inner;
@@ -25,10 +24,10 @@
 
     &__ttl {
         text-align: center;
-        @include font-size("32");
+        @include font-size(32);
 
         span {
-            @include font-size("20");
+            @include font-size(20);
         }
     }
 
@@ -39,18 +38,18 @@
         padding: 5%;
         background-color: #fff;
         box-shadow: 0px 0px 15px -5px #777777;
-        border-radius: 2rem;
-        @include font-size("16");
+        border-radius: 20px;
+        @include font-size(16);
         line-height: 1.75;
     }
 
     &__cont-btn {
-        padding: 1rem 0;
+        padding: 10px 0;
         background: #4bb582;
         border-radius: 9999px;
         color: #fff;
         display: block;
-        @include font-size("14");
+        @include font-size(14);
 
         &:hover {
             color: #fff;
@@ -58,19 +57,19 @@
     }
 
     &__cont-btn-box {
-        margin: min(5vw, 5rem) auto 0;
-        width: min(50%, 20rem);
+        margin: min(5vw, 50px) auto 0;
+        width: min(50%, 200px);
     }
 
     &__question {
-        margin-top: min(3vw, 3rem);
+        margin-top: min(3vw, 30px);
     }
 
     &__question-txt {
         display: flex;
         align-items: stretch;
-        margin-top: min(3vw, 3rem);
-        gap: 1rem;
+        margin-top: min(3vw, 30px);
+        gap: 10px;
 
         h5 {
             width: 4em;
@@ -84,7 +83,7 @@
 
         p {
             flex: 1;
-            padding: min(1.7vw, 1rem);
+            padding: min(1.7vw, 10px);
             border: #4bb582 1px solid;
         }
     }
@@ -92,16 +91,16 @@
     &__answer {
         display: flex;
         flex-direction: column;
-        gap: min(2vw, 2rem);
-        margin: min(4vw, 4rem) auto 0;
+        gap: min(2vw, 20px);
+        margin: min(4vw, 40px) auto 0;
         width: 90%;
     }
 }
 
 //select_complete
 .select_comp {
-    margin-top: min(5vw, 5rem);
-    padding-bottom: min(5vw, 5rem);
+    margin-top: min(5vw, 50px);
+    padding-bottom: min(5vw, 50px);
     width: 100%;
     display: flex;
     justify-content: center;
@@ -114,10 +113,10 @@
 
     &__ttl {
         text-align: center;
-        @include font-size("32");
+        @include font-size(32);
 
         span {
-            @include font-size("20");
+            @include font-size(20);
         }
     }
 
@@ -128,14 +127,14 @@
         padding: 5%;
         background-color: #fff;
         box-shadow: 0px 0px 15px -5px #777777;
-        border-radius: 2rem;
-        @include font-size("16");
+        border-radius: 20px;
+        @include font-size(16);
         line-height: 1.75;
     }
 
     &__cont-exp {
-        margin-top: min(3vw, 3rem);
-        @include font-size("18");
+        margin-top: min(3vw, 30px);
+        @include font-size(18);
 
         span {
             display: inline-block;
@@ -145,14 +144,14 @@
     &__decision {
         display: flex;
         flex-direction: column;
-        gap: min(4vw, 4rem);
-        margin-top: min(4vw, 4rem);
-        @include font-size("16");
+        gap: min(4vw, 40px);
+        margin-top: min(4vw, 40px);
+        @include font-size(16);
         font-weight: bold;
     }
 
     &__decision-txt{
-        @include font-size("18");
+        @include font-size(18);
         font-weight: bold;
         color: rgb(255, 0, 0);
         text-align: center;
@@ -162,24 +161,24 @@
         box-shadow: 0px 0px 15px -5px #054d00;
         background-color: #054d0026;
         border-radius: 10px;
-        @include font-size("32");
-        padding: min(3vw, 3rem);
+        @include font-size(32);
+        padding: min(3vw, 30px);
         display: flex;
         flex-direction: column;
-        gap: min(2vw, 2rem);
+        gap: min(2vw, 20px);
 
         h3 {
-            @include font-size("24");
+            @include font-size(24);
             font-weight: bold;
         }
 
         h5 {
-            @include font-size("20");
-            padding-bottom: 1rem;
+            @include font-size(20);
+            padding-bottom: 10px;
             color: #4bb582;
         }
         p {
-            @include font-size("16");
+            @include font-size(16);
             line-height: 1.5;
         }
     }
@@ -198,12 +197,12 @@
     }
 
     &__cont-btn {
-        padding: 1rem 0;
+        padding: 10px 0;
         background: #4bb582;
         border-radius: 9999px;
         color: #fff;
         display: block;
-        @include font-size("16");
+        @include font-size(16);
 
         &:hover {
             color: #fff;
@@ -211,14 +210,14 @@
     }
 
     &__cont-btn-box {
-        margin: min(5vw, 5rem) auto 0;
-        width: min(50%, 20rem);
+        margin: min(5vw, 50px) auto 0;
+        width: min(50%, 200px);
     }
 }
 
 @include responsive("sp") {
     .select {
-        height: calc(100vh - 13rem);
+        height: calc(100vh - 130px);
         min-height: auto;
         margin: 0 auto;
 
@@ -227,16 +226,16 @@
         }
 
         &__answer {
-            gap: min(3.49vw, 1.5rem);
-            margin: min(4.65vw, 2rem) auto 0;
+            gap: min(3.49vw, 15px);
+            margin: min(4.65vw, 20px) auto 0;
             width: 100%;
             a {
-                padding: min(2.33vw, 1rem);
+                padding: min(2.33vw, 10px);
             }
         }
 
         &__cont-btn {
-            padding: min(1vw, 1rem) 0;
+            padding: min(1vw, 10px) 0;
         }
     }
 }
@@ -248,21 +247,21 @@
         }
 
         &__cont-exp {
-            margin-top: min(4.65vw, 2rem);
+            margin-top: min(4.65vw, 20px);
         }
 
         &__decision {
-            gap: min(6.98vw, 3rem);
-            margin-top: min(6.98vw, 3rem);
+            gap: min(6.98vw, 30px);
+            margin-top: min(6.98vw, 30px);
         }
 
         &__decision-box {
-            padding: min(4.65vw, 2rem);
-            gap: min(4.65vw, 2rem);
+            padding: min(4.65vw, 20px);
+            gap: min(4.65vw, 20px);
         }
 
         &__cont-btn-box {
-            margin: min(6.98vw, 3rem) auto 0;
+            margin: min(6.98vw, 30px) auto 0;
         }
     }
 }

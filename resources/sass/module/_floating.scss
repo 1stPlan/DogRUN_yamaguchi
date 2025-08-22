@@ -1,7 +1,15 @@
+/* -------------------------------------
+	mixin
+--------------------------------------*/
+@use "../mixin/font-size" as *;
+
+/* -------------------------------------
+	floating
+--------------------------------------*/
 .floating {
     &__banner {
         position: fixed;
-        // margin: 1.5rem 2rem;
+        // margin: 15px 20px;
         z-index: 99998;
         bottom: 40%;
         right: 0;
@@ -12,21 +20,21 @@
 
     &__banner-back {
         background-color: #fff;
-        border-radius: 1.5rem;
+        border-radius: 15px;
     }
 
     &__banner-body {
         text-align: center;
-        border-radius: 1.5rem;
+        border-radius: 15px;
         -webkit-box-shadow: 0 0 7px rgb(0 0 0 / 40%);
         box-shadow: 0 0 7px rgb(0 0 0 / 40%);
-        padding: 3rem 2rem;
+        padding: 30px 20px;
         background: radial-gradient(#0ab0c7, #006eb0 70%);
-        @include font-size("16");
+        @include font-size(16);
         font-weight: bold;
         color: white;
         display: flex;
-        gap: 1rem;
+        gap: 10px;
         -ms-writing-mode: tb-rl;
         writing-mode: vertical-rl;
     }
@@ -57,13 +65,13 @@
         //     border-radius: 9999px;
         // }
         &__banner-body {
-            // width: min(23.26vw, 10rem);
-            // height: min(23.26vw, 10rem);
+            // width: min(23.26vw, 100px);
+            // height: min(23.26vw, 100px);
             // border-radius: 9999px;
             // padding: 0;
             // flex-direction: column;
-            padding: min(4.65vw, 2rem);
-            border-radius: 1rem;
+            padding: min(4.65vw, 20px);
+            border-radius: 10px;
             align-items: center;
             justify-content: center;
         }

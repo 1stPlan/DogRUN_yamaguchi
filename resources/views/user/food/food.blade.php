@@ -12,7 +12,7 @@
         // アマゾンアソシエイトタグをグローバル変数として設定
         window.AMAZON_ASSOCIATE_TAG = '{{ config('app.amazon_associate_tag') }}';
     </script>
-    <script src="{{ asset('js/dogFood.js') }}"></script>
+    @vite('resources/js/components/dogFood.js')
 @endsection
 
 @section('content')

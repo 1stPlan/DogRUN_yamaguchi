@@ -2,16 +2,24 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: http://dogrun.localhost/sitemap.xml
+Sitemap: https://dogrun-yamaguchi.com/sitemap.xml
 
 # Disallow admin areas
 Disallow: /admin/
 Disallow: /api/
 Disallow: /storage/
 Disallow: /vendor/
+Disallow: /bootstrap/
+Disallow: /config/
 
 # Allow important pages
 Allow: /user/
 Allow: /contact
 Allow: /login
 Allow: /register
+Allow: /place/
+Allow: /posts/
+Allow: /event/
+
+# Crawl delay for better server performance
+Crawl-delay: 1

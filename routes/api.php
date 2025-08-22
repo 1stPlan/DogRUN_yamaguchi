@@ -23,13 +23,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/place/all', [ApiPlaceController::class, 'all']);
-Route::get('/place/yamaguchi', [ApiPlaceController::class, 'yamaguchi']);
-Route::get('/place/hagi', [ApiPlaceController::class, 'hagi']);
-Route::get('/place/syuunan', [ApiPlaceController::class, 'syuunan']);
-Route::get('/place/shimonoseki', [ApiPlaceController::class, 'shimonoseki']);
-Route::get('/place/houhu', [ApiPlaceController::class, 'houhu']);
-Route::get('/place/ubeonoda', [ApiPlaceController::class, 'ubeonoda']);
-Route::get('/place/iwakunihikari', [ApiPlaceController::class, 'iwakunihikari']);
+// Route::get('/place/yamaguchi', [ApiPlaceController::class, 'yamaguchi']);
+// Route::get('/place/hagi', [ApiPlaceController::class, 'hagi']);
+// Route::get('/place/syuunan', [ApiPlaceController::class, 'syuunan']);
+// Route::get('/place/shimonoseki', [ApiPlaceController::class, 'shimonoseki']);
+// Route::get('/place/houhu', [ApiPlaceController::class, 'houhu']);
+// Route::get('/place/ubeonoda', [ApiPlaceController::class, 'ubeonoda']);
+// Route::get('/place/iwakunihikari', [ApiPlaceController::class, 'iwakunihikari']);
 
 Route::get('/place/rating', [ApiRatingController::class, 'rating']);
 

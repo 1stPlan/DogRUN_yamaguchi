@@ -4,7 +4,7 @@
 
   <div class="footer__inner">
 
-    <!-- <nav id="footer-nav" class="footer__nav">
+    <nav id="footer-nav" class="footer__nav">
       <ul class="footer__nav-list">
         <li class="footer__nav-item">
           <a class="footer__nav-link" href="{{ route('user.event') }}">Event</a>
@@ -12,8 +12,14 @@
         <li class="footer__nav-item">
           <a class="footer__nav-link" href="{{ route('user.contact') }}">Contact</a>
         </li>
+        <li class="footer__nav-item">
+          <a class="footer__nav-link" href="{{ route('user.privacy-policy') }}">プライバシーポリシー</a>
+        </li>
+        <li class="footer__nav-item">
+          <a class="footer__nav-link" href="{{ route('user.terms') }}">利用規約</a>
+        </li>
       </ul>
-    </nav> -->
+    </nav>
 
     <div class="footer__copyright">
       Copyright © DogRUN, INC. All rights reserved.

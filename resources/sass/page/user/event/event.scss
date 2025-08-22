@@ -1,17 +1,15 @@
 /* -------------------------------------
 	mixin
 --------------------------------------*/
-
-@import '../../../mixin/responsive';
-@import '../../../mixin/inner';
-@import '../../../mixin/home-title';
-@import '../../../mixin/font-size';
-@import '../../../mixin/floating';
+@use '../../../mixin/responsive' as *;
+@use '../../../mixin/inner' as *;
+@use '../../../mixin/home-title' as *;
+@use '../../../mixin/font-size' as *;
 
 /* -------------------------------------
 	function
 --------------------------------------*/
-@import '../../../functions/calculation';
+@use '../../../functions/calculation' as *;
 
 /* -------------------------------------
 	event
@@ -20,7 +18,7 @@
 .event {
   width: 100%;
   background-color: #f5f7fa;
-  padding-bottom: min(10vw, 10rem);
+  padding-bottom: min(10vw, 100px);
 
   a:hover {
     text-decoration: none;
@@ -32,7 +30,7 @@
     width: 100%;
     background-size: cover;
     background-position: center;
-    height: min(28.12vw, 30rem);
+    height: min(28.12vw, 300px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,27 +40,27 @@
   }
 
   &__page_title {
-    padding-top: min(3.57vw, 5rem);
-    @include font-size('48');
+    padding-top: min(3.57vw, 50px);
+    @include font-size(48);
     color: #fff;
     text-shadow: 0 3px 4px rgba(34, 32, 32, 0.9);
     display: flex;
   }
   &__page_exp {
-    @include font-size('16');
+    @include font-size(16);
     color: #fff;
     text-shadow: 0 3px 4px rgba(34, 32, 32, 0.9);
   }
 
   &__desc {
-    border-bottom: 0.1rem solid black;
-    @include font-size('18');
-    padding: min(2vw, 2rem) 0;
+    border-bottom: 1px solid black;
+    @include font-size(18);
+    padding: min(2vw, 20px) 0;
     line-height: 1.75;
   }
 
   &__mv {
-    margin-top: min(4vw, 4rem);
+    margin-top: min(4vw, 40px);
   }
 
   &__mv-item {
@@ -83,7 +81,7 @@
   }
 
   &__mv-txt {
-    @include font-size('24');
+    @include font-size(24);
     line-height: 1;
     position: absolute;
     left: 25%;
@@ -92,12 +90,12 @@
     color: white;
     display: flex;
     flex-direction: column;
-    gap: min(2vw, 1.5rem);
+    gap: min(2vw, 15px);
     font-weight: bold;
   }
 
   &__mv-tit {
-    @include font-size('32');
+    @include font-size(32);
   }
 
   &__inner {
@@ -105,23 +103,23 @@
   }
 
   &__cont {
-    margin-top: min(1.43vw, 2rem);
+    margin-top: min(1.43vw, 20px);
   }
 
   &__list {
-    margin: min(4vw, 4rem) auto 0;
+    margin: min(4vw, 40px) auto 0;
     width: 90%;
 
     .slick-track {
       display: flex;
-      gap: min(3.57vw, 5rem);
-      // min-height: clamp(31rem, 36vw, 42rem);
+      gap: min(3.57vw, 50px);
+      // min-height: clamp(310px, 36vw, 420px);
     }
   }
   &__item {
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
-    padding: 2rem;
-    // min-height: clamp(30rem, 35vw, 41rem);
+    padding: 20px;
+    // min-height: clamp(300px, 35vw, 410px);
     border: 1px solid rgba(0, 0, 0, 0.2);
     position: relative;
     border-radius: 5px;
@@ -134,8 +132,8 @@
       position: absolute;
       bottom: 0;
       right: 0;
-      border: min(0.86vw, 1.2rem) solid transparent;
-      border-top: min(0.86vw, 1.2rem) solid #008cd6;
+      border: min(0.86vw, 12px) solid transparent;
+      border-top: min(0.86vw, 12px) solid #008cd6;
       transform: rotate(-45deg);
     }
   }
@@ -144,10 +142,10 @@
     width: 100%;
   }
   &__sub-title {
-    @include font-size('32');
+    @include font-size(32);
     font-weight: bold;
     font-family: source-sans-pro, 'arial black';
-    margin-top: min(7.14vw, 10rem);
+    margin-top: min(7.14vw, 100px);
   }
 
   &__info {
@@ -155,13 +153,13 @@
   }
 
   &__info-tit {
-    @include font-size('18');
+    @include font-size(18);
     height: 2.6em;
     display: flex;
     align-items: center;
   }
   &__info-date {
-    @include font-size('12');
+    @include font-size(12);
     padding: 0.5em 0;
     text-align: right;
     border-bottom: 1px solid rgba(0, 0, 0, 0.5);
@@ -173,7 +171,7 @@
 
   &__info-pic {
     position: relative;
-    margin-top: 2rem;
+    margin-top: 20px;
 
     &::before {
       content: '';
@@ -198,10 +196,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    @include font-size('16');
+    @include font-size(16);
     line-height: 1.5;
-    gap: min(1.5vw, 1.5rem);
-    margin-top: min(2vw, 2rem);
+    gap: min(1.5vw, 15px);
+    margin-top: min(2vw, 20px);
 
     span {
       text-align: center;
@@ -210,18 +208,18 @@
       padding: 0.3em;
       display: inline-block;
       width: 5em;
-      margin-right: min(1vw, 1rem);
-      @include font-size('12');
+      margin-right: min(1vw, 10px);
+      @include font-size(12);
       line-height: 1.5;
     }
   }
 
   &__tag {
     text-align: center;
-    margin-top: min(3vw, 3rem);
+    margin-top: min(3vw, 30px);
 
     &:last-child {
-      padding-right: 4rem;
+      padding-right: 40px;
       border-right: 3px solid #999;
     }
   }
@@ -231,8 +229,8 @@
     border-left: 3px solid #999;
     display: inline-block;
     cursor: pointer;
-    @include font-size('16');
-    padding: 0.5rem 4rem;
+    @include font-size(16);
+    padding: 5px 40px;
 
     &.is-active {
       color: white;
@@ -246,16 +244,16 @@
 
   &__all-list {
     display: flex;
-    gap: min(3vw, 3rem);
+    gap: min(3vw, 30px);
     flex-wrap: wrap;
-    margin-top: min(8vw, 8rem);
+    margin-top: min(8vw, 80px);
   }
 
   &__all-item {
-    width: calc(100% / 3 - min(3vw, 3rem));
+    width: calc(100% / 3 - min(3vw, 30px));
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
     position: relative;
-    padding: min(2vw, 2rem);
+    padding: min(2vw, 20px);
 
     &.is-hide {
       display: none !important;
@@ -266,19 +264,19 @@
       position: absolute;
       bottom: 0;
       right: 0;
-      border: min(0.86vw, 1.2rem) solid transparent;
-      border-top: min(0.86vw, 1.2rem) solid #008cd6;
+      border: min(0.86vw, 12px) solid transparent;
+      border-top: min(0.86vw, 12px) solid #008cd6;
       transform: rotate(-45deg);
     }
   }
   &__all-item--y {
     &::after {
-      border-top: min(0.86vw, 1.2rem) solid #008cd6;
+      border-top: min(0.86vw, 12px) solid #008cd6;
     }
   }
   &__all-item--n {
     &::after {
-      border-top: min(0.86vw, 1.2rem) solid #999;
+      border-top: min(0.86vw, 12px) solid #999;
     }
 
     a {
@@ -290,9 +288,10 @@
     top: 0;
     left: 0;
     color: #fff;
-    padding: 1rem;
+    padding: 10px;
     z-index: 2;
-
+    @include font-size(12);
+    line-height: 1.2;
     &--y {
       background-color: #008cd6;
       display: block;
@@ -305,7 +304,7 @@
 
   &__all-info {
     display: flex;
-    gap: 1rem;
+    gap: 10px;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -339,15 +338,15 @@
   &__all-info-txt {
     flex: 1;
     text-align: left;
-    @include font-size('12');
+    @include font-size(12);
     line-height: 1.5;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 10px;
   }
   &__all-info-tit {
     font-weight: bold;
-    @include font-size('14');
+    @include font-size(14);
   }
   &__all-info-date {
     span {
@@ -360,32 +359,32 @@
 @include responsive('tb') {
   .event {
     &__cont {
-      margin-top: min(10vw, 10rem);
+      margin-top: min(10vw, 100px);
       .slick-track {
         min-height: auto;
       }
     }
     &__item {
-      min-height: 25rem;
+      min-height: 250px;
 
       &::after {
-        border: min(1.2vw, 1.2rem) solid transparent;
-        border-top: min(1.2vw, 1.2rem) solid #008cd6;
+        border: min(1.2vw, 12px) solid transparent;
+        border-top: min(1.2vw, 12px) solid #008cd6;
       }
     }
     &__mv-item {
-      padding-top: clamp(18rem, 33.3vw, 25rem);
+      padding-top: clamp(180px, 33.3vw, 250px);
     }
     &__all-list {
-      gap: min(5.6vw, 5rem);
+      gap: min(5.6vw, 50px);
     }
 
     &__all-item {
-      width: calc(100% / 2 - min(2.8vw, 5rem));
+      width: calc(100% / 2 - min(2.8vw, 50px));
 
       &::after {
-        border: min(1.5vw, 1.5rem) solid transparent;
-        border-top: min(1.5vw, 1.5rem) solid #008cd6;
+        border: min(1.5vw, 15px) solid transparent;
+        border-top: min(1.5vw, 15px) solid #008cd6;
       }
     }
   }
@@ -394,51 +393,51 @@
 @include responsive('sp') {
   .event {
     &__page_header {
-      height: min(34.88vw, 15rem);
+      height: min(34.88vw, 150px);
     }
     &__title {
-      padding-top: min(6.98vw, 3rem);
-      padding-bottom: min(4.65vw, 2rem);
+      padding-top: min(6.98vw, 30px);
+      padding-bottom: min(4.65vw, 20px);
     }
     &__sub-title {
-      margin-top: min(16.28vw, 7rem);
+      margin-top: min(16.28vw, 70px);
     }
     &__desc {
-      padding: min(4.65vw, 2rem) 0;
+      padding: min(4.65vw, 20px) 0;
     }
     &__mv-txt {
-      gap: 1rem;
+      gap: 10px;
     }
     &__list {
       width: 94%;
-      margin: min(6.98vw, 3rem) auto;
+      margin: min(6.98vw, 30px) auto;
     }
     &__item {
-      width: min(69.7vw, 40rem) !important;
+      width: min(69.7vw, 400px) !important;
       margin: auto;
       height: auto;
       min-height: auto;
 
       &::after {
-        border: min(2.79vw, 1.2rem) solid transparent;
-        border-top: min(2.79vw, 1.2rem) solid #008cd6;
+        border: min(2.79vw, 12px) solid transparent;
+        border-top: min(2.79vw, 12px) solid #008cd6;
       }
     }
     &__info-txt {
-      gap: min(3.49vw, 1.5rem);
-      margin-top: min(4.65vw, 2rem);
+      gap: min(3.49vw, 15px);
+      margin-top: min(4.65vw, 20px);
     }
     &__all-list {
-      row-gap: min(6.98vw, 3rem);
-      margin-top: min(9.3vw, 4rem);
+      row-gap: min(6.98vw, 30px);
+      margin-top: min(9.3vw, 40px);
     }
     &__all-item {
-      min-height: 20rem;
-      padding: min(4.65vw, 2rem) min(2.33vw, 1rem);
+      min-height: 200px;
+      padding: min(4.65vw, 20px) min(2.33vw, 10px);
     }
 
     &__all-batch {
-      padding: min(2.33vw, 1rem);
+      padding: min(2.33vw, 10px);
     }
     &__all-info-pic {
       width: 100%;
@@ -446,16 +445,16 @@
     }
 
     &__tag {
-      margin-top: min(4.65vw, 2rem);
+      margin-top: min(4.65vw, 20px);
       display: flex;
     }
     &__tag-item {
-      padding: min(1.16vw, 0.5rem) min(4.65vw, 2rem);
+      padding: min(1.16vw, 5px) min(4.65vw, 20px);
       flex: 1;
 
       &::after {
-        border: min(2.79vw, 1.2rem) solid transparent;
-        border-top: min(2.79vw, 1.2rem) solid #008cd6;
+        border: min(2.79vw, 12px) solid transparent;
+        border-top: min(2.79vw, 12px) solid #008cd6;
       }
     }
     &__all-info-txt {

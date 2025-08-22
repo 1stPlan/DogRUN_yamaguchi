@@ -1,0 +1,97 @@
+// Margin用のmixin
+@mixin margin-top($max-size: 16, $min-size: null) {
+    $min-width: 520;
+    $max-width: 1024;
+    $min-size: if($min-size != null, $min-size, $max-size * 0.7);
+
+    // ビューポート幅の計算を文字列として直接指定
+    $v: "(100 * (#{$max-size} - #{$min-size})) / (#{$max-width} - #{$min-width})";
+    $r: "(#{$min-width} * #{$max-size} - #{$max-width} * #{$min-size}) / (#{$min-width} - #{$max-width})";
+
+    margin-top: clamp(
+        calc($min-size / 16) * 1rem,
+        calc((#{$v}) * 1vw + ((#{$r}) / 16) * 1rem),
+        calc($max-size / 16) * 1rem
+    );
+
+    @media screen and (max-width: 530px) {
+        @if $max-size <= 32 {
+            margin-top: min(calc(4.2 * ($min-size / 16)) * 1vw, calc($min-size / 16) * 1rem);
+        } @else {
+            margin-top: min(calc(2.8 * ($min-size / 16)) * 1vw, calc($min-size / 16) * 1rem * 0.8);
+        }
+    }
+}
+
+@mixin margin-bottom($max-size: 16, $min-size: null) {
+    $min-width: 520;
+    $max-width: 1024;
+    $min-size: if($min-size != null, $min-size, $max-size * 0.7);
+
+    // ビューポート幅の計算を文字列として直接指定
+    $v: "(100 * (#{$max-size} - #{$min-size})) / (#{$max-width} - #{$min-width})";
+    $r: "(#{$min-width} * #{$max-size} - #{$max-width} * #{$min-size}) / (#{$min-width} - #{$max-width})";
+
+    margin-bottom: clamp(
+        calc($min-size / 16) * 1rem,
+        calc((#{$v}) * 1vw + ((#{$r}) / 16) * 1rem),
+        calc($max-size / 16) * 1rem
+    );
+
+    @media screen and (max-width: 530px) {
+        @if $max-size <= 32 {
+            margin-bottom: min(calc(4.2 * ($min-size / 16)) * 1vw, calc($min-size / 16) * 1rem);
+        } @else {
+            margin-bottom: min(calc(2.8 * ($min-size / 16)) * 1vw, calc($min-size / 16) * 1rem * 0.8);
+        }
+    }
+}
+
+// Padding用のmixin
+@mixin padding-top($max-size: 16, $min-size: null) {
+    $min-width: 520;
+    $max-width: 1024;
+    $min-size: if($min-size != null, $min-size, $max-size * 0.7);
+
+    // ビューポート幅の計算を文字列として直接指定
+    $v: "(100 * (#{$max-size} - #{$min-size})) / (#{$max-width} - #{$min-width})";
+    $r: "(#{$min-width} * #{$max-size} - #{$max-width} * #{$min-size}) / (#{$min-width} - #{$max-width})";
+
+    padding-top: clamp(
+        calc($min-size / 16) * 1rem,
+        calc((#{$v}) * 1vw + ((#{$r}) / 16) * 1rem),
+        calc($max-size / 16) * 1rem
+    );
+
+    @media screen and (max-width: 530px) {
+        @if $max-size <= 32 {
+            padding-top: min(calc(4.2 * ($min-size / 16)) * 1vw, calc($min-size / 16) * 1rem);
+        } @else {
+            padding-top: min(calc(2.8 * ($min-size / 16)) * 1vw, calc($min-size / 16) * 1rem * 0.8);
+        }
+    }
+}
+
+@mixin padding-bottom($max-size: 16, $min-size: null) {
+    $min-width: 520;
+    $max-width: 1024;
+    $min-size: if($min-size != null, $min-size, $max-size * 0.7);
+
+    // ビューポート幅の計算を文字列として直接指定
+    $v: "(100 * (#{$max-size} - #{$min-size})) / (#{$max-width} - #{$min-width})";
+    $r: "(#{$min-width} * #{$max-size} - #{$max-width} * #{$min-size}) / (#{$min-width} - #{$max-width})";
+
+    padding-bottom: clamp(
+        calc($min-size / 16) * 1rem,
+        calc((#{$v}) * 1vw + ((#{$r}) / 16) * 1rem),
+        calc($max-size / 16) * 1rem
+    );
+
+    @media screen and (max-width: 530px) {
+        @if $max-size <= 32 {
+            padding-bottom: min(calc(4.2 * ($min-size / 16)) * 1vw, calc($min-size / 16) * 1rem);
+        } @else {
+            padding-bottom: min(calc(2.8 * ($min-size / 16)) * 1vw, calc($min-size / 16) * 1rem * 0.8);
+        }
+    }
+}
