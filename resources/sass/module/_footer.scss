@@ -1,9 +1,8 @@
 /* -------------------------------------
 	mixin
 --------------------------------------*/
-@use '../mixin/inner' as *;
-@use '../mixin/font-size' as *;
-@use '../mixin/responsive' as *;
+@use '../mixins' as *;
+
 
 /* -------------------------------------
 	footer
@@ -16,7 +15,7 @@
   // background-color: #f5f7fa;
   // height: 70px;
   display: flex;
-  padding-bottom: 30px;
+  @include padding-bottom(30);
   border-top: 1px solid rgba(0, 0, 0, 0.3);
 
   &__inner {
@@ -83,14 +82,12 @@
     }
 
     &__nav-item {
-      // font-size: 1.1em;
       list-style-type: none;
       width: 100%;
       overflow: hidden;
     }
 
     &__nav-link {
-      font-size: min(3.48vw, 13px);
       display: inline-block;
       color: black;
       padding: 3% 0;

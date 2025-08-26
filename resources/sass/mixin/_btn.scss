@@ -1,8 +1,13 @@
+/* -------------------------------------
+	mixin
+--------------------------------------*/
+
 @use 'font-size' as *;
+@use 'spacing' as *;
 
 @mixin btn($type: 'back') {
   @if $type == 'back' {
-    margin-top: min(5vw, 50px);
+    @include margin-top(40);
     text-align: center;
 
     a {
@@ -12,7 +17,6 @@
       font-weight: bold;
       background: transparent;
       width: min(25vw, 200px);
-      height: min(7.55vw, 40px);
       text-align: center;
       line-height: min(7.54vw, 35px);
       border: 2px solid #333;
@@ -44,11 +48,40 @@
     }
   }
 
+  @if $type == 'item' {
+    display: flex;
+    justify-content: center;
+    @include margin-top(50);
+    a {
+      @include font-size(14);
+      color: #fff;
+      font-weight: bold;
+      background: linear-gradient(135deg, #3498db, #2980b9);
+      width: min(30vw, 400px);
+      text-align: center;
+      @include padding-top(15);
+      @include padding-bottom(15);
+      @include padding-left(30);
+      @include padding-right(30);
+      display: block;
+      transition: 0.3s;
+      border-radius: 9999px;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+      }
+    }
+  }
+
   @if $type == 'form' {
     @include font-size(14);
     align-items: center;
     gap: 10px;
-    padding: 15px 30px;
+    @include padding-top(15);
+    @include padding-bottom(15);
+    @include padding-left(30);
+    @include padding-right(30);
     font-weight: 600;
     color: #fff;
     background: linear-gradient(135deg, #3498db, #2980b9);
@@ -57,8 +90,9 @@
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
-    width: 25%;
-    margin: min(5vw, 50px) auto 0;
+    width: min(30vw, 400px);
+    @include margin-top(50);
+    @include margin-bottom(50);
     text-align: center;
     display: block;
     a {
@@ -76,7 +110,7 @@
   }
 
   @if $type == 'contact' {
-    margin-top: min(5vw, 50px);
+    @include margin-top(50);
     text-align: center;
 
     input {

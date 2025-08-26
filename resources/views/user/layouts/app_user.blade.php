@@ -45,28 +45,28 @@
 
     {{--  <?php
     $url = $_SERVER['REQUEST_URI'];
-    
+
     // 直接一致するパス
     $exactUrls = ['/', '/login', '/register', '/user/setting/withdraw'];
-    
+
     // 部分一致でチェックしたいパターン
     $patternUrls = ['/email/verify', '/password/reset'];
-    
+
     ?>  --}}
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Adobe Fonts (Source Sans Pro) -->
     <link rel="stylesheet" href="https://use.typekit.net/igw1tvj.css">
-    
+
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
         integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-    <!-- SIMPLE LINE ICONS-->
+    <!-- SIMPLE LINE ICONS-m ->
     <link rel="stylesheet" href="{{ asset('vendor/simple-line-icons/css/simple-line-icons.css') }}">
     <!-- ANIMATE.CSS-->
     <link rel="stylesheet" href="{{ asset('vendor/animate.css/animate.css') }}">
@@ -107,7 +107,7 @@
             crossorigin="anonymous"></script>
     @endif
 
-    
+
 
 
     <!-- 各ページのCSS読み込み -->

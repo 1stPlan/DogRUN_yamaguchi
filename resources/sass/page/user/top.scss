@@ -2,10 +2,7 @@
 /* -------------------------------------
 	mixin
 --------------------------------------*/
-@use '../../mixin/responsive' as *;
-@use '../../mixin/inner' as *;
-@use '../../mixin/font-size' as *;
-@use '../../mixin/spacing' as *;
+@use '../../mixins' as *;
 
 /*------------------------------------
     top
@@ -55,7 +52,8 @@
     top-info 山口県ドッグラン情報セクション
   -------------------------------------- */
   &-info {
-    padding: 80px 0;
+    @include padding-top(80);
+    @include padding-bottom(80);
     // background-color: #f8f9fa;
     width: 100%;
     display: block;
@@ -103,10 +101,6 @@
 
     &__content {
       @include margin-top(40);
-      @include responsive('tablet') {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
     }
 
     &__left {
@@ -125,10 +119,6 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 15px;
-
-      @include responsive('tablet') {
-        grid-template-columns: 1fr;
-      }
     }
 
     &__stat {
@@ -166,6 +156,19 @@
       font-weight: bold;
       text-align: center;
       color: #333;
+
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 150px;
+        height: 3px;
+        background: linear-gradient(90deg, #ffc7c700, #bc0d19);
+        border-radius: 2px;
+      }
 
       span {
         @include font-size(32);
@@ -241,7 +244,7 @@
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
         border-radius: 8px;
-        font-size: 14px;
+        @include font-size(14);
         font-weight: bold;
         text-align: center;
         min-width: 120px;
@@ -251,7 +254,7 @@
         white-space: nowrap;
       }
       .city-label {
-        font-size: 12px;
+        @include font-size(12);
         font-weight: bold;
       }
 
@@ -317,20 +320,6 @@
     @include padding-bottom(80);
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 
-    &__title {
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: -15px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80px;
-        height: 4px;
-        background: linear-gradient(90deg, #3498db, #2980b9);
-        border-radius: 2px;
-      }
-    }
-
     &__content {
       text-align: center;
     }
@@ -343,6 +332,9 @@
         color: #5a6c7d;
         line-height: 1.6;
         font-weight: bold;
+      }
+      span {
+        display: inline-block;
       }
     }
 
@@ -510,7 +502,8 @@
      top-filter
   -------------------------------------- */
   &-filter {
-    padding: 80px 0px;
+    @include padding-top(80);
+    @include padding-bottom(80);
 
     &__list {
       display: grid;
@@ -697,8 +690,9 @@
     top-tips
   -------------------------------------- */
   &-tips {
-    margin-top: 40px;
-    padding: 80px 0px;
+    @include margin-top(40);
+    @include padding-top(80);
+    @include padding-bottom(80);
     background-color: #f8f9fa;
 
     &__content {
@@ -764,6 +758,9 @@
         top-overview
       -------------------------------------- */
       &-overview {
+        &__stats {
+          grid-template-columns: 1fr;
+        }
         &__picture {
           display: block;
           width: 100%;
@@ -788,6 +785,15 @@
         &__list {
           grid-template-columns: 1fr;
         }
+
+        &__content {
+          h3 {
+            @include font-size(18);
+          }
+          p {
+            @include font-size(14);
+          }
+        }
       }
     }
   }
@@ -798,7 +804,7 @@
 --------------------------------------- */
 @include responsive('sp') {
   .top {
-    padding-bottom: min(11.63vw, 50px);
+    // padding-bottom: min(11.63vw, 50px);
     &__page_header {
       height: min(34.88vw, 150px);
     }
@@ -807,7 +813,8 @@
         top-overview
       -------------------------------------- */
     &-overview {
-      &__picture {
+      &__content {
+        @include margin-top(60);
       }
       &__map-google {
         height: 250px;
@@ -855,6 +862,16 @@
     &-tips {
       &__content {
         grid-template-columns: 1fr;
+      }
+      &__tip {
+        h3 {
+          @include font-size(18);
+        }
+
+        ul {
+          @include font-size(16);
+          line-height: 1.4;
+        }
       }
     }
   }

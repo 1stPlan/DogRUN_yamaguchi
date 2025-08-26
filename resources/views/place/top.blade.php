@@ -130,10 +130,10 @@
         <!-- 現在地から検索セクション -->
         <section class="top-search">
             <div class="top__inner">
-                <h2 class="top__title">現在地から検索</h2>
+                <h2 class="top__title top-search__title">現在地から検索</h2>
                 <div class="top-search__content">
                     <div class="top-search__description">
-                        <p>お使いのデバイスの位置情報を利用して、現在地から近いドッグランを検索できます。</p>
+                        <p>お使いのデバイスの位置情報を利用して、<span>現在地から近いドッグランを検索できます。</span></p>
                     </div>
                     <div class="top-search__button">
                         <button type="button" class="btn btn--primary" onclick="getCurrentLocation()">

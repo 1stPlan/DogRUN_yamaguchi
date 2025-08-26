@@ -1,15 +1,15 @@
 /* -------------------------------------
 	mixin
 --------------------------------------*/
-@use "../../mixin/font-size" as *;
-@use "../../mixin/responsive" as *;
-@use "../../mixin/btn" as *;
+@use '../../mixins' as *;
 
 /* -------------------------------------
 	food
 --------------------------------------*/
 .food {
-  padding-bottom: min(3.57vw, 50px);
+  width: 100%;
+  background-color: #f5f7fa;
+  @include padding-bottom(70);
 
   &__page_header {
     position: relative;
@@ -49,11 +49,15 @@
     padding-left: 15px;
   }
 
+  &__inner {
+    @include inner;
+  }
+
   &__content {
-    overflow: auto;
-    width: 75%;
-    margin: min(7vw, 50px) auto 0;
-    padding-bottom: min(7vw, 70px);
+    width: 90%;
+    margin: auto;
+    @include margin-top(50);
+    @include padding-bottom(70);
   }
 
   &__loader {
@@ -72,16 +76,17 @@
   }
 
   &__content_amazon {
-    display: flex;
-    flex-wrap: wrap;
-    gap: min(2vw, 20px);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    @include gap(30);
+
     position: relative;
-    padding-top: 75px;
+    @include padding-top(150);
 
     &::before {
       content: '';
-      width: min(12vw, 120px);
-      height: min(5vw, 50px);
+      width: auto;
+      height: clamp(20px, 8vw, 80px);
       background: url(@images/amazon.png) no-repeat;
       background-size: contain;
       background-position: center;
@@ -94,33 +99,92 @@
     }
   }
   &__store {
-    width: 30%;
-    min-height: 30em;
+    // min-height: 30em;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    padding: min(3.57vw, 50px) min(1.43vw, 20px);
+    @include padding-top(50);
+    @include padding-bottom(50);
+    @include padding-left(20);
+    @include padding-right(20);
     position: relative;
   }
 
-  &__store_count {
+  &__store_wrap {
     position: absolute;
     top: 10px;
     left: 0;
-    padding: min(1.5vw, 10px) min(2vw, 15px);
+  }
+
+  &__store_count {
+    position: relative;
+    @include padding-top(10);
+    @include padding-bottom(10);
+    @include padding-left(15);
+    @include padding-right(15);
     @include font-size(14);
-    color: #fff;
     background-color: rgb(196, 85, 0);
     border-radius: 10px;
+
+    span {
+      color: #fff;
+      font-weight: 700;
+    }
+  }
+
+  &__store:nth-child(1) .food__store_count::before,
+  &__store:nth-child(2) .food__store_count::before,
+  &__store:nth-child(3) .food__store_count::before {
+    content: '\f521';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: #fff;
+    font-size: 2.2em;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 70%;
+  }
+  &__store:nth-child(1) .food__store_count {
+    background: linear-gradient(70deg, #d0a900, #fff9e6, #d0a900);
+
+    span {
+      color: #262626;
+      font-weight: 900;
+      font-size: 1.3em;
+    }
+  }
+  &__store:nth-child(2) .food__store_count {
+    background: linear-gradient(70deg, #c0c0c0, #fff9e6, #c0c0c0);
+
+    span {
+      color: #262626;
+      font-weight: 900;
+      font-size: 1.3em;
+    }
+  }
+  &__store:nth-child(3) .food__store_count {
+    background: linear-gradient(70deg, #9a6229, #fff9e6, #9a6229);
+
+    span {
+      color: #262626;
+      font-weight: 900;
+      font-size: 1.3em;
+    }
   }
 
   &__store_link {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: min(3vw, 30px);
+    @include gap(30);
+    height: 100%;
   }
 
   &__store_pic {
-    width: min(14.28vw, 200px);
+    width: min(80%, 200px);
     position: relative;
 
     &::before {
@@ -157,54 +221,72 @@
     line-height: 1.5;
     font-weight: 700;
     transition: color 0.2s ease;
-    border-bottom: 1px solid black;
-    margin-bottom: 10px;
-    padding-bottom: 5px;
   }
 
   &__store_price {
     @include font-size(16);
     line-height: 1.5;
     color: #000;
+    font-weight: bold;
+    text-align: right;
+    margin-top: auto;
+    margin-bottom: 0;
+    border-top: 1px solid black;
+    padding-top: 10px;
+
+    span {
+      @include font-size(20);
+      color: #ff0000;
+      display: inline-block;
+    }
   }
 
   &__nostore {
     margin-top: min(3vw, 30px);
   }
 
-  &__store-button {
+  &__back-button {
     @include btn('back');
   }
 }
+
+@include responsive('tb') {
+  .food {
+    &__content_amazon {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__store_price {
+      @include font-size(20);
+    }
+  }
+}
+
 @include responsive('sp') {
   .food {
     padding-bottom: min(11.63vw, 50px);
 
     &__content {
-      width: 90%;
+      width: 100%;
     }
-
     &__content_flex {
       display: block;
     }
-
     &__content_amazon::before {
       content: '';
-      width: auto;
-      height: min(7.69vw, 40px);
-      margin-bottom: min(3.85vw, 20px);
+      height: min(10vw, 40px);
+      @include margin-bottom(20);
+      top: 15px;
     }
 
-    &__content_amazon {
-      .store {
-        min-height: 15em;
-      }
+    &__store {
+      // min-height: auto;
     }
 
     &__nostore {
       margin-top: min(6.98vw, 30px);
     }
-    &__store-button {
+    &__back-button {
       margin-top: min(11.63vw, 50px);
     }
   }

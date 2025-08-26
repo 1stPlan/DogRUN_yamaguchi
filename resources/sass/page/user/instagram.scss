@@ -1,7 +1,7 @@
 /* -------------------------------------
 	mixin
 --------------------------------------*/
-@use "../../mixin/font-size" as *;
+@use '../../mixins' as *;
 
 /* -------------------------------------
 	instagram
@@ -10,7 +10,7 @@
 .instagram {
   width: 100%;
   background-color: #f5f7fa;
-  padding-bottom: min(10vw, 100px);
+  @include padding-bottom(70);
 
   a:hover {
     text-decoration: none;
@@ -45,18 +45,18 @@
     text-shadow: 0 3px 4px rgba(34, 32, 32, 0.9);
   }
 
-  &__content {
-    padding: 60px 0;
-    background-color: #f8f9fa;
+  &__inner {
+    @include inner;
+  }
+    &__content {
+    @include margin-top(60);
+    @include padding-bottom(60);
   }
 
   &__grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    @include gap(30);
   }
 
   &__item {
@@ -126,27 +126,30 @@
       }
     }
   }
-
-  .instagram__date {
+  &__date {
     padding: 10px 15px;
     text-align: center;
     background-color: #f8f9fa;
-  }
 
-  .instagram__date small {
-    color: #666;
-    font-size: 8px;
+    small {
+      color: #666;
+      font-size: 8px;
+    }
+  }
+  &__back-button {
+    @include btn('back');
   }
 }
 
 @media (max-width: 768px) {
-  .instagram__grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 0 15px;
-  }
-
-  .instagram__content {
-    padding: 40px 0;
+  .instagram {
+    &__grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 0 15px;
+    }
+    &__content {
+      padding: 40px 0;
+    }
   }
 }

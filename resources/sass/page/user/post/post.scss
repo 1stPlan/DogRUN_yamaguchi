@@ -176,18 +176,7 @@
   }
 
   &__item-btn {
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
-    a {
-      border: 1px solid black;
-      padding: 5px min(2vw, 20px);
-      border-radius: 5px;
-      background: black;
-      color: #fff;
-      font-weight: 700;
-      display: inline-block;
-    }
+    @include btn('item');
   }
 
   &__item-back {
@@ -378,14 +367,7 @@
       height: auto;
       gap: min(3.49vw, 15px);
     }
-    &__item-back {
-      a {
-        padding: min(2.33vw, 10px);
-        width: 40%;
-        display: block;
-        margin: auto;
-      }
-    }
+
     &__item-user-pic {
       width: min(13.33vw, 50px);
     }

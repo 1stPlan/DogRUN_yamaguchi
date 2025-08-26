@@ -3,7 +3,7 @@
 use App\Http\Controllers\api\ApiLikeController;
 use App\Http\Controllers\api\ApiPlaceController;
 use App\Http\Controllers\api\ApiRatingController;
-use App\Http\Controllers\api\ScrapingController;
+use App\Http\Controllers\API\ScrapingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

@@ -1,10 +1,7 @@
 /* -------------------------------------
 	mixin
 --------------------------------------*/
-@use '../../mixin/responsive' as *;
-@use '../../mixin/inner' as *;
-@use '../../mixin/home-title' as *;
-@use '../../mixin/font-size' as *;
+@use '../../mixins' as *;
 
 /* -------------------------------------
 	function
@@ -13,11 +10,15 @@
 
 .login {
   height: 100vh;
-  margin-top: -80px;
+  // margin-top: -80px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  input {
+    @include font-size(14);
+  }
 
   &__inner {
     @include inner;
@@ -66,17 +67,21 @@
   &__btn {
     @include font-size(14);
     margin: min(2vw, 20px) auto 0;
-    padding: 10px 0;
+    @include padding-top(10);
+    @include padding-bottom(10);
     background: #4bb582;
     color: #fff;
     border-radius: 9999px;
+    border: 1px solid #4bb582;
     &:hover {
-      color: #fff;
+      color: #4bb582;
+      border: 1px solid #4bb582;
     }
   }
 
   &__txt {
-    margin-top: min(2vw, 20px);
+    @include margin-top(20);
+    @include font-size(16);
     a {
       color: #3490dc;
     }
@@ -85,6 +90,10 @@
   &__google {
     border-bottom: 1px solid #d7d7d7;
     padding-bottom: min(5vw, 50px);
+  }
+
+  &__google_txt {
+    @include font-size(14);
   }
 
   &__register-txt {
@@ -110,11 +119,12 @@
 
 @media screen and (max-width: 530px) {
   .login {
-    height: calc(100vh - 80px);
-    margin-top: 0;
+    height: 100%;
+    @include margin-top(150);
+    @include margin-bottom(150);
 
     &__form {
-      padding-bottom: min(6.98vw, 30px);
+      // padding-bottom: min(6.98vw, 30px);
       margin-top: min(4.65vw, 20px);
     }
 
