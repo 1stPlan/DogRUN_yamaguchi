@@ -26,16 +26,35 @@ function createAmazonAffiliateLink(originalUrl) {
 
 async function fetchAmazon(url) {
   try {
-    const response = await fetch(url); // fetch の結果を待つ
-    return await response.json(); // JSON を返す
+    const response = await fetch(url);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    
+    // 新しいAPIレスポンス形式に対応
+    if (data.success && data.data) {
+      return data.data;
+    } else {
+      console.error('APIエラー:', data.message || 'データが取得できませんでした');
+      return [];
+    }
+    
   } catch (e) {
-    console.error('Error in fetchURLs:', e); // エラー処理
-    return null; // エラーが発生した場合は null を返す
+    console.error('Error in fetchAmazon:', e);
+    return [];
   }
 }
 
 async function Check(amazonData) {
   return new Promise((resolve) => {
+    if (!Array.isArray(amazonData)) {
+      resolve([]);
+      return;
+    }
+    
     const amazonDataList = amazonData.flatMap((item) => item);
     resolve([amazonDataList]);
   });
@@ -49,17 +68,26 @@ async function dogFood() {
   }
 
   try {
-    const amazonData = (await fetchAmazon(url_amazon)) || [];
+    const amazonData = await fetchAmazon(url_amazon);
+
+    if (!amazonData || amazonData.length === 0) {
+      console.error('データが取得できませんでした。');
+      showErrorMessage('データの取得に失敗しました。しばらく時間をおいて再度お試しください。');
+      return;
+    }
 
     const [amazonDataList] = await Check(amazonData, []);
 
     if (amazonDataList.length === 0) {
       console.error('データが取得できませんでした。');
+      showErrorMessage('データの処理に失敗しました。');
       return;
     }
+    
     dataList(amazonDataList);
   } catch (error) {
     console.error('エラーが発生しました:', error);
+    showErrorMessage('予期しないエラーが発生しました。');
   } finally {
     // ローダーを非表示
     if (loader) {
@@ -121,4 +149,23 @@ function createStoreHTML(data) {
     `;
 }
 
+function showErrorMessage(message) {
+  const element = document.getElementById('food__content_amazon');
+  if (element) {
+    element.innerHTML = `
+      <div class="error-message" style="text-align: center; padding: 20px; color: #666;">
+        <p>${message}</p>
+        <button onclick="location.reload()" style="margin-top: 10px; padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
+          再読み込み
+        </button>
+      </div>
+    `;
+  }
+}
+
 dogFood();
+
+// passiveイベントリスナーの警告を解決
+document.addEventListener('touchstart', function() {}, { passive: true });
+document.addEventListener('touchmove', function() {}, { passive: true });
+document.addEventListener('wheel', function() {}, { passive: true });
