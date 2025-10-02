@@ -97,14 +97,14 @@
             </a>
         </li>  --}}
 
-        <li class="header-nav__item">
+        {{--  <li class="header-nav__item">
             <a href="{{ route('user.food') }}">
                 <div class="header-nav__thumbnail">
                     <img src="{{ asset('/images/dogfood.jpg') }}" alt="" width="100%">
                 </div>
                 <span>ご飯ランキング</span>
             </a>
-        </li>
+        </li>  --}}
 
         <li class="header-nav__item">
             <a href="{{ route('user.instagram') }}">
