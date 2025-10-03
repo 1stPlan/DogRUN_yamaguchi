@@ -145,7 +145,7 @@
 
                         <div class="top-search__nearby">
                             <h3>近くのドッグラン</h3>
-                            <div id="nearby-dogruns"></div>
+                            <div id="nearby-dogruns" class="nearby-dogruns"></div>
                         </div>
                     </div>
                 </div>

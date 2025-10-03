@@ -245,7 +245,7 @@ class LocationSearch {
 
         let html = '';
         // 最大3つまで表示（現在は1つに制限）
-        const displayCount = Math.min(dogruns.length, 1);
+        const displayCount = Math.min(dogruns.length, 2);
         for (let i = 0; i < displayCount; i++) {
             const dogrun = dogruns[i];
             const rating = this.getRating(dogrun.id, ratings);
@@ -285,38 +285,32 @@ class LocationSearch {
         const stars = this.createStarRating(rating.average);
 
         return `
-            <div class="nearby-dogrun-card">
-                <div class="nearby-dogrun-card__header">
-                    <span>${rank}</span>
-                    <h4 class="nearby-dogrun-card__title">${
-                      dogrun.name
-                    }</h4>
+            <a class="nearby-dogrun-card" href="${dogrun.url}" target="_blank">
+
+                <div class="nearby-dogrun-card__image">
+                   <img src="${
+                     this.host + '/storage/image/shop/' + dogrun.id + '.jpg'
+                   }" alt="" width="100%">
                 </div>
 
-                <ul class="nearby-dogrun-card__list">
-                    <li>
-                        📍 距離: ${dogrun.distance.toFixed(2)}km
-                    </li>
-                    <li>
-                        🕒 営業時間: ${dogrun.time}
-                    </li>
-                    <li>
-                        📍 住所: ${dogrun.address}
-                    </li>
-                    <li>
-                        💰 料金: ${dogrun.price}
-                    </li>
-                </ul>
-
-                <div class="nearby-dogrun-card__footer">
-                    <div class="nearby-dogrun-card__point">
-                        評価: ${stars} (${rating.count}件)
+                <div class="nearby-dogrun-card__content">
+                    <div class="nearby-dogrun-card__header">
+                        <span>${rank}</span>
+                        <h4 class="nearby-dogrun-card__title">${dogrun.name}</h4>
                     </div>
-                    <a class="nearby-dogrun-card__btn" href="${
-                      dogrun.url
-                    }" target="_blank">
-                        詳細を見る
-                    </a>
+
+                    <ul class="nearby-dogrun-card__list">
+                        <li>距離: ${dogrun.distance.toFixed(2)}km </li>
+                        <li>営業時間: ${dogrun.time}</li>
+                        <li> 住所: ${dogrun.address}</li>
+                        <li>料金: ${dogrun.price}</li>
+                    </ul>
+
+                    <div class="nearby-dogrun-card__footer">
+                        <div class="nearby-dogrun-card__point">
+                            評価: ${stars} (${rating.count}件)
+                        </div>
+                    </div>
                 </div>
             </div>
         `;
