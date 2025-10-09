@@ -7,7 +7,7 @@
 <div class="privacy-policy">
     <div class="privacy-policy__inner">
         <h1 class="privacy-policy__title">プライバシーポリシー</h1>
-        
+
         <div class="privacy-policy__content">
             <section class="privacy-policy__section">
                 <h2>1. 個人情報の収集について</h2>

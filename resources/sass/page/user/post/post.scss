@@ -271,7 +271,7 @@
   }
   &__form-label {
     display: block;
-    @include font-size(12);
+    @include font-size(14);
     font-weight: bold;
     margin-top: min(2vw, 20px);
   }

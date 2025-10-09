@@ -23,10 +23,11 @@
   }
 
   &__nav {
-    width: 80%;
-    padding-top: 15px;
+    width: 100%;
+    max-width: 800px;
+    @include padding-top(15);
     margin: 0 auto;
-    padding-bottom: calculation(4, 2);
+    @include padding-bottom(20);
   }
 
   &__nav-list {
@@ -43,20 +44,24 @@
   &__nav-link {
     @include font-size(12);
     color: black;
-    padding: 10px;
+    @include padding(10);
     letter-spacing: 3px;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
+
+    &--privacy-policy {
+      @include font-size(10);
+    }
   }
 
   &__copyright {
     color: black;
     letter-spacing: 3px;
     text-align: center;
-    margin-top: 20px;
+    @include margin-top(20);
     @include font-size(12);
   }
 }
@@ -71,7 +76,6 @@
     }
 
     &__nav {
-      width: 90%;
       padding-bottom: 0px;
       border: none;
     }
@@ -97,7 +101,8 @@
       span {
         display: inline;
         float: right;
-        padding-right: 10px;
+        @include padding-left(10);
+
       }
       img {
         width: 50%;
