@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import vue from '@vitejs/plugin-vue2';
 import { fileURLToPath, URL } from 'node:url';
 
 export default defineConfig({
@@ -18,14 +17,26 @@ export default defineConfig({
       ],
       refresh: true,
     }),
-    vue(),
   ],
   build: {
     rollupOptions: {
       output: {
-        entryFileNames: 'js/[name].js',        // ハッシュなし
-        chunkFileNames: 'js/[name].js',        // ハッシュなし
-        assetFileNames: 'js/[name].[ext]'      // ハッシュなし
+        entryFileNames: 'js/[name].js',        // JavaScriptファイル
+        chunkFileNames: 'js/[name].js',        // JavaScriptチャンク
+        assetFileNames: (assetInfo) => {
+          const info = assetInfo.name.split('.');
+          const ext = info[info.length - 1];
+          if (/\.(css)$/.test(assetInfo.name)) {
+            return 'css/[name].[ext]';         // CSSファイル
+          }
+          if (/\.(png|jpe?g|svg|gif|tiff|bmp|ico)$/i.test(assetInfo.name)) {
+            return 'images/[name].[ext]';      // 画像ファイル
+          }
+          if (/\.(woff|woff2|eot|ttf|otf)$/i.test(assetInfo.name)) {
+            return 'fonts/[name].[ext]';       // フォントファイル
+          }
+          return 'assets/[name].[ext]';        // その他のアセット
+        }
       }
     }
   },

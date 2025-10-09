@@ -13,7 +13,7 @@
           <a class="footer__nav-link" href="{{ route('user.contact') }}">Contact</a>
         </li>
         <li class="footer__nav-item">
-          <a class="footer__nav-link" href="{{ route('user.privacy-policy') }}">プライバシーポリシー</a>
+          <a class="footer__nav-link footer__nav-link--privacy-policy" href="{{ route('user.privacy-policy') }}">プライバシーポリシー</a>
         </li>
         <li class="footer__nav-item">
           <a class="footer__nav-link" href="{{ route('user.terms') }}">利用規約</a>

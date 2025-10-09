@@ -22,7 +22,7 @@
                 <div class="form-group row col-12 mt-5">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <div class="input-group-text">
+                            <div class="input-group-text d-flex align-items-center h-100 mr-1">
                                 <i class="far fa-envelope"></i>
                             </div>
                         </div>

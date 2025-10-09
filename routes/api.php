@@ -3,7 +3,7 @@
 use App\Http\Controllers\api\ApiLikeController;
 use App\Http\Controllers\api\ApiPlaceController;
 use App\Http\Controllers\api\ApiRatingController;
-use App\Http\Controllers\api\ScrapingController;
+use App\Http\Controllers\API\ScrapingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -36,5 +36,5 @@ Route::get('/place/rating', [ApiRatingController::class, 'rating']);
 Route::post('/like/{post}', [ApiLikeController::class, 'store']);
 Route::delete('/like/delete/{post}', [ApiLikeController::class, 'destroy']);
 
-Route::get('/scraping/amazon', [ScrapingController::class, 'amazon_scrape']);
-Route::get('/scraping/yahoo', [ScrapingController::class, 'yahoo_scrape']);
+// Route::get('/scraping/amazon', [ScrapingController::class, 'amazon_scrape']);
+// Route::get('/scraping/yahoo', [ScrapingController::class, 'yahoo_scrape']);

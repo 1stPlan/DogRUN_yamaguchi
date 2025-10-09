@@ -26,7 +26,7 @@
             <label class="sr-only" for="email">メールアドレス</label>
             <div class="input-group">
               <div class="input-group-prepend">
-                <div class="input-group-text">
+                <div class="input-group-text d-flex align-items-center h-100">
                   <i class="far fa-envelope"></i>
                 </div>
               </div>
@@ -41,11 +41,11 @@
             @enderror
           </div>
 
-          <div class="col-10 mx-auto form-group">
+          <div class="col-10 mx-auto mt-3 form-group">
             <label class="sr-only" for="password">パスワード</label>
             <div class="input-group">
               <div class="input-group-prepend">
-                <div class="input-group-text">
+                <div class="input-group-text d-flex align-items-center h-100 mr-1">
                   <i class="fas fa-key"></i>
                 </div>
               </div>
@@ -70,7 +70,7 @@
       <!-- Googleログインボタン -->
       <div class="login__google row mt-3">
         <div class="col-12 text-center">
-          <p class="text-muted">または</p>
+          <p class="login__google_txt">または</p>
           <a href="{{ route('google.auth') }}" class="mt-3 col-md-5 col-8 mx-auto btn login__btn login__btn--google">
             <i class="fab fa-google"></i> Googleでログイン
           </a>

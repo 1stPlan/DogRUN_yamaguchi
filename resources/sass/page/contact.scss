@@ -130,6 +130,9 @@
     &__button--2 {
         margin-top: max(-3vw, -30px);
     }
+    &__back-button {
+        @include btn('back');
+    }
 }
 
 @include responsive("sp") {

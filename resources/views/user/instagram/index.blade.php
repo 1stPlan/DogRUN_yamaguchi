@@ -50,36 +50,42 @@
 
         <!-- Instagram投稿セクション -->
         @if ($data && $data->count() > 0)
-            <div class="instagram__content">
-                <div class="instagram__grid">
-                    @foreach ($data as $post)
-                        <div class="instagram__item">
-                            @if (isset($post['media_url']))
-                                <div class="instagram__image">
-                                    <img src="{{ $post['media_url'] }}" alt="Instagram投稿" loading="lazy">
-                                </div>
-                            @endif
-                            @if (isset($post['caption']))
-                                <div class="instagram__caption">
-                                    <p>{{ Str::limit($post['caption'], 100) }}</p>
-                                </div>
-                            @endif
-                            @if (isset($post['permalink']))
-                                <div class="instagram__link">
-                                    <a href="{{ $post['permalink'] }}" target="_blank" rel="noopener noreferrer">
-                                        Instagramで見る
-                                    </a>
-                                </div>
-                            @endif
-                            @if (isset($post['timestamp']))
-                                <div class="instagram__date">
-                                    <small>{{ \Carbon\Carbon::parse($post['timestamp'])->format('Y年m月d日') }}</small>
-                                </div>
-                            @endif
-                        </div>
-                    @endforeach
+            <div class="instagram__inner">
+                <div class="instagram__content">
+                    <div class="instagram__grid">
+                        @foreach ($data as $post)
+                            <div class="instagram__item">
+                                @if (isset($post['media_url']))
+                                    <div class="instagram__image">
+                                        <img src="{{ $post['media_url'] }}" alt="Instagram投稿" loading="lazy">
+                                    </div>
+                                @endif
+                                @if (isset($post['caption']))
+                                    <div class="instagram__caption">
+                                        <p>{{ Str::limit($post['caption'], 100) }}</p>
+                                    </div>
+                                @endif
+                                @if (isset($post['permalink']))
+                                    <div class="instagram__link">
+                                        <a href="{{ $post['permalink'] }}" target="_blank" rel="noopener noreferrer">
+                                            Instagramで見る
+                                        </a>
+                                    </div>
+                                @endif
+                                @if (isset($post['timestamp']))
+                                    <div class="instagram__date">
+                                        <small>{{ \Carbon\Carbon::parse($post['timestamp'])->format('Y年m月d日') }}</small>
+                                    </div>
+                                @endif
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         @endif
+
+        <div class="instagram__back-button">
+            <a href="{{ route('top') }}" class="">戻る</a>
+        </div>
 
     @endsection

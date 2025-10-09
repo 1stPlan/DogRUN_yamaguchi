@@ -10,7 +10,9 @@
 
 .event_show {
   background-color: #f5f7fa;
-  padding: min(7vw, 70px) 0;
+  @include padding-top(70);
+  @include padding-bottom(70);
+
   &__inner {
     @include inner;
   }

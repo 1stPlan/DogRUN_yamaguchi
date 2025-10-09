@@ -1,9 +1,8 @@
 /* -------------------------------------
 	mixin
 --------------------------------------*/
-@use '../mixin/inner' as *;
-@use '../mixin/font-size' as *;
-@use '../mixin/responsive' as *;
+@use '../mixins' as *;
+
 
 /* -------------------------------------
 	footer
@@ -16,7 +15,7 @@
   // background-color: #f5f7fa;
   // height: 70px;
   display: flex;
-  padding-bottom: 30px;
+  @include padding-bottom(30);
   border-top: 1px solid rgba(0, 0, 0, 0.3);
 
   &__inner {
@@ -24,10 +23,11 @@
   }
 
   &__nav {
-    width: 80%;
-    padding-top: 15px;
+    width: 100%;
+    max-width: 800px;
+    @include padding-top(15);
     margin: 0 auto;
-    padding-bottom: calculation(4, 2);
+    @include padding-bottom(20);
   }
 
   &__nav-list {
@@ -44,20 +44,24 @@
   &__nav-link {
     @include font-size(12);
     color: black;
-    padding: 10px;
+    @include padding(10);
     letter-spacing: 3px;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
+
+    &--privacy-policy {
+      @include font-size(10);
+    }
   }
 
   &__copyright {
     color: black;
     letter-spacing: 3px;
     text-align: center;
-    margin-top: 20px;
+    @include margin-top(20);
     @include font-size(12);
   }
 }
@@ -72,7 +76,6 @@
     }
 
     &__nav {
-      width: 90%;
       padding-bottom: 0px;
       border: none;
     }
@@ -83,14 +86,12 @@
     }
 
     &__nav-item {
-      // font-size: 1.1em;
       list-style-type: none;
       width: 100%;
       overflow: hidden;
     }
 
     &__nav-link {
-      font-size: min(3.48vw, 13px);
       display: inline-block;
       color: black;
       padding: 3% 0;
@@ -100,7 +101,8 @@
       span {
         display: inline;
         float: right;
-        padding-right: 10px;
+        @include padding-left(10);
+
       }
       img {
         width: 50%;

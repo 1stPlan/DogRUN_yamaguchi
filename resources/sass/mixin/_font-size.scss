@@ -18,7 +18,7 @@
     );
 
     @include responsive("sp") {
-        @if $max-size <= 24 {
+        @if $max-size <= 32 {
             font-size: clamp(0.5rem, calc(4.2 * ($min-size / 16)) * 1vw, calc($max-size / 16) * 1rem * 0.8);
         } @else {
             font-size: min(calc(2.8 * ($min-size / 16)) * 1vw, calc($max-size / 16) * 1rem * 0.8);

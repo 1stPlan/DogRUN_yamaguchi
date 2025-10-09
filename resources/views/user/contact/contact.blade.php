@@ -81,7 +81,13 @@
 
       </form>
 
+      <div class="contact__back-button">
+        <a href="{{ route('top') }}" class="">戻る</a>
+      </div>
+
     </div>
+
+
   </div>
 
 </section>

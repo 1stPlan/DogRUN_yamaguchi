@@ -89,7 +89,7 @@ Route::namespace('User')->prefix('user')->name('user.')->group(function () {
 
     // food
 
-    Route::get('/food', 'FoodController@index')->name('food');
+    // Route::get('/food', 'FoodController@index')->name('food');
 
     // Instagram
     Route::get('/instagram', 'InstagramController@index')->name('instagram');
