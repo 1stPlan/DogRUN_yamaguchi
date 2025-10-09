@@ -20,8 +20,8 @@
       <div>ショップ詳細</div>
 
       <div class="d-flex mr-5">
-        <a href="{{ route('admin.places.edit', $place) }}" class="btn btn-info command-deletem ml-3"><em class="fa fa-edit fa-fw"></em></a>
-        <a href="#" class="btn  btn-warning command-deletem ml-3" onclick="deleteUser(this);" data-id="place_id"><em class="fa fa-trash fa-fw"></em></a> <!-- thisは戻り値として -->
+        <a href="{{ route('admin.places.edit', $place) }}" class="btn btn-info ml-3"><em class="fa fa-edit fa-fw"></em></a>
+        <a href="#" class="btn  btn-warning ml-3" onclick="deleteUser(this);" data-id="place_id"><em class="fa fa-trash fa-fw"></em></a> <!-- thisは戻り値として -->
       </div>
     </div>
 

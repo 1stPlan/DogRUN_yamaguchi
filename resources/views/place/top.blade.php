@@ -136,7 +136,7 @@
                         <p>お使いのデバイスの位置情報を利用して、<span>現在地から近いドッグランを検索できます。</span></p>
                     </div>
                     <div class="top-search__button">
-                        <button type="button" class="btn btn--primary" onclick="getCurrentLocation()">
+                        <button type="button" class="bubbly-button btn btn--primary" onclick="getCurrentLocation()">
                             <i class="fas fa-map-marker-alt"></i>
                             現在地から検索
                         </button>

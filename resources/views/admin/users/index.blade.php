@@ -47,7 +47,7 @@
                        
                            <td>{{ $user->created_at->format('Y.m.d') }}</td>
                            <td>
-                              <a href="{{ route('admin.users.show', $user->id ) }}" class="btn btn-info btn-sm command-deletem">詳細</a>
+                              <a href="{{ route('admin.users.show', $user->id ) }}" class="btn btn-info btn-sm">詳細</a>
                            </td>
                         </tr>
 

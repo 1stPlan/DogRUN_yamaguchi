@@ -16,67 +16,84 @@
 <section class="setting">
   <div class="setting__inner">
     <h3 class="setting__title">MYPAGE</h3>
-    <ul class="setting__cards" id="accordion">
 
-      <li class="setting__card">
-        <div class="setting__card-header" id="headingOne">
-          <a data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" href="">基本情報</a>
+    <!-- 基本情報セクション -->
+    <div class="setting__profile">
+      <div class="setting__profile-container">
+
+        <div class="setting__profile-image-section">
+          <div class="setting__profile-image-wrapper">
+            @if($user->img_no)
+              <img
+                src="{{ asset('/images/dogs/' . $user->img_no . '.jpg') }}"
+                alt="プロフィール画像"
+                class="setting__profile-image"
+                onerror="this.onerror=null; this.src='/images/dummy.png';"
+              />
+            @else
+              <img
+                src="{{ asset('/images/dummy.png') }}"
+                alt="デフォルト画像"
+                class="setting__profile-image"
+              />
+            @endif
+          </div>
         </div>
 
-        <div class="floating__banner">
-          <button class="floating__banner-close">×</button>
-          <a tabindex="-1" onclick="showProfile(this);" data-id="{{ $user->id }}" data-name="{{ $user->name }}" data-img="{{ $user-> img_no }}" data-type="{{ $user-> type }}" data-login_count="{{ $user-> login_count }}" data-target="{{ $user-> intro }}">
-            <div class="floating__banner-back">
-              <div class="floating__banner-body">
-                <i class="fas fa-pen"></i>
-                <span>プロフィールカード表示</span>
-              </div>
-            </div>
-          </a>
-        </div>
+        <div class="setting__profile-content">
+          <div class="setting__profile-name-section">
+            <p class="setting__profile-name">
+              {{ $user->name }}
+            </p>
+          </div>
 
-        <div class="collapse show" id="collapseOne" aria-labelledby="headingOne">
-
-          <div class="setting__card-commands">
-            <a href="{{ action('User\SettingController@edit',$user->id) }}" class="setting__card-command btn btn-warning command-deletem">
-              編集する
+          <!-- アクションボタン -->
+          <div class="setting__profile-actions">
+            <a
+              href="{{ action('User\SettingController@edit',$user->id) }}"
+              class="setting__profile-action setting__profile-action--primary"
+            >
+              <i class="fas fa-user-cog setting__profile-action-icon"></i>
+              プロフィール編集
             </a>
-            <a href="{{  route('password.request') }}" class="setting__card-command btn btn-warning command-deletem">
-              パスワード編集する
+            <a
+              href="{{ route('password.request') }}"
+              class="setting__profile-action setting__profile-action--warning"
+            >
+              <i class="fas fa-key setting__profile-action-icon"></i>
+              パスワード編集
             </a>
-            <a href="{{ route('user.setting.withdrawl') }}" class="setting__card-command btn btn-warning command-deletem del">
+            <a
+              href="{{ route('user.setting.withdrawl') }}"
+              class="setting__profile-action setting__profile-action--danger"
+            >
+              <i class="fas fa-trash setting__profile-action-icon"></i>
               アカウント削除
             </a>
           </div>
 
-          <table class="setting__card-table setting__card-table--profile table">
-            <tbody>
-              <tr>
-                <th>ニックネーム</th>
-                <td>{{ $user->name }}</td>
-              </tr>
-              <tr>
-                <th>メールアドレス</th>
-                <td>{{ $user->email }}</td>
-              </tr>
-              <tr>
-                <th>自己紹介</th>
-                <td class="setting__card-td-height">{{ $user->intro }}</td>
-              </tr>
-              <tr>
-                <th>登録画像</th>
-                <td>
-                  <div class="setting__card-pic">
-                    <img class="setting__card-img" src="{{ asset('/images/dogs/' . $user->img_no . '.jpg') }}" width="100%">
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="setting__profile-info">
+            <div class="setting__profile-info-item">
+              <label class="setting__profile-info-label">
+                メール
+              </label>
+              <p class="setting__profile-info-value">
+                {{ $user->email }}
+              </p>
+            </div>
+            <div class="setting__profile-info-item">
+              <label class="setting__profile-info-label">
+                自己紹介
+              </label>
+              <p class="setting__profile-info-value setting__profile-info-value--multiline">{{ $user->intro ?: '未設定' }}</p>
+            </div>
+          </div>
 
         </div>
+      </div>
+    </div>
 
-      </li>
+    <ul class="setting__cards" id="accordion">
 
 
       <li class="setting__card">
@@ -110,17 +127,22 @@
                 <tr>
                   <td>{{ $participant_list->title }}</td>
                   <td>{{ $participant_list->start_datetime->format('y年n月d日') }}</td>
-                  <td class="setting__commands">
-                    <a href="" class="btn btn-primary command-deletem" data-toggle="modal" data-target="#eventModal{{ $participant_list->id }}">
-                      詳細
-                    </a>
-                    <a tabindex="-1" class="del btn" onclick="deleteEvent(this);" data-id="{{ $participant_list->id }}">
-                      キャンセル
-                    </a>
-                    <form method="post" action="{{ action('User\SettingController@event_destroy',$participant_list->id)}}" id="form_{{ $participant_list->id }}">
-                      {{ csrf_field() }}
-                      {{ method_field('delete') }}
-                    </form>
+                  <td>
+                    <div class="setting__commands">
+                      <a href="" class="btn btn-outline-primary" data-toggle="modal" data-target="#eventModal{{ $participant_list->id }}">
+                        詳細
+                      </a>
+                      <a href="{{ route('user.event.post.show', ['event' => $participant_list->id]) }}" class="btn btn-outline-secondary">
+                        掲示版
+                      </a>
+                      <a tabindex="-1" class="del btn btn-outline-danger" onclick="deleteEvent(this);" data-id="{{ $participant_list->id }}">
+                        予定キャンセル
+                      </a>
+                      <form method="post" action="{{ action('User\SettingController@event_destroy',$participant_list->id)}}" id="form_{{ $participant_list->id }}">
+                        {{ csrf_field() }}
+                        {{ method_field('delete') }}
+                      </form>
+                    </div>
                   </td>
                 </tr>
 

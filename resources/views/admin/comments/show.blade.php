@@ -42,10 +42,10 @@
                            <td data-column-id="user">{{ $comment->user }}</td>
                            <td data-column-id="created_date">{{ $comment->created_at->format('Y.m.d') }}</td>
                            <td>
-                              {{-- <a href="{{ route('admin.comment.show', $post['id']) }}" class="btn btn-info btn-sm command-deletem">詳細</a> --}}
+                              {{-- <a href="{{ route('admin.comment.show', $post['id']) }}" class="btn btn-info btn-sm">詳細</a> --}}
                            </td>
                            {{-- <td>
-                              <a href="{{ route('admin.post.edit', $post['id']) }}" class="btn btn-info btn-sm command-deletem">編集</a>
+                              <a href="{{ route('admin.post.edit', $post['id']) }}" class="btn btn-info btn-sm">編集</a>
                            </td> --}}
                         </tr>
                      </a>

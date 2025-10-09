@@ -51,7 +51,7 @@
                            <!-- <td data-column-id="ip_address">{{ $post->ip_address }}</td> -->
                            <td data-column-id="ip_address" style="text-align: center">{{ $post->rating }}</td>
                            <td data-column-id="ip_address" style="text-align: center">{{ $post->like_count }}</td>
-                           <td><a href="" class="btn btn-info btn-sm command-deletem" style="text-align: center">削除</a></td>
+                           <td><a href="" class="btn btn-info btn-sm" style="text-align: center">削除</a></td>
                         </tr>
                         @empty
                         @endforelse

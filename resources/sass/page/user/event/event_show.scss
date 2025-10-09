@@ -97,9 +97,10 @@
     }
   }
 
-  &__form-btn {
-    @include btn('form');
+  &__item-btn {
+    @include btn('item');
   }
+
   &__back-btn {
     @include btn('back');
   }

@@ -51,7 +51,7 @@
                 <div class="dropdown">
                   <div class="select">
                     <span>イメージ画像選択</span>
-                    <i class="fa fa-chevron-left"></i>
+                    <i class="fa fa-chevron-up"></i>
                   </div>
                   <input type="hidden" name="img_no" value="{{ $user->img_no }}">
                   <div class="dropdown-menu">

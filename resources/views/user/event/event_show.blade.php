@@ -1,5 +1,5 @@
 @extends('user.layouts.app_user')
-@section('title', 'DogRUN | イベント編集')
+@section('title', 'DogRUN | イベント詳細')
 
 @section('meta')
 @endsection
@@ -60,14 +60,15 @@
             </div>
 
 
-            @if (Auth::check())
+            {{--  @if (Auth::check())
                 <form action="{{ route('user.event.participant', $event->id) }}" method="post" class="event_show__form">
                     {{ csrf_field() }}
                     <button class="event_show__btn" type="submit">{{ $participant_flg == 0 ? '参加する' : '参加済み' }}</button>
                 </form>
-            @endif
-
-            <a class="event_show__form-btn" href="{{ route('user.event.post.show', ['event' => $event->id]) }}">掲示板</a>
+            @endif  --}}
+            <div class="event_show__item-btn">
+                <a href="{{ route('user.event.post.show', ['event' => $event->id]) }}">掲示板</a>
+            </div>
             <div class="event_show__back-btn">
                 <a href="{{ route('user.event') }}">戻る</a>
             </div>

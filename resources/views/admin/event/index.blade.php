@@ -98,10 +98,10 @@
                     <td>{{ $event['start_datetime'] }}</td>
 
                     <td>
-                      <a href="{{ route('admin.events.show', $event['id']) }}" class="btn btn-info btn-sm command-deletem">詳細</a>
+                      <a href="{{ route('admin.events.show', $event['id']) }}" class="btn btn-info btn-sm">詳細</a>
                     </td>
                     <td>
-                      <a href="{{ route('admin.events.edit', $event['id']) }}" class="btn btn-info btn-sm command-deletem">編集</a>
+                      <a href="{{ route('admin.events.edit', $event['id']) }}" class="btn btn-info btn-sm">編集</a>
                     </td>
                     <td>
                       <button class="btn btn-danger btn-sm delete" data-id="{{ $event['id'] }}">削除</button>

@@ -82,9 +82,12 @@
         padding: 10px 0;
         color: #fff;
         border-radius: 9999px;
+        background: red;
         @include font-size(14);
+        border: 1px solid red;
         &:hover {
-            color: #fff;
+            color: red;
+            background: white;
         }
     }
     &__mypage-btn {
@@ -93,9 +96,12 @@
         padding: 10px 0;
         color: #fff;
         border-radius: 9999px;
+        background: #777777;
         @include font-size(14);
+        border: 1px solid #777777;
         &:hover {
-            color: #fff;
+            color: #777777;
+            background: white;
         }
     }
 }

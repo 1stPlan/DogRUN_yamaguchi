@@ -365,8 +365,9 @@
           transform: translateY(0);
         }
 
-        i {
+        i.fa-map-marker-alt {
           @include font-size(12);
+          z-index: 1;
         }
       }
     }
@@ -487,7 +488,6 @@
           transition: background 0.3s;
 
           &:hover {
-            background: #2980b9;
             color: #fff;
           }
         }
@@ -672,7 +672,7 @@
     &__button-filter-clear {
       color: #000;
       background: #eee;
-      border-radius: 4px;
+      border-radius: 9999px;
       cursor: pointer;
       -webkit-user-select: none;
       -moz-user-select: none;
@@ -692,7 +692,7 @@
     &__button-search {
       color: #fff;
       background: #bc0d19;
-      border-radius: 4px;
+      border-radius: 9999px;
       cursor: pointer;
       -webkit-user-select: none;
       -moz-user-select: none;

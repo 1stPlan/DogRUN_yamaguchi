@@ -46,10 +46,10 @@
                            <td data-column-id="body">{{ $place->address }}</td>
 
                            <td>
-                              <a href="{{ route('admin.places.show', $place->id ) }}" class="btn btn-info btn-sm command-deletem">詳細</a>
+                              <a href="{{ route('admin.places.show', $place->id ) }}" class="btn btn-info btn-sm">詳細</a>
                            </td>
                            <td>
-                              <a href="{{ route('admin.places.edit', $place->id) }}" class="btn btn-info btn-sm command-deletem">編集</a>
+                              <a href="{{ route('admin.places.edit', $place->id) }}" class="btn btn-info btn-sm">編集</a>
                            </td>
                            <td>
                               <a href="{{ route('admin.places.post.index', $place->id) }}" class="btn btn-primary btn-sm">口コミ一覧</a>

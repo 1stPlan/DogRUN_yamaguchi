@@ -141,11 +141,33 @@ initMain();
 
 //post削除
 function deletePost(e) {
-  'use strict';
 
-  if (confirm('本当に削除していいですか?')) {
-    document.getElementById('form_' + e.dataset.id).submit();
-  }
+  Swal.fire({
+    title: 'コメントを削除しますか?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#DD6B55',
+    confirmButtonText: '削除します!',
+    position: 'center',
+    closeOnConfirm: false,
+    allowEscapeKey: true, //Escボタン
+    allowOutsideClick: true, //枠外クリック
+    showCloseButton: true, //閉じるボタン
+  }).then(function (result) {
+    //←この行の記述を修正した結果改善された
+
+    if (result.value) {
+      document.getElementById('form_' + e.dataset.id).submit();
+
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Successfully Deleted!',
+        showConfirmButton: false,
+        timer: 2500,
+      });
+    }
+  });
 }
 // グローバルスコープに公開
 window.deletePost = deletePost;
@@ -180,13 +202,16 @@ function showProfile(e) {
   });
 }
 
+// グローバルスコープに公開
+window.showProfile = showProfile;
+
 function deleteEvent(e) {
   Swal.fire({
-    title: '本当に削除しますか?',
+    title: '予定をキャンセルしますか?',
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#DD6B55',
-    confirmButtonText: '削除します!',
+    confirmButtonText: 'キャンセルします!',
     position: 'center',
     closeOnConfirm: false,
     allowEscapeKey: true, //Escボタン
@@ -208,3 +233,6 @@ function deleteEvent(e) {
     }
   });
 }
+
+// グローバルスコープに公開
+window.deleteEvent = deleteEvent;

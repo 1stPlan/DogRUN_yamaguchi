@@ -84,7 +84,7 @@
       <a href="{{ route('user.event.show', ['event' => $post->event_id ]) }}">
         <div class="floating__banner-back">
           <div class="floating__banner-body">
-            <span>イベントに戻る</span>
+            <span>詳細に戻る</span>
           </div>
         </div>
       </a>

@@ -16,8 +16,8 @@
             <div>ユーザー情報詳細</div>
 
             <div class="d-flex mr-5">
-               <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-info command-deletem ml-3"><em class="fa fa-edit fa-fw"></em></a>
-               <a href="#" class="btn  btn-warning command-deletem ml-3" onclick="deleteUser(this);" data-id="user_id"><em class="fa fa-trash fa-fw"></em></a> <!-- thisは戻り値として -->
+               <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-info ml-3"><em class="fa fa-edit fa-fw"></em></a>
+               <a href="#" class="btn  btn-warning ml-3" onclick="deleteUser(this);" data-id="user_id"><em class="fa fa-trash fa-fw"></em></a> <!-- thisは戻り値として -->
             </div>
          </div>
       </div>

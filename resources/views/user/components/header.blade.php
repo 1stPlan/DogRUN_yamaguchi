@@ -13,10 +13,10 @@
         <div class="header__btn--pc">
 
             @if (Auth::check())
-                <a class="header__btn-link--1 bubbly-button" href="{{ route('user.setting') }}">
+                <a class="header__btn-link--1" href="{{ route('user.setting') }}">
                     Mypage
                 </a>
-                <a class="header__btn-link--2 bubbly-button" href=""
+                <a class="header__btn-link--2" href=""
                     onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                     Logout
                 </a>
@@ -24,7 +24,7 @@
                     @csrf
                 </form>
             @else
-                <a class="header__btn-link--2 bubbly-button" href="{{ route('login') }}">
+                <a class="header__btn-link--2" href="{{ route('login') }}">
                     login
                 </a>
             @endif

@@ -46,7 +46,7 @@
                            {{-- <td data-column-id="content">{{ $contact->content }}</td> --}}
                            <td data-column-id="date">{{ $contact->created_at->format('Y.m.d') }}</td>
                            <td>
-                              <a href="{{ route('admin.contact.show', $contact['id']) }}" class="btn btn-info btn-sm command-deletem">詳細</a>
+                              <a href="{{ route('admin.contact.show', $contact['id']) }}" class="btn btn-info btn-sm">詳細</a>
                            </td>
                         </tr>
 

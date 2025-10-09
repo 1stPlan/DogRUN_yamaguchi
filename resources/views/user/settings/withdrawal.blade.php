@@ -27,9 +27,9 @@
           {{ csrf_field() }}
           {{ method_field('delete') }}
 
-          <button type="submit" class="withdrawal__btn d-block col-md-5 col-6 btn-primary" data-dismiss="modal">退会する</button>
+          <button type="submit" class="withdrawal__btn d-block col-md-5 col-6 " data-dismiss="modal">退会する</button>
 
-          <a href="{{ route('user.setting') }}" class="withdrawal__mypage-btn d-block col-md-5 col-6 btn-primary">マイページへ戻る</a>
+          <a href="{{ route('user.setting') }}" class="withdrawal__mypage-btn d-block col-md-5 col-6">マイページへ戻る</a>
         </form>
       </div>
 

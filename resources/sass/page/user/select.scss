@@ -14,8 +14,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: min(5vw, 50px) auto;
-    min-height: calc(100vh - 210px);
+    // margin: min(5vw, 50px) auto;
+    // min-height: calc(100vh - 210px);
 
     &__inner {
         @include inner;
@@ -217,7 +217,7 @@
 
 @include responsive("sp") {
     .select {
-        height: calc(100vh - 130px);
+        // height: calc(100vh - 130px);
         min-height: auto;
         margin: 0 auto;
 

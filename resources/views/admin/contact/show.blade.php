@@ -19,14 +19,14 @@
            <div class="d-flex align-items-center justify-content-between">
             <div class="card-header font-weight-bold">お問い合わせ情報詳細</div>
               <div class="d-flex mr-5" >
-                <a href="{{ route('admin.contact.index') }}" class="btn btn-info command-deletem ml-3"><em class="fa fa-history"></em></a>
-                <a href="#" class="btn  btn-warning command-deletem ml-3" onclick="deleteUser(this);" data-id="user_id"><em class="fa fa-trash fa-fw"></em></a>   <!-- thisは戻り値として -->
+                <a href="{{ route('admin.contact.index') }}" class="btn btn-info ml-3"><em class="fa fa-history"></em></a>
+                <a href="#" class="btn  btn-warning ml-3" onclick="deleteUser(this);" data-id="user_id"><em class="fa fa-trash fa-fw"></em></a>   <!-- thisは戻り値として -->
                 {{-- <form action="{{ route('admin.users.destroy', $user) }}" id="user_{{ $user->id }}" method="POST">
                   @csrf
                   @method('DELETE') --}}
                 </form>
 
-                {{-- <a href="{{ route('admin.viewing_history', $user) }}" class="btn btn-success command-deletem ml-3">閲覧履歴を見る</em></a> --}}
+                {{-- <a href="{{ route('admin.viewing_history', $user) }}" class="btn btn-success ml-3">閲覧履歴を見る</em></a> --}}
               </div>
            </div>
             <table class="table table-bordered table-striped" id="user" style="clear: both">
