@@ -57,7 +57,7 @@ class GoogleAuthController extends Controller
                 // 既存ユーザーのGoogle情報を更新
                 $user->update([
                     'google_id' => $googleUser->getId(),
-                    'google_email' => $googleUser->getEmail(),
+                    'email' => $googleUser->getEmail(),
                 ]);
             } else {
                 // 新しいユーザーを作成
@@ -66,7 +66,6 @@ class GoogleAuthController extends Controller
                     'email' => $googleUser->getEmail(),
                     'password' => Hash::make(Str::random(16)), // ランダムパスワード
                     'google_id' => $googleUser->getId(),
-                    'google_email' => $googleUser->getEmail(),
                 ]);
             }
         }
