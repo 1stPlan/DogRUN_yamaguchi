@@ -14,9 +14,8 @@ class AddGoogleFieldsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('google_id')->nullable()->unique();
-            $table->string('google_email')->nullable();
-            $table->string('avatar')->nullable();
+            $table->string('google_id')->after('email')->nullable()->unique();
+            $table->string('google_email')->after('google_id')->nullable();
         });
     }
 
@@ -28,7 +27,7 @@ class AddGoogleFieldsToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['google_id', 'google_email', 'avatar']);
+            $table->dropColumn(['google_id', 'google_email']);
         });
     }
-} 
+}
