@@ -34,7 +34,7 @@ class GoogleAuthController extends Controller
             // ログイン
             Auth::login($user);
 
-            return redirect()->intended('/user/dashboard')->with('success', 'Googleでログインしました！');
+            return redirect()->intended('/user/setting')->with('success', 'Googleでログインしました！');
 
         } catch (\Exception $e) {
             return redirect()->route('login')->with('error', 'Google認証に失敗しました');
